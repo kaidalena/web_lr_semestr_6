@@ -1,0 +1,25 @@
+
+
+*{
+    box-sizing: border-box;
+}
+img.inTable{
+    cursor: pointer;
+    text-align: center;
+    width: 250px;
+    height: 150px;
+}
+table.foto 
+{ 
+    width: 100%; 
+   margin: 20px 20px 20px 40px ;
+} 
+/* h1, p{
+    text-align: center;
+} */
+figcaption{
+    text-align: center;
+}
+/* section, body{
+    background-color: rgb(255, 243, 220);
+} */
