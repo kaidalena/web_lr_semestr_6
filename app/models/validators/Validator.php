@@ -27,7 +27,7 @@ class Validator {
 
     public function Validate($post_array){
 
-        var_dump($post_array);
+
         foreach($this->rules as $field => $rule){
             if (array_key_exists($field, $post_array)){
                 $method = "check_".$field;

@@ -20,7 +20,7 @@ class Main extends Model{
 
     public function indexModel(){
         
-        echo "this is index model";
+        // echo "this is index model";
         // $result = $this->db->row('SELECT text, description FROM test');
         // var_dump($result);
         // return $result;

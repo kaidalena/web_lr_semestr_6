@@ -21,12 +21,12 @@ class View{
         // Эта функция рассматривает ключи массива в качестве имен переменных, а их значения - в качестве значений этих переменных. 
         // Для каждой пары ключ/значение будет создана переменная в текущей таблице символов
 
+        $path = 'app/views/'.$this->path.'.php';
         if (file_exists('app/views/'.$this->path.'.php')){
-            // ob_start();
+            ob_start();
             //require аналогично include, за исключением того, что при ошибке он также выдаст фатальную ошибку уровня E_COMPILE_ERROR.
-            
-            $content = require 'app/views/'.$this->path.'.php';       //подключение основного кода страницы(body) 
-            // $content = ob_get_clean();
+            require $path;
+            $content = ob_get_clean();       //подключение основного кода страницы(body) 
             require 'app/views/layouts/'.$this->layout.'.php';      //подключение шаблона default
         }else{
             echo 'View not found: '.$this->path;

@@ -25,7 +25,7 @@ class Gallery extends Model{
 
     public function fotosModel(){
         
-        echo "this is fotos model";
+        // echo "this is fotos model";
 
         // $result = $this->db->row('SELECT * FROM gallery');
         

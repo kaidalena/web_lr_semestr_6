@@ -3,13 +3,12 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\models\validators\ValidTest;
 
 class StudyController extends Controller{
 
     public function  scheduleAction(){
         $this->model->loadModel();
-        $this->view->render('Аккаунт');
+        $this->view->render('Расписание');
     }
 
     public function  testAction(){
@@ -20,6 +19,6 @@ class StudyController extends Controller{
             'rules' => $this->model->validator->getRules(),
             'errors' => $this->model->validator->getErrors(), 
         ];
-        $this->view->render('Аккаунт', $var);
+        $this->view->render('Тест', $var);
     }
 }

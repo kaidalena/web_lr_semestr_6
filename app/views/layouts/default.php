@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- <title><?php echo $title; ?></title> -->
+    <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="public/assets/css/style.css">
     <link rel="stylesheet" href="public/assets/css/foto.css">
     <link rel="stylesheet" href="public/assets/css/menu.css">
@@ -36,6 +36,6 @@
             <li><a href="/contacts">Контакты</a>
         </ul>
     </nav>
-    <!-- <?php echo $content; ?> -->
+    <?php echo $content; ?> 
 </body>
 </html>

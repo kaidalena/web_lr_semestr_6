@@ -1,5 +1,5 @@
 <section>
-    <h1>Галлерея</h1>
+    <h1>Галерея</h1>
     <table class="foto">
         <?php 
         $i=0;

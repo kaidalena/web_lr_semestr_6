@@ -14,6 +14,6 @@ class GalleryController extends Controller{
         $vars = [
 			'args' => $result,
 		];
-        $this->view->render('Галлерея', $vars);
+        $this->view->render('Галерея', $vars);
     }
 }
