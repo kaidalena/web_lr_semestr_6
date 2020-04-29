@@ -7,7 +7,9 @@ use app\core\Controller;
 class MainController extends Controller{
 
     public function indexAction(){
-        $result = $this->model->test();
+        $result = $this->model->loadModel();
+        
+        // $result = $this->model->test();
         $vars = [
 			'args' => $result,
 		];

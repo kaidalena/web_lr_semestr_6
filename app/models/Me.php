@@ -3,10 +3,33 @@
 namespace app\models;
 
 use app\core\Model;
+use app\models\validators\ValidContacts;
 
 class Me extends Model{
 
-    public function getTatles(){
+    public $path;
+
+    function __construct($action)
+    {
+        $this->path = $action."Model";
+    }
+
+    public function loadModel(){
+        $method = $this->path;
+        return $this->$method(); 
+    }
+
+    public function aboutModel(){
+        // echo "this is about model";
+    }
+
+    public function contactsModel(){
+        $this->validator = new ValidContacts();
+        // echo "this is contacts model";
+    }
+
+    public function interestModel(){
+        // echo "this is interest model";
         // $result = $this->db->row('SELECT text, description FROM test');
         // var_dump($result);
 
@@ -31,12 +54,6 @@ class Me extends Model{
 
         ];
 
-        return $result;
-    }
-
-    public function getDescriptions(){
-
-        $result = [];
         return $result;
     }
 

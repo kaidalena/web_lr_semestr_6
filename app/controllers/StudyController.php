@@ -8,15 +8,18 @@ use app\models\validators\ValidTest;
 class StudyController extends Controller{
 
     public function  scheduleAction(){
+        $this->model->loadModel();
         $this->view->render('Аккаунт');
     }
 
     public function  testAction(){
-        $valid = new ValidTest();
+        $this->model->loadModel();
+        
+        // $valid = new ValidTest();
         $var = [
-            'valid' => $valid,
-            'rules' => $valid->getRules(),
-            'errors' => $valid->getErrors(), 
+            'valid' => $this->model->validator,
+            'rules' => $this->model->validator->getRules(),
+            'errors' => $this->model->validator->getErrors(), 
         ];
         $this->view->render('Аккаунт', $var);
     }

@@ -8,28 +8,30 @@ use app\models\validators\ValidContacts;
 class MeController extends Controller{
 
     public function  aboutAction(){
-        
+        $this->model->loadModel();
         $this->view->render('Обо мне');
     }
 
     public function interestAction(){
-        $names = $this->model->getTatles();
+        $result = $this->model->loadModel();
+
+        // $names = $this->model->getTatles();
         // var_dump($names);
-        $descriptions = $this->model->getDescriptions();
         $vars = [
-            'names' => $names,
-            // 'descriptions' => $descriptions
+            'names' => $result,
 		];
         $this->view->render('Мои интересы', $vars);
     }
 
     public function contactsAction(){
-        $valid = new ValidContacts();
+        $this->model->loadModel();
+        
+        // $valid = new ValidContacts();
         $var = [
-            'valid' => $valid,
-            'rules' => $valid->getRules(),
-            'errors' => $valid->getErrors(),
-            'values'=> $valid->getErrors(), 
+            'valid' => $this->model->validator,
+            'rules' => $this->model->validator->getRules(),
+            'errors' => $this->model->validator->getErrors(),
+            'values'=> $this->model->validator->getErrors(), 
         ];
         $this->view->render('Контакты', $var);
     }
