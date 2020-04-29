@@ -6,44 +6,41 @@ use app\models\validators\Validator;
 
 class ValidTest extends Validator {
 
-    private $error = "Введите ответ";
-    private $incorrectly = "Не верно";
-
-    public function check_q1($value){
-        // echo $value;
+    public function check_question1($value){
         if (preg_match('/^[1-6]{1,1}+$/', $value)){
             if ($value == 2) return null;
-            else return $this->incorrectly;
-        } else return $this->error; 
+            else return $this->errors['incorrectly'];
+        } else return $this->errors['emptyAnswer']; 
     }
 
-    public function check_q2($value){
+    public function check_question2($value){
         if ($value != "" && $value != null){
             if ($value == "Фотосинтез" || $value == "фотосинтез") return null;
-            else return $this->incorrectly;
-        }else return $this->error; 
+            else return $this->errors['incorrectly'];
+        }else return $this->errors['emptyAnswer'];  
     }
 
-    public function check_q3($value){
-        
+    public function check_question3($value){
         if (!empty($value)){
             if (count($value)==2){
                 if ($value[0]==1 && $value[1]==2) return null;
-                else return $this->incorrectly;
-            }else return $this->incorrectly;
-        }else return $this->error;
+                else return $this->errors['incorrectly'];
+            }else return $this->errors['incorrectly'];
+        }else return $this->errors['emptyAnswer']; 
         
     }
 
     public function Validate($post_array){
+
+        foreach($this->rules as $field => $rule){
+            if (array_key_exists($field, $post_array)){
+                $method = "check_".$field;
+                // echo $method;
+                $this->findErrors[$field] = $this->$method($post_array[$field]);
+            }
+        }
+
+        if (!array_key_exists('question3', $post_array))  $this->findErrors['question3'] = $this->check_question3(null);
     
-        $this->errorsGet['name'] = $this->check_name($post_array['name']);
-        $this->errorsGet['course'] = $this->check_course($post_array['course']);
-        $this->errorsGet['question1'] = $this->check_q1($post_array['question1']);
-        $this->errorsGet['question2'] = $this->check_q2($post_array['question2']);
-        if (array_key_exists('question3', $post_array)){
-            $this->errorsGet['question3'] = $this->check_q3($post_array['question3']);
-        } else $this->errorsGet['question3'] = $this->error;
-        
     }
 }

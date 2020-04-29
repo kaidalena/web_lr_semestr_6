@@ -15,7 +15,6 @@ class StudyController extends Controller{
     public function  testAction(){
         $this->model->loadModel();
         
-        // $valid = new ValidTest();
         $var = [
             'valid' => $this->model->validator,
             'rules' => $this->model->validator->getRules(),

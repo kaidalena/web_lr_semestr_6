@@ -6,7 +6,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $valid->Validate($_POST);
-        $errors = $valid->errorsGet;
         if (!$valid->checkErrors($errors)) $values = $_POST;
         
         // var_dump($errors);
@@ -16,9 +15,10 @@
     <form action="" method=POST id="contact">
         <p><input id="FIO" type="text" name="name" placeholder="ФИО" data-toggle="popover" 
             value="<?php if (array_key_exists('name', $_POST)) echo $values['name'] ?>" onblur="validate(this)" 
-            data-content="<?php echo $rules['name'] ?>"><br><pre><?php echo $errors['name'] ?></pre><br></p> 
+            data-content="<?php echo $rules['name'] ?>"><br><pre><?php echo $valid->getError('name') ?></pre><br></p> 
+
         <p>Выбери свой курс</p> 
-        <p><SELECT id="gr" name="course"> 
+        <p><SELECT id="gr" name="course" >  
             <OPTGROUP label="1 курс"> 
                 <OPTION value="1">ИС-11 
                 <OPTION value="2">ИС-12 
@@ -45,7 +45,7 @@
                 <OPTION  value="13">Maг-51 
             </OPTGROUP> 
         </SELECT>
-        <pre><?php echo $errors['course'] ?></pre><br></p>
+        <pre><?php echo $valid->getError('course') ?></pre><br></p>
         
         <ol class=test>
             <li><h3>Как называют факторы неорганической среды, которые влияют на жизнь и распространение живых организмов?</h3></li>
@@ -59,18 +59,19 @@
                     <option value="6">Неживые</option>
                     <!-- 2 -->
                 </select>
-                <pre><?php echo $errors['question1'] ?></pre><br>
+                <pre><?php echo $valid->getError('question1') ?></pre><br>
             </p>
             <li><h3> Как называется превращение органических соединений из неорганических за счет энергии света?</h3></li>
             <!-- фотосинтез -->
-            <p><input id="test2" type="text" name="question2" placeholder="Ответ"> <pre><?php echo $errors['question2'] ?></pre><br></p>
+            <p><input id="test2" type="text" name="question2" placeholder="Ответ"
+                value="<?php if (array_key_exists('question2', $_POST)) echo $values['question2'] ?>"> <pre><?php echo $valid->getError('question2') ?></pre><br></p>
 
             <li><h3>Каковы основные направления экологии?</h3></li>
             <p>
                 <p><input id="c1" type="checkbox" name="question3[]" value="1">Физическое</p>
                 <p> <input id="c2" type="checkbox" name="question3[]" value="2">Xимическое</p>
                 <p> <input id="c3" type="checkbox" name="question3[]" value="3">Kосмическое</p>
-                <pre><?php if (array_key_exists('question3', $errors)) echo $errors['question3'] ?></pre><br>
+                <pre><?php echo $valid->getError('question3') ?></pre><br>
             </p>
             <!-- 1 2 -->
             <input type="submit" id="submit"  value="Отправить" > 

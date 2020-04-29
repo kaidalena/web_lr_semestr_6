@@ -6,10 +6,8 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         $valid->Validate($_POST);
-        $errors = $valid->errorsGet;
         if (!$valid->checkErrors($errors)) $values = $_POST;
         
-
     }
     // echo $_POST['name'];
     ?>
@@ -51,22 +49,29 @@
                 <OPTION  value="13">Maг-51 
             </OPTGROUP> 
         </SELECT> 
-        <p><pre><?php echo $errors['course'] ?><br></pre></p>
+        <p><pre><?php echo $valid->getError('course') ?><br></pre></p>
+
         <p><input type="text" id="FIO" name="name" placeholder="ФИО" data-toggle="popover" onblur="validate(this)" 
-             value="<?php if (array_key_exists('name', $_POST)) echo $values['name'] ?>" data-content="<?php echo $rules['name'] ?>"><br><pre><?php echo $errors['name'] ?><br></pre><br></p>
+             value="<?php if (array_key_exists('name', $_POST)) echo $values['name'] ?>" data-content="<?php echo $rules['name'] ?>"><br><pre><?php echo $valid->getError('name') ?><br></pre><br></p>
+        
         <div id="calendar" >
             <input class="notFocus" id="data"  data-toggle="popover" data-content="<?php echo $rules['data'] ?>"
-                value="<?php if (array_key_exists('data', $values)) echo $values['data'] ?>" name="data" type="text" size="35"  onfocus="show(this)" oninput="writeDate()" placeholder="Дата рождения"><br><pre><?php echo $errors['data'] ?><br><br></pre>
+                value="<?php if (array_key_exists('data', $values)) echo $values['data'] ?>" name="data" type="text" size="35"  onfocus="show(this)" oninput="writeDate()" placeholder="Дата рождения"><br><pre><?php echo $valid->getError('data') ?><br><br></pre>
         </div>
+
         <p><input type="text" id="mail" name="email" onblur="validate(this)" placeholder="Ваш Еmail"  
-            value="<?php if (array_key_exists('email', $values)) echo $values['email'] ?>" data-toggle="popover" data-content="<?php echo $rules['email'] ?>"><pre><?php echo $errors['email'] ?><br></pre><br></p>
+            value="<?php if (array_key_exists('email', $values)) echo $values['email'] ?>" data-toggle="popover" data-content="<?php echo $rules['email'] ?>"><pre><?php echo $valid->getError('email')?><br></pre><br></p>
+        
         <p><input type="text"  id="mobile" name="phone" onblur="validate(this)" placeholder="Номер телефона"
-            value="<?php if (array_key_exists('phone', $values)) echo $values['phone'] ?>"  data-toggle="popover" data-content="<?php echo $rules['phone'] ?>"><pre><?php echo $errors['phone'] ?><br></pre><br></p></p>
-        <p><textarea id="message" name="message" onblur="validate(this)" data-toggle="popover" placeholder="Ваше сообщение"
-            value="<?php if (array_key_exists('message', $values)) echo $values['message'] ?>" data-content="<?php echo $rules['message'] ?>"></textarea><br><pre><?php echo $errors['message'] ?><br></pre> <br></p>
-        <input type="submit"  id="submit" value="Отправить" >
+            value="<?php if (array_key_exists('phone', $values)) echo $values['phone'] ?>"  data-toggle="popover" data-content="<?php echo $rules['phone'] ?>"><pre><?php echo $valid->getError('phone') ?><br></pre><br></p></p>
+        
+            <p><textarea id="message" name="message" onblur="validate(this)" data-toggle="popover" placeholder="Ваше сообщение"
+            value="<?php if (array_key_exists('message', $values)) echo $values['message'] ?>" data-content="<?php echo $rules['message'] ?>"></textarea><br><pre><?php echo $valid->getError('message') ?><br></pre> <br></p>
+        
+            <input type="submit"  id="submit" value="Отправить" >
         <input type="reset" id="reset" value="Очистить" > 
     </form> 
+    
     <div id="modalWindow">
         <div id="modalDiv">
             <p>Вы действительно хотите это сделать?</p>

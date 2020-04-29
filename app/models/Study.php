@@ -24,7 +24,21 @@ class Study extends Model{
     }
 
     public function testModel(){
-        $this->validator = new ValidTest();
+        $rules = [
+            'name' => "Пример: Иванов Иван Иванович",
+            'question1' => "Выберите правильный ответ",
+            'question2' => "Введите ответ",
+            'question3' => "Выберите правильные ответы",
+        ];
+
+        $errors = [
+            'name' => "Имя должно состоять из трех слов и может содержать только русские буквы длиной до 30 символов",
+            'empty' => "Поле не должно быть пустым",
+            'emptyAnswer' => "Введите ответ",
+            'incorrectly' => "Не верно",
+        ];
+
+        $this->validator = new ValidTest($rules, $errors);
         // echo "this is test model";
     }
 
