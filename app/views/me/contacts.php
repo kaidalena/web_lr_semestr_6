@@ -1,19 +1,21 @@
 <section>
 
-    <h1>Контакты</h1> 
+    
     <?php 
     $values;
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        
+    
         $valid->Validate($_POST);
         if (!$valid->checkErrors($errors)) $values = $_POST;
+        else{
+            echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\">Форма успешно отправлена</div>";
+        }
         
     }
-    // echo $_POST['name'];
     ?>
-    <!-- <form  action="<?php echo $_SERVER["PHP_SELF"]?>" method=POST id="contact">  -->
-    <form  action="" method=POST id="contact" > <!--onchange="checkSubmit()"-->
-        <p><strong>Выбери свой возрост</strong></p> 
+    <h1>Контакты</h1> 
+    <form  action="" method=POST id="contact" > 
+        <p><strong>Выберите свой возрост</strong></p> 
         <p><select id="age" name="age" > 
             <option value="1">Младше 18</option> 
             <option value="2">18 - 25</option> 
@@ -49,7 +51,7 @@
                 <OPTION  value="13">Maг-51 
             </OPTGROUP> 
         </SELECT> 
-        <p><pre><?php echo $valid->getError('course') ?><br></pre></p>
+        <p><pre><?php echo $valid->getError('course') ?><br/></pre></p>
 
         <p><input type="text" id="FIO" name="name" placeholder="ФИО" data-toggle="popover" onblur="validate(this)" 
              value="<?php if (array_key_exists('name', $_POST)) echo $values['name'] ?>" data-content="<?php echo $rules['name'] ?>"><br><pre><?php echo $valid->getError('name') ?><br></pre><br></p>

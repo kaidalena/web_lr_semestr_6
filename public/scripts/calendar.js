@@ -1,7 +1,7 @@
 var pole;
 function show(p){
   pole = p;
-  console.log(pole.className);
+  // console.log(pole.className);
   if (pole.className == "notFocus"){
     pole.className = "inFocus";
     var d = new Date;

@@ -27,7 +27,6 @@ class Validator {
 
     public function Validate($post_array){
 
-
         foreach($this->rules as $field => $rule){
             if (array_key_exists($field, $post_array)){
                 $method = "check_".$field;
@@ -46,9 +45,13 @@ class Validator {
         $this->errors[$field_name] = $error_name;
     }
 
-    public function checkErrors($errors){
-        if (empty($this->findErrors)) return true;
-        return false;
+    public function checkErrors(){
+        
+        foreach ($this->findErrors as $key=>$val){
+            if ( $val == "" || $val == null) continue;
+            else return false;
+        }
+        return true;
     }
 
     public function getErrors(){

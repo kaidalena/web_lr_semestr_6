@@ -1,5 +1,5 @@
 <section>
-    <h1> Тест по дисциплине "Основы экологии"</h1>
+    
     <?php 
     // var_dump($_POST);
     $values;
@@ -7,11 +7,14 @@
 
         $valid->Validate($_POST);
         if (!$valid->checkErrors($errors)) $values = $_POST;
+        else{
+            echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\"> Ответы успешно отправлены </div>";
+        }
         
         // var_dump($errors);
     }
     ?>
-    <!-- <form onsubmit="return check(foundT());" id="contact">  -->
+    <h1> Тест по дисциплине "Основы экологии"</h1>
     <form action="" method=POST id="contact">
         <p><input id="FIO" type="text" name="name" placeholder="ФИО" data-toggle="popover" 
             value="<?php if (array_key_exists('name', $_POST)) echo $values['name'] ?>" onblur="validate(this)" 

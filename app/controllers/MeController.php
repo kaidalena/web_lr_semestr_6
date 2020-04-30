@@ -15,8 +15,6 @@ class MeController extends Controller{
     public function interestAction(){
         $result = $this->model->loadModel();
 
-        // $names = $this->model->getTatles();
-        // var_dump($names);
         $vars = [
             'names' => $result,
 		];
@@ -26,7 +24,6 @@ class MeController extends Controller{
     public function contactsAction(){
         $this->model->loadModel();
         
-        // $valid = new ValidContacts();
         $var = [
             'valid' => $this->model->validator,
             'rules' => $this->model->validator->getRules(),

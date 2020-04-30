@@ -10,7 +10,6 @@ class GalleryController extends Controller{
 
         $result = $this->model->loadModel();
 
-        // $result = $this->model->getData();
         $vars = [
 			'args' => $result,
 		];
