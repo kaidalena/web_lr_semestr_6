@@ -11,7 +11,7 @@ class Router{
     public function __construct()
     {
         $arr = require('app/config/routes.php');
-        foreach ($arr as $key=>$val){
+        foreach ($arr as $key=>$val){       //считываем все возможные пути
             $this -> add($key, $val);
         }
 
@@ -24,7 +24,7 @@ class Router{
 
     public function match(){
         $url = trim($_SERVER['REQUEST_URI'],'/');       //trim — Удаляет пробелы (или другие символы) из начала и конца строки
-        // echo $_SERVER['REQUEST_URI'];
+        
         foreach( $this->routes as $route => $params){
             if (preg_match($route, $url, $matches)){
                 $this->params = $params;
@@ -37,15 +37,13 @@ class Router{
     public function run(){
         if ($this->match()){
             $path = 'app\controllers\\'.ucfirst($this->params['controller']).'Controller';      //ucfirst — Преобразует первый символ строки в верхний регистр
-            // $path = 'app\controllers\MainController';
-            // echo '<p>$path = '.$path.'</p>';
+            
             if (class_exists($path)) {
                 $action = $this->params['action'].'Action';
-                // echo '<p>$action = '.$action.'</p>';
                 
                 if (method_exists($path, $action)){
                     $controller = new $path($this->params);
-                    // echo '<p>$controller = '.$controller.'</p>';
+                    
                     $controller->$action();
                 }
                 else{

@@ -11,11 +11,10 @@ class Study extends Model{
 
     function __construct($action){
         parent::__construct($action);
-        // echo "<p>Study Model __construct(action)</p>";
     }
 
     public function scheduleModel(){
-        // echo "this is schedule model";
+        
     }
 
     public function testModel(){

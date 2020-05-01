@@ -30,7 +30,6 @@ class Validator {
         foreach($this->rules as $field => $rule){
             if (array_key_exists($field, $post_array)){
                 $method = "check_".$field;
-                // echo $method;
                 $this->findErrors[$field] = $this->$method($post_array[$field]);
             }
         }

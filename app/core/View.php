@@ -23,10 +23,10 @@ class View{
 
         $path = 'app/views/'.$this->path.'.php';
         if (file_exists('app/views/'.$this->path.'.php')){
-            ob_start();
+            ob_start();     //включение буффера
             //require аналогично include, за исключением того, что при ошибке он также выдаст фатальную ошибку уровня E_COMPILE_ERROR.
-            require $path;
-            $content = ob_get_clean();       //подключение основного кода страницы(body) 
+            require $path;      //считывание основного кода страницы(body) в буффер
+            $content = ob_get_clean();      //заносим все из буффера в переменную content       
             require 'app/views/layouts/'.$this->layout.'.php';      //подключение шаблона default
         }else{
             echo 'View not found: '.$this->path;

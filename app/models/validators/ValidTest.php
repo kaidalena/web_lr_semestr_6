@@ -32,16 +32,13 @@ class ValidTest extends Validator {
 
     public function Validate($post_array){
 
-        
         foreach($this->rules as $field => $rule){
             if (array_key_exists($field, $post_array)){
                 $method = "check_".$field;
-                // echo $method;
                 $this->findErrors[$field] = $this->$method($post_array[$field]);
             }
         }
 
         if (!array_key_exists('question3', $post_array))  $this->findErrors['question3'] = $this->check_question3(null);
-    
     }
 }
