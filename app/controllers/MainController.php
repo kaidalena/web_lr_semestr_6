@@ -6,14 +6,13 @@ use app\core\Controller;
 
 class MainController extends Controller{
 
+
     public function indexAction(){
-        $result = $this->model->loadModel();
-        
-        // $result = $this->model->test();
+        // echo "<p>indexAction</p>";
         $vars = [
-			'args' => $result,
-		];
-		$this->view->render('Главная страница', $vars);
+			'args' => $this->data,
+	   ];
+	       $this->view->render('Главная страница', $vars);
     }
 
 }

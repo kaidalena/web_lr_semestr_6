@@ -9,14 +9,9 @@ class Me extends Model{
 
     public $path;
 
-    function __construct($action)
-    {
-        $this->path = $action."Model";
-    }
-
-    public function loadModel(){
-        $method = $this->path;
-        return $this->$method(); 
+    function __construct($action){
+        parent::__construct($action);
+        // echo "<p>Me Model __construct(action)</p>";
     }
 
     public function aboutModel(){
@@ -44,13 +39,16 @@ class Me extends Model{
         ];
 
         $this->validator = new ValidContacts($rules, $errors);
-        // echo "this is contacts model";
+
+        return  [
+            'valid' => $this->validator,
+            'rules' => $this->validator->getRules(),
+            'errors' => $this->validator->getErrors(),
+            'values'=> $this->validator->getErrors(),
+        ];
     }
 
     public function interestModel(){
-        // echo "this is interest model";
-        // $result = $this->db->row('SELECT text, description FROM test');
-        // var_dump($result);
 
         $result = [
             [

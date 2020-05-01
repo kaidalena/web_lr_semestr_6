@@ -7,11 +7,8 @@ use app\core\Controller;
 class GalleryController extends Controller{
 
     public function  fotosAction(){
-
-        $result = $this->model->loadModel();
-
         $vars = [
-			'args' => $result,
+			'args' => $this->data,
 		];
         $this->view->render('Галерея', $vars);
     }

@@ -11,35 +11,21 @@ class Gallery extends Model{
     public $titles = ["Кролик","Лисенок","Еноты","Совенок","Одуванчик","Белка","Птицы",
     "Лиса","Кошка","Енот","Сова","Собака","Панда","Такса","Айсберг"];
 
-    public $method;
-
-    function __construct($action)
-    {
-        $this->method = $action."Model";
-    }
-
-    public function loadModel(){
-        $method = $this->method;
-        return $this->$method(); 
+    public function __construct($action){
+        parent::__construct($action);
+        // echo "<p>Gallery Model __construct(action)</p>";
     }
 
     public function fotosModel(){
-        
-        // echo "this is fotos model";
-
-        // $result = $this->db->row('SELECT * FROM gallery');
-        
         for($i = 0; $i < count($this->titles); $i++){
             $result[$i] = [
                 "id"=> $i+1,
                 'src'=> $this->path.($i+1).$this->jpg,
-                "alt"=> $this->titles[$i], 
-                "titles"=> $this->titles[$i], 
-                "figcaption"=> $this->titles[$i], 
+                "alt"=> $this->titles[$i],
+                "titles"=> $this->titles[$i],
+                "figcaption"=> $this->titles[$i],
             ];
         }
-        // var_dump($result);
-
         return $result;
     }
 

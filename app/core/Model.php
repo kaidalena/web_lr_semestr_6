@@ -7,11 +7,17 @@ use app\models\validators\Validator;
 
 abstract class Model{
 
-// public $db;
-public $validator;
+     public $method;
+     public $validator;
 
-    public function __construct(){
-        // $this->db = new Db;
-        $validator = new Validator();
+     function __construct($action){
+          // echo "<p>Model __construct()</p>";
+          $this->method = $action."Model";
+    }
+
+    public function loadModel(){
+         // echo "<p>loadModel</p>";
+        $method = $this->method;
+        return $this->$method();
     }
 }
