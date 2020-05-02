@@ -10,24 +10,27 @@ class ValidTest extends Validator {
         if (preg_match('/^[1-6]{1,1}+$/', $value)){
             if ($value == 2) return null;
             else return $this->errors['incorrectly'];
-        } else return $this->errors['emptyAnswer']; 
+        } else return $this->errors['emptyAnswer'];
     }
 
     public function check_question2($value){
         if ($value != "" && $value != null){
             if ($value == "Фотосинтез" || $value == "фотосинтез") return null;
             else return $this->errors['incorrectly'];
-        }else return $this->errors['emptyAnswer'];  
+        }else return $this->errors['emptyAnswer'];
     }
 
     public function check_question3($value){
-        if (!empty($value)){
-            if (count($value)==2){
-                if ($value[0]==1 && $value[1]==2) return null;
-                else return $this->errors['incorrectly'];
-            }else return $this->errors['incorrectly'];
-        }else return $this->errors['emptyAnswer']; 
-        
+        // if (!empty($value)){
+        //     if (count($value)==2){
+        //         if ($value[0]==1 && $value[1]==2) return null;
+        //         else return $this->errors['incorrectly'];
+        //     }else return $this->errors['incorrectly'];
+        // }else return $this->errors['emptyAnswer'];
+
+        if (!$value) return $this->errors['emptyAnswer'];
+        if (count($value)==2 && $value[0]==1 && $value[1]==2) return null;
+        return $this->errors['incorrectly'];
     }
 
     public function Validate($post_array){

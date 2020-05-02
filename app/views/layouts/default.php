@@ -17,15 +17,15 @@
     <script src="public/scripts/calendar.js"></script>
     <script src="public/scripts/fotos.js"></script>
     <script src="public/scripts/interests.js"></script>
-    
+
     <!-- <script src="public/scripts/clock.js"></script> -->
 </head>
 <body>
 <input type="checkbox" id="nav-toggle" hidden>
     <nav class="nav">
         <label for="nav-toggle" class="nav-toggle" onclick></label>
-        <h2 class="logo"> 
-            <a>Little_coon_</a> 
+        <h2 class="logo">
+            <a>Little_coon_</a>
         </h2>
         <ul>
             <li><a href="/">Главная</a>
@@ -37,6 +37,6 @@
             <li><a href="/contacts">Контакты</a>
         </ul>
     </nav>
-    <?php echo $content; ?> 
+    <?php require $view; ?> 
 </body>
 </html>

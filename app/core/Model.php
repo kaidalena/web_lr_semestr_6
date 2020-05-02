@@ -12,7 +12,6 @@ abstract class Model{
 
      //запоминаем action
      function __construct($action){
-          
           $this->method = $action."Model";
     }
 

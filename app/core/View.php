@@ -16,22 +16,22 @@ class View{
     }
 
     public function render($title, $vars=[]){
-        extract($vars);     
-        // extract — Импортирует переменные из массива в текущую таблицу символов. 
-        // Эта функция рассматривает ключи массива в качестве имен переменных, а их значения - в качестве значений этих переменных. 
+        extract($vars);
+        // extract — Импортирует переменные из массива в текущую таблицу символов.
+        // Эта функция рассматривает ключи массива в качестве имен переменных, а их значения - в качестве значений этих переменных.
         // Для каждой пары ключ/значение будет создана переменная в текущей таблице символов
 
-        $path = 'app/views/'.$this->path.'.php';
+        $view = 'app/views/'.$this->path.'.php';
         if (file_exists('app/views/'.$this->path.'.php')){
-            ob_start();     //включение буффера
+            // ob_start();     //включение буффера
             //require аналогично include, за исключением того, что при ошибке он также выдаст фатальную ошибку уровня E_COMPILE_ERROR.
-            require $path;      //считывание основного кода страницы(body) в буффер
-            $content = ob_get_clean();      //заносим все из буффера в переменную content       
+            // require $view;      //считывание основного кода страницы(body) в буффер
+            // $content = ob_get_clean();      //заносим все из буффера в переменную content
             require 'app/views/layouts/'.$this->layout.'.php';      //подключение шаблона default
         }else{
-            echo 'View not found: '.$this->path;
+            echo 'View not found: '.$this->view;
         }
-        
+
     }
 
     public static function errorCode($code){
