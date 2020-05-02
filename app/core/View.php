@@ -29,7 +29,7 @@ class View{
             // $content = ob_get_clean();      //заносим все из буффера в переменную content
             require 'app/views/layouts/'.$this->layout.'.php';      //подключение шаблона default
         }else{
-            echo 'View not found: '.$this->view;
+            echo 'View not found: '.$this->path;
         }
 
     }
