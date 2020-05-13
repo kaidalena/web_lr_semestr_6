@@ -13,11 +13,12 @@ abstract class BaseActiveRecord{
 
     public function __construct() {
         if (!static::$tablename){
-        return ;
+            echo " if (!static::\$tablename)";
+            return ;
         }
 
         static::setupConnection();
-        static::getFields();
+        // static::getFields();
     }
 
     public static function getFields() {
@@ -25,6 +26,10 @@ abstract class BaseActiveRecord{
         while ($row = $stmt->fetch()) {
         static::$dbfields[$row['Field']] = $row['Type'];
         }
+    }
+
+    public static function getTableName(){
+        return static::$tablename;
     }
 
     public static function setupConnection() {
@@ -60,8 +65,39 @@ abstract class BaseActiveRecord{
 
     }
 
-    public function save() {
+    public function save( $values) {
 
+        //Запрос должен выглядить так:
+        //INSERT INTO nameTable (field1, field2, field3) VALUES (?,?,?);
+
+        $fields = "";
+        $val = "";
+
+        $i=0;
+
+        foreach(static::$dbfields as $temp){
+            $fields = $fields.$temp;
+            $val = $val.'?';
+            if ($i != (count(static::$dbfields) - 1) ){
+                $fields = $fields.",";
+                $val = $val.',';
+            }
+            $i++;
+        }
+
+        $query = "INSERT INTO ".static::$tablename."($fields) VALUES ($val)";
+        
+        $stmt = static::$pdo->prepare($query);
+        try {
+            static::$pdo->beginTransaction();
+            foreach ($values as $row){
+                $stmt->execute($row);
+            }
+            static::$pdo->commit();
+        }catch (PDOException $e){
+            static::$pdo->rollback();
+            throw $e;
+        }
     }
 
     public function delete(){
