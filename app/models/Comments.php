@@ -17,4 +17,21 @@ class Comments extends Model{
         
     }
 
+    public function loadGuestBook($FILES, $nameField){
+
+        // echo "<p style=\"margin: 50px;\">\$_FILES: "; var_dump($FILES); echo "</p>";
+
+        if (!empty($FILES)){
+            $file = "D:/web/websitePHP/public/".$_FILES[$nameField]['name'];
+            // echo "<br/>file = $file <br/>";
+            if($_FILES[$nameField]['error'] == UPLOAD_ERR_OK){
+                move_uploaded_file($_FILES[$nameField]['tmp_name'], $file);
+                // echo "Загруженный файл: ".$_FILES[$nameField]['name']."</br>";
+                // echo "Размер: ".$_FILES[$nameField]['size']."байт";
+                return "Загрузка прошла успешно";
+            }
+        }
+
+        return "Ошибка загрузки";
+    }
 }

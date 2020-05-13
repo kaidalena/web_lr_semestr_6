@@ -26,22 +26,24 @@
                          foreach ($comments as $value) {
                               // echo "<script> console.log('file: ".$value['fio']."'); </script>";
                               echo "<tr>";
-                              $date = DateTime::createFromFormat('d-m-Y H:i:s', $value['date']);
-                              echo "<td class=\"info\">". $date->format('d.m.Y H:i:s');
-                              echo "<br>" .$value['fio'];
-                              echo "<br>" .$value['email']."</td>";
-                              echo "<td class=\"text\">".$value['msg'];
+                              $date = DateTime::createFromFormat('d.m.Y H:i:s', $value['date']);
+                              
+                              echo "<td class=\"info\"><p>". $date->format('d.m.Y H:i:s')."</p>";
+                              echo "<h4>" .$value['fio']."</h4>";
+                              echo "<p>" .$value['email']."</p></td>";
+                              echo "<td class=\"text\"><p>".$value['msg']."</p>";
                               echo "</tr>";
                          }
                     endif;
                ?>
 
-               <!-- <tr>
-                    <td class="info">Kaida Elena <br> 23.05.20 </td>
-                    <td class="text">My comment </td>
-               </tr> -->
           </tbody>
      </table>
+
+     <!-- <div class="pages">
+          Страницы 
+          <a href="#"
+     </div> -->
 
      <br><h3>Здесь вы можете оставить свой отзыв</h3>
 

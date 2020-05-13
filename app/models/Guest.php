@@ -33,24 +33,25 @@ class Guest extends Model{
            'rules' => $this->validator->getRules(),
            'errors' => $this->validator->getErrors(),
            'values'=> $this->validator->getErrors(),
-          //  'comments' => $this->readComments("messages.inc"),
-          'comments' => null,
+           'comments' => $this->readComments("messages.inc"),
+          // 'comments' => null,
        ];
     }
 
     public function readComments($nameFile){
-         // echo "<script> console.log('one');</script>";
+         echo "<script> console.log('one');</script>";
 
          $file = fopen("public/$nameFile", "r");
          $comments = [];
 
-         // echo "<script> console.log('one'); </script>";
+         echo "<script> console.log('two'); </script>";
 
          for( $i=0; !feof($file) ; $i++){
               $str = fgets($file);
-              // echo "<script> console.log('". json_encode( $str)."'); </script>";
+              
               if(empty($str)) continue;
 
+              echo "<script> console.log('". json_encode( $str)."'); </script>";
               $spitedStr = explode(';', $str);
               $temp = [
                    'fio' => trim($spitedStr[0]),

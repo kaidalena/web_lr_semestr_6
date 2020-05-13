@@ -132,7 +132,6 @@ input[type="reset"], [id="submit"] {
 /* [id="submit"][disabled=true], [id="submit"][disabled=""] {
   background-color: #939394;
 }
-
 [id="submit"][disabled=false] {
   background-color: #16a085;
 } */
@@ -360,4 +359,35 @@ ul[id="submenu"] li a {
 
 [id="no"] {
   left: 55%;
+}
+
+table.comments{
+     margin: 5% auto;
+}
+
+table.comments td{
+     margin: 2em;
+     background-color: rgba(100, 200, 150, 0.4);
+     border-radius: 2em;
+     padding: 2%
+}
+
+table .info{
+     width: 20em;
+}
+
+table .text{
+     width: 40em;
+}
+
+table.comments h4{
+  font-size: 30px;
+  color: #000;
+  margin: 7px 0;
+}
+
+table.comments p{
+  font-size: 15px;
+  color: #333;
+  margin: 0;
 }
