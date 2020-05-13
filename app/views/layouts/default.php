@@ -30,11 +30,13 @@
         <ul>
             <li><a href="/">Главная</a>
             <li><a href="/aboutMe">Обо мне</a>
-            <li><a href="/interest">Мои интересы</a>
+            <li><a href="/interests">Мои интересы</a>
             <li><a href="/schedule">Учеба</a>
             <li><a href="/fotos">Фотоальбом</a>
             <li><a href="/test">Тест</a>
             <li><a href="/contacts">Контакты</a>
+            <li><a href="/guestBook">Гостевая книга</a>
+            <li><a href="/comments/upload">Загрузка отзывов</a>
         </ul>
     </nav>
     <?php require $view; ?> 

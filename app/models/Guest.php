@@ -12,7 +12,7 @@ class Guest extends Model{
         parent::__construct($action);
     }
 
-    public function guestBookModel(){
+    public function book(){
          // echo "<p>guestBookModel</p>";
          $rules = [
             'name' => "Пример: Иванов Иван Иванович",
@@ -33,13 +33,9 @@ class Guest extends Model{
            'rules' => $this->validator->getRules(),
            'errors' => $this->validator->getErrors(),
            'values'=> $this->validator->getErrors(),
-           'comments' => $this->readComments("messages.inc"),
+          //  'comments' => $this->readComments("messages.inc"),
+          'comments' => null,
        ];
-    }
-
-    public function commentsModel(){
-
-        // echo "this is comments model";
     }
 
     public function readComments($nameFile){

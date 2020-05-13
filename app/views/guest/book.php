@@ -14,11 +14,38 @@
 ?>
 
 <section>
-     <h1>Гостевая книга</h1>
-     <h3>Здесь вы можете оставить свой отзыв</h3>
+     <h1>Отзывы</h1>
+
+     <table class="comments">
+          <tbody>
+
+               <?php
+                    if($comments == null): ?>
+                         <h2>Нет отзывов</h2>
+               <?php else:
+                         foreach ($comments as $value) {
+                              // echo "<script> console.log('file: ".$value['fio']."'); </script>";
+                              echo "<tr>";
+                              $date = DateTime::createFromFormat('d-m-Y H:i:s', $value['date']);
+                              echo "<td class=\"info\">". $date->format('d.m.Y H:i:s');
+                              echo "<br>" .$value['fio'];
+                              echo "<br>" .$value['email']."</td>";
+                              echo "<td class=\"text\">".$value['msg'];
+                              echo "</tr>";
+                         }
+                    endif;
+               ?>
+
+               <!-- <tr>
+                    <td class="info">Kaida Elena <br> 23.05.20 </td>
+                    <td class="text">My comment </td>
+               </tr> -->
+          </tbody>
+     </table>
+
+     <br><h3>Здесь вы можете оставить свой отзыв</h3>
 
      <form  action="" method=POST >
-          <p><strong>Выберите свой возрост</strong></p>
 
           <p><input type="text" id="name" name="name" placeholder="ФИО" data-toggle="popover" onblur="validate(this)"
 
@@ -43,30 +70,5 @@
           <input type="submit"  id="submit" value="Отправить" >
           <input type="reset" id="reset" value="Очистить" >
      </form>
-
-     <h1><br>Отзывы</h1>
-     <table class="comments">
-          <tbody>
-
-               <?php
-
-                    foreach ($comments as $value) {
-                         // echo "<script> console.log('file: ".$value['fio']."'); </script>";
-                         echo "<tr>";
-                         $date = DateTime::createFromFormat('d-m-Y H:i:s', $value['date']);
-                         echo "<td class=\"info\">". $date->format('d.m.Y H:i:s');
-                         echo "<br>" .$value['fio'];
-                         echo "<br>" .$value['email']."</td>";
-                         echo "<td class=\"text\">".$value['msg'];
-                         echo "</tr>";
-                    }
-
-               ?>
-
-               <!-- <tr>
-                    <td class="info">Kaida Elena <br> 23.05.20 </td>
-                    <td class="text">My comment </td>
-               </tr> -->
-          </tbody>
-     </table>
+     
 </section>

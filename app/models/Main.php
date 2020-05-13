@@ -11,7 +11,7 @@ class Main extends Model{
         // echo "<p>Main Model __construct(action)</p>";
     }
 
-    public function indexModel(){
+    public function index(){
 
     }
 }

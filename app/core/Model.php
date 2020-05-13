@@ -12,7 +12,7 @@ public $validator;
 
      function __construct($action){
           // echo "<p>Model __construct()</p>";
-          $this->method = $action."Model";
+          $this->method = $action;
     }
 
     public function loadModel(){

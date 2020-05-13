@@ -16,7 +16,7 @@ class Gallery extends Model{
         // echo "<p>Gallery Model __construct(action)</p>";
     }
 
-    public function fotosModel(){
+    public function fotos(){
         for($i = 0; $i < count($this->titles); $i++){
             $result[$i] = [
                 "id"=> $i+1,

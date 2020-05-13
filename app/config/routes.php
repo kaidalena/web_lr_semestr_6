@@ -12,9 +12,9 @@ return [
 		'action' => 'about',
 	],
 
-	'interest' => [
-        'controller' => 'me',
-		'action' => 'interest',
+	'interests' => [ //+
+        'controller' => 'myInterests',
+		'action' => 'interests',
 	],
 
 	'schedule' => [
@@ -27,23 +27,23 @@ return [
 		'action' => 'fotos',
 	],
 
-	'test' => [
-        'controller' => 'study',
+	'test' => [//+
+        'controller' => 'exam',
 		'action' => 'test',
 	],
 
-	'contacts' => [
-        'controller' => 'me',
+	'contacts' => [//+
+        'controller' => 'communication',
 		'action' => 'contacts',
 	],
 
-	'guestBook' => [
+	'guestBook' => [//+
         	'controller' => 'guest',
-		'action' => 'guestBook',
+		'action' => 'book',
 	],
 
-	'comments' => [
-        	'controller' => 'guest',
-		'action' => 'comments',
+	'comments/upload' => [//+
+        	'controller' => 'comments',
+		'action' => 'upload ',
 	],
 ];
