@@ -13,9 +13,9 @@ class Validator {
     protected $findErrors = [];
 
     //preg_match — Выполняет проверку на соответствие регулярному выражению
-          
+
     function __construct($rules, $errors){
-        
+
         foreach($rules as $key=>$val){
             $this->setRule($key, $val);
         }
@@ -30,10 +30,11 @@ class Validator {
         foreach($this->rules as $field => $rule){
             if (array_key_exists($field, $post_array)){
                 $method = "check_".$field;
+                // echo $method;
                 $this->findErrors[$field] = $this->$method($post_array[$field]);
             }
         }
-    
+
     }
 
     public function setRule($field_name, $validator_name){
@@ -45,7 +46,7 @@ class Validator {
     }
 
     public function checkErrors(){
-        
+
         foreach ($this->findErrors as $key=>$val){
             if ( $val == "" || $val == null) continue;
             else return false;
@@ -62,13 +63,13 @@ class Validator {
     }
 
     public function getRule($key){
-        
+
         if (array_key_exists($key, $this->rules)) return $this->rules[$key];
         else return false;
     }
 
     public function getError($key){
-        
+
         if (array_key_exists($key, $this->findErrors)) return $this->findErrors[$key];
         else return false;
     }
@@ -77,13 +78,13 @@ class Validator {
         $res = $this->isNotEmpty($p1);
         if (!$res) return $this->errors['empty'];
         if (preg_match('/^[А-я]{1,10}[\s]{1,3}[А-я]{1,15}[\s]{1,3}[А-я]{1,15}+$/u', $p1)) return null;
-        return $this->errors['name']; 
+        return $this->errors['name'];
     }
 
 
     public function check_course($p1) {
         if (preg_match('/^[0-9]{1,2}+$/', $p1)) return null;
-        return $this->errors['empty']; 
+        return $this->errors['empty'];
     }
 
     public function isNotEmpty($data){
@@ -98,14 +99,27 @@ class Validator {
 
     public function isLess($data, $value){
         if (preg_match('/^[0-9]{3,30}+$/', $data))
-            if ($data >= $value) return null; 
+            if ($data >= $value) return null;
         return $this->errors['notValidData'];
     }
 
     public function isGreater($data, $value){
         if (preg_match('/^[0-9]{3,30}+$/', $data))
-            if ($data <= $value) return null; 
+            if ($data <= $value) return null;
         return $this->errors['notValidData'];
+    }
+
+    public function check_email($p1) {
+        $res = $this->isNotEmpty($p1);
+        if (!$res) return $this->errors['empty'];
+        if (preg_match('/^([A-z0-9_\.-]+)@([A-z0-9_\.-]+)\.([A-z\.]{2,6})$/', $p1)) return null;
+        return $this->errors['email'];
+    }
+
+    public function check_message($p1) {
+        $res = $this->isNotEmpty($p1);
+        if (!$res) return $this->errors['empty'];
+        return null;
     }
 
 }

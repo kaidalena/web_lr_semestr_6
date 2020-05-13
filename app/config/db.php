@@ -1,8 +1,10 @@
 <?php
 
 return [
-    'host' => 'localhost', //127.0.0.1
+    // 'host' => 'localhost:8889', //127.0.0.1  для HP
+    'host' => 'localhost',
     'name' => 'myDB',
-    'password' => '1234',
-    'user' => 'root',
+    'password' => 'root',
+    // 'password' => '1234',
+    'user' => 'root',   
 ];

@@ -9,18 +9,22 @@ abstract class Controller{
 public $route;
 public $view;
 public $model;
+public $data;
 
-    public function __construct($route){
-        $this->route = $route;
-        $this->model = $this->autoloadModel($route['controller']);
-        $this->data = $this->model->loadModel();      //загрузка данных для определенного action
-        $this->view = new View($this->route);
-    }
+     public function __construct($route){
+          // echo "<p>Controller __construct(route)</p>";
+          $this->route = $route;
+         $this->model = $this->autoloadModel($route['controller']);   //загрузка определенной модкли
+         $this->data = $this->model->loadModel();      //загрузка данных для определенного action
+         $this->view = new View($this->route);
+     }
 
     public function autoloadModel($name){
-         $path = 'app\models\\'.ucfirst($name);      //ucfirst — Преобразует первый символ строки в верхний регистр
+        $path = 'app\models\\'.ucfirst($name);      //ucfirst — Преобразует первый символ строки в верхний регистр
         $fn = $path.'.php';
+        // echo "<p>autoload model path = $path   </p>";
         if (file_exists($fn)) {
+             // echo "<p>fn:   $fn</p>";
              require $fn;
         }
            //создание определенной (дочерней) модели. Параметром передается action

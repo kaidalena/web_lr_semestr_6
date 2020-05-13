@@ -18,6 +18,9 @@ protected $db;
 		if (!empty($params)) {
 			foreach ($params as $key => $val) {
                 $stmt->bindValue(':'.$key, $val);
+                // echo '<p> query(): ';
+                // var_dump($stmt);
+                // echo '</p>';
 			}
 		}
 		$stmt->execute();

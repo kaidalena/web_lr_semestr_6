@@ -19,6 +19,7 @@ class Me extends Model{
     }
 
     public function contactsModel(){
+
         $rules = [
             'name' => "Пример: Иванов Иван Иванович",
             'email' => "Пример: example33@ety.ru",

@@ -13,6 +13,7 @@ class Gallery extends Model{
 
     public function __construct($action){
         parent::__construct($action);
+        // echo "<p>Gallery Model __construct(action)</p>";
     }
 
     public function fotosModel(){
