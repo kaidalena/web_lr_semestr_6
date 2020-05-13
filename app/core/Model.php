@@ -16,7 +16,7 @@ public $validator;
     }
 
     public function loadModel(){
-         // echo "<p>loadModel</p>";
+     //     echo "<p>loadModel</p>";
         $method = $this->method;
         return $this->$method();
     }

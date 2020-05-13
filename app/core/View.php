@@ -22,6 +22,7 @@ class View{
         // Для каждой пары ключ/значение будет создана переменная в текущей таблице символов
 
         $view = 'app/views/'.$this->path.'.php';
+        // echo "view::render():  path = ".$view;
         if (file_exists('app/views/'.$this->path.'.php')){
             // ob_start();     //включение буффера
             //require аналогично include, за исключением того, что при ошибке он также выдаст фатальную ошибку уровня E_COMPILE_ERROR.

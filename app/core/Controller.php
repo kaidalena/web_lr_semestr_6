@@ -12,7 +12,7 @@ public $model;
 public $data;
 
      public function __construct($route){
-          // echo "<p>Controller __construct(route)</p>";
+        //   echo "<p>Controller __construct(route)</p>";
           $this->route = $route;
          $this->model = $this->autoloadModel($route['controller']);   //загрузка определенной модкли
          $this->data = $this->model->loadModel();      //загрузка данных для определенного action

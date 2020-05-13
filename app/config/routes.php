@@ -44,6 +44,6 @@ return [
 
 	'comments/upload' => [//+
         	'controller' => 'comments',
-		'action' => 'upload ',
+		'action' => 'upload',
 	],
 ];

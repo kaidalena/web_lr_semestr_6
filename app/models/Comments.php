@@ -8,13 +8,13 @@ use app\models\validators\ValidGuestBook;
 class Comments extends Model{
 
     public function __construct($action){
-         // echo "<p>Guest Model __construct(action)</p>";
+        //  echo "<p>Comments Model __construct(action)</p>";
         parent::__construct($action);
     }
 
     public function upload(){
-
         // echo "this is comments model";
+        
     }
 
 }

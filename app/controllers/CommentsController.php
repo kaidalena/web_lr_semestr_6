@@ -10,6 +10,7 @@ class CommentsController extends Controller{
         // $vars = [
 		// 	       'args' => $result,
 		//     ];
-        // $this->view->render('Отзывы', $vars);
+        
+        $this->view->render('Загрузка отзывов');
     }
 }
