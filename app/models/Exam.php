@@ -18,7 +18,8 @@ class Exam extends Model{
     public function test(){
 
         $examBD = new ExamRecord();
-        $examBD->insert();
+        // $examBD->edit();
+
 
         $rules = [
             'name' => "Пример: Иванов Иван Иванович",

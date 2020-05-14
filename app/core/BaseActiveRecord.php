@@ -100,6 +100,12 @@ abstract class BaseActiveRecord{
         }
     }
 
+
+    public function update($query, $params){
+        $stmt = static::$pdo->prepare($query);
+        $stmt->execute($params);
+    }
+
     public function delete(){
         $sql = "DELETE FROM ".static::$tablename." WHERE ID=".$this->id;
         $stmt = static::$pdo->query($sql);

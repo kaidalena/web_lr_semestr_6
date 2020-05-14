@@ -30,4 +30,33 @@ class ExamRecord extends BaseActiveRecord{
         ];
         parent::save( $val);
     }
+
+    public function edit(){
+        $query = "UPDATE ".static::$tablename." SET 
+            `fio` = :fio,
+            `date` = :date,
+            `course` = :course,
+            `answer1` = :answer1,
+            `flag1` = :flag1,
+            `answer2` = :answer2,
+            `flag2` = :flag2,
+            `answer3` = :answer3, 
+            `flag3` = :flag3  
+            WHERE `id` = :id";
+
+        $values = [
+            ':id' => 3,
+            ':fio' => "Холодова",
+            ':date' => "2019-05-13 01:12:23.000000",
+            ':course' => "утс",
+            ':answer1' => "фото",
+            ':flag1' => "1",
+            ':answer2' => "вдв",
+            ':flag2' => "3",
+            ':answer3' => "воыд",
+            ':flag3' => "1"
+        ];
+
+        parent::update($query, $values);
+    }
 }
