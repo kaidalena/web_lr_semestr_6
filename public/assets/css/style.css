@@ -50,6 +50,14 @@ a {
   text-decoration: none;
 }
 
+input{
+  outline: none;
+}
+
+input[type="button"]{
+  cursor: pointer;
+}
+
 .leftImg {
   width: 200px;
   height: 300px;

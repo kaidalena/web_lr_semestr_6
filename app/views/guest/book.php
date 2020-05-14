@@ -7,14 +7,42 @@
          $valid->Validate($_POST);
          if (!$valid->checkErrors($errors)) $values = $_POST;
          else{
+              $controller->save($_POST);
              echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\">Форма успешно отправлена</div>";
          }
-
      }
 ?>
 
 <section>
-     <h1>Отзывы</h1>
+
+     <h1>Здесь вы можете оставить свой отзыв</h1>
+
+     <form  action="" method=POST >
+          <p><input type="text" id="name" name="name" placeholder="ФИО" data-toggle="popover" onblur="validate(this)"
+
+              value="<?php if (array_key_exists('name', $values)) echo $values['name'] ?>"
+              data-content="<?php echo $rules['name'] ?>">
+              <br><pre><?php echo $valid->getError('name') ?><br></pre><br>
+         </p>
+
+          <p><input type="text" id="mail" name="email" onblur="validate(this)" placeholder="Ваш Еmail"
+             value="<?php if (array_key_exists('email', $values)) echo $values['email'] ?>"
+             data-toggle="popover" data-content="<?php echo $rules['email'] ?>">
+             <pre><?php echo $valid->getError('email')?><br></pre><br>
+        </p>
+
+          <p><textarea id="message" name="message" onblur="validate(this)" data-toggle="popover" placeholder="Ваше сообщение"
+             value="<?php if (array_key_exists('message', $values)) echo $values['message'] ?>"
+             data-content="<?php echo $rules['message'] ?>"></textarea>
+             <br><pre><?php echo $valid->getError('message') ?><br></pre> <br>
+
+        </p>
+
+          <input type="submit"  id="submit" value="Отправить" >
+          <input type="reset" id="reset" value="Очистить" >
+     </form>
+
+     <br/><h1>Отзывы</h1>
 
      <table class="comments">
           <tbody>
@@ -44,33 +72,5 @@
           Страницы 
           <a href="#"
      </div> -->
-
-     <br><h3>Здесь вы можете оставить свой отзыв</h3>
-
-     <form  action="" method=POST >
-
-          <p><input type="text" id="name" name="name" placeholder="ФИО" data-toggle="popover" onblur="validate(this)"
-
-              value="<?php if (array_key_exists('name', $values)) echo $values['name'] ?>"
-              data-content="<?php echo $rules['name'] ?>">
-              <br><pre><?php echo $valid->getError('name') ?><br></pre><br>
-         </p>
-
-          <p><input type="text" id="mail" name="email" onblur="validate(this)" placeholder="Ваш Еmail"
-             value="<?php if (array_key_exists('email', $values)) echo $values['email'] ?>"
-             data-toggle="popover" data-content="<?php echo $rules['email'] ?>">
-             <pre><?php echo $valid->getError('email')?><br></pre><br>
-        </p>
-
-          <p><textarea id="message" name="message" onblur="validate(this)" data-toggle="popover" placeholder="Ваше сообщение"
-             value="<?php if (array_key_exists('message', $values)) echo $values['message'] ?>"
-             data-content="<?php echo $rules['message'] ?>"></textarea>
-             <br><pre><?php echo $valid->getError('message') ?><br></pre> <br>
-
-        </p>
-
-          <input type="submit"  id="submit" value="Отправить" >
-          <input type="reset" id="reset" value="Очистить" >
-     </form>
      
 </section>

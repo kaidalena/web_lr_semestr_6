@@ -68,7 +68,7 @@ abstract class BaseActiveRecord{
 
     }
 
-    public function save( $values) {
+    public function save($values) {
         //Запрос должен выглядить так:
         //INSERT INTO nameTable (field1, field2, field3) VALUES (?,?,?);
 

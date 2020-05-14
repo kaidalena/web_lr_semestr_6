@@ -76,4 +76,13 @@ class Guest extends Model{
          // return null;
     }
 
+    public function sendRespons($nameFile, $respons){
+          $file = fopen("public/$nameFile", "a");
+          foreach( $respons as $temp){
+               fwrite($file, $temp."; ");
+          }
+          fwrite($file, "\n");
+          fclose($file);
+    }
+
 }

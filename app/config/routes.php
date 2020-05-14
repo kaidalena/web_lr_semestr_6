@@ -46,4 +46,9 @@ return [
         	'controller' => 'comments',
 		'action' => 'upload',
 	],
+
+	'blogEditor'=> [//+
+		'controller' => 'blog',
+		'action' => 'upload',
+],
 ];

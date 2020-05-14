@@ -5,6 +5,8 @@
         
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "<div style=\"color: blue;\">".$model->loadGuestBook($_FILES, "userFile")."</div>";
+            $new_url = 'http://mysite.com/guestBook';
+            header('Location: '.$new_url);
         }
     ?>
 

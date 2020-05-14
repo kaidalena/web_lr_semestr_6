@@ -8,7 +8,18 @@ class GuestController extends Controller{
 
     public function  bookAction(){
         // echo "<p>guestBookAction</p>";
+        $this->data['controller'] = $this;
         $this->view->render('Гостевая книга', $this->data);
          // $this->view->render('Гостевая книга');
+    }
+
+    public function save($post_array){
+        $respons = [
+            $post_array['name'],
+            $post_array['email'],
+            date('d.m.Y H:i:s'),
+            $post_array['message']
+        ];
+        $this->model->sendRespons("messages.inc", $respons);
     }
 }
