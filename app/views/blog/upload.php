@@ -8,10 +8,8 @@
             // echo "<p>".var_dump($_POST)."</p>";
             // echo "<p>".var_dump($_FILES)."</p>";
 
-            $array_from_valid = $_POST;
-            $array_from_valid['userFile'] = $_FILES;
-
-            $valid->Validate($array_from_valid);
+            // $valid->Validate($array_from_valid);
+            $controller->save($_POST, $_FILES);
             if (!$valid->checkErrors($errors)) $values = $_POST;
             // else{
             //     $controller->save($_POST);

@@ -50,5 +50,11 @@ return [
 	'blogEditor'=> [//+
 		'controller' => 'blog',
 		'action' => 'upload',
-],
+	],
+
+	'blog'=> [//+
+		'controller' => 'diary',
+		'action' => 'blog',
+	]
+
 ];

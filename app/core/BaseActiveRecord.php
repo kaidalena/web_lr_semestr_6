@@ -19,6 +19,9 @@ abstract class BaseActiveRecord{
 
         static::setupConnection();
         static::getFields();
+
+        echo "<script> console.log('BaseActiveRecord constructor');
+                        console.log('table name: ".static::$tablename."'); </script>";
     }
 
     public static function getFields() {
@@ -64,11 +67,14 @@ abstract class BaseActiveRecord{
         return $ar_obj;
     }
 
-    public static function findAll() {
-
+    public static function findAll($fields = null) {
+        if ($fields == null)
     }
 
+
+
     public function save($values) {
+        // echo "<p>".var_dump($values)."</p>";
         //Запрос должен выглядить так:
         //INSERT INTO nameTable (field1, field2, field3) VALUES (?,?,?);
 
@@ -84,6 +90,8 @@ abstract class BaseActiveRecord{
         $val = rtrim($val, ",");
 
         $query = "INSERT INTO ".static::$tablename."($fields) VALUES ($val)";
+
+        echo "<script> console.log('query:' + '$query'); </script>";
 
         $stmt = static::$pdo->prepare($query);
         try {
