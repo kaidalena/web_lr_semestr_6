@@ -59,4 +59,11 @@ class Router{
             View::errorCode(404);
         }
     }
+
+    public function debug($array){
+        foreach($array as $key=>$val){
+            echo "<br/>".$key." => ".$val;
+        }
+    }
+
 }

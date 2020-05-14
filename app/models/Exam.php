@@ -4,7 +4,7 @@ namespace app\models;
 
 use app\core\Model;
 use app\models\validators\ValidTest;
-use app\models\ExamRecord;
+
 
 class Exam extends Model{
 
@@ -17,7 +17,7 @@ class Exam extends Model{
 
     public function test(){
 
-        $examBD = new ExamRecord();
+        
         // $examBD->edit();
 
 

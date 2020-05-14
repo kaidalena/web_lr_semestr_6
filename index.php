@@ -14,6 +14,7 @@ use app\core\Router;
         }
     });
 
+    
     session_start();
 
     $router=new Router;

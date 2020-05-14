@@ -1,11 +1,14 @@
 <section>
     
     <?php 
+    // echo date('Y-m-d H:i:s');
     // var_dump($_POST);
     $values;
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
+        // echo "<p>".var_dump($_POST)."</p>";
         $valid->Validate($_POST);
+        $controller->sendResults($_POST);
         if (!$valid->checkErrors($errors)) $values = $_POST;
         else{
             echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\"> Ответы успешно отправлены </div>";
