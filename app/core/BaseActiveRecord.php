@@ -68,7 +68,16 @@ abstract class BaseActiveRecord{
     }
 
     public static function findAll($fields = null) {
-        if ($fields == null)
+        if ($fields == null){
+            $sql = "SELECT * FROM ".static::$tablename;
+            echo "<script> console.log('query:' + '$sql'); </script>";
+            $stmt = static::$pdo->query($sql);
+
+            $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // echo "<p>".var_dump($stmt)." </p>";
+
+            return $stmt;
+        }
     }
 
 

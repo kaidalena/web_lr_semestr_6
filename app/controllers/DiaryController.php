@@ -3,13 +3,18 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\models\DiaryRecord;
 
 class DiaryController extends Controller{
 
     public function  blogAction(){
-        // echo "<p>blogAction</p>";
-        $this->data['controller'] = $this;
-        $this->view->render('Мой Блог');
+        $diaryDB = new DiaryRecord();
+        $this->data = [
+            'data' => $diaryDB->findAll(),
+            'controller' => $this
+        ];
+        
+        $this->view->render('Мой Блог', $this->data);
     }
 
     public function save($post_array){

@@ -1,7 +1,7 @@
 
 
 <?php
-     $values=[];
+     // $values=[];
      // if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
      //     $valid->Validate($_POST);
@@ -20,23 +20,24 @@
      <table class="comments">
           <tbody>
 
-               <!-- <?php
-                    if($comments == null): ?>
-                         <h2>Нет отзывов</h2>
+               <?php
+                    if(empty($data)): ?>
+                         <h2>Нет записей</h2>
                <?php else:
-                         foreach ($comments as $value) {
+                         foreach ($data as $temp) {
                               // echo "<script> console.log('file: ".$value['fio']."'); </script>";
                               echo "<tr>";
-                              $date = DateTime::createFromFormat('d.m.Y H:i:s', $value['date']);
-                              
-                              echo "<td class=\"info\"><p>". $date->format('d.m.Y H:i:s')."</p>";
-                              echo "<h4>" .$value['fio']."</h4>";
-                              echo "<p>" .$value['email']."</p></td>";
-                              echo "<td class=\"text\"><p>".$value['msg']."</p>";
+                              $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['date']);
+                              echo "<td class=\"info\"><p>". $date->format('d-m-Y H:i:s')."</p>";
+                              // echo "</td>";
+                              header("Content-type: image/*");
+                              echo "<h4>" .$temp['image']."</h4></td>";
+                              echo "<td class=\"text\"><h3>".$temp['topic']."</h3>";
+                              echo "<p>".$temp['message']."</p></td>";
                               echo "</tr>";
                          }
                     endif;
-               ?> -->
+               ?>
 
           </tbody>
      </table>
