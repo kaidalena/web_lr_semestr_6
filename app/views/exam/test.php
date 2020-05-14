@@ -4,19 +4,46 @@
     // echo date('Y-m-d H:i:s');
     // var_dump($_POST);
     $values;
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_SERVER["REQUEST_METHOD"] == "POST"):
 
         // echo "<p>".var_dump($_POST)."</p>";
-        $valid->Validate($_POST);
-        $controller->sendResults($_POST);
-        if (!$valid->checkErrors($errors)) $values = $_POST;
-        else{
-            echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\"> Ответы успешно отправлены </div>";
-        }
         
+        $controller->sendResults($_POST);
+        if ($valid->getError('name') === null):
+             $values = $_POST;
+        ?>
+        <!-- echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\"> Ответы успешно отправлены </div>";
+        $new_url = 'http://mysite.com/';
+        header('Location: '.$new_url); -->
+            <div id="modalWindow" style="display: flex;">
+                <div id="modalDiv">
+                    <h2>Ваш результат был сохранен</h2>
+                    <h3>ФИО: <?php if (array_key_exists('name', $values)) echo $values['name'] ?> </h3>
+                    <h3>Курс: <?php if (array_key_exists('course', $values)) echo $values['course'] ?></h3>
+                    <ol class=test>
+                        <li><h3>Как называют факторы неорганической среды, которые влияют на жизнь и распространение живых организмов?</h3></li>
+                        <p>Ответ: <?php if (array_key_exists('question1', $values)) echo $values['question1'] ?></p>
+                            <pre><?php echo $valid->getError('question1') ?></pre><br></p>
+                        <li><h3> Как называется превращение органических соединений из неорганических за счет энергии света?</h3></li>
+                        <p>Ответ: <?php if (array_key_exists('question2', $values)) echo $values['question2'] ?></p>
+                            <pre><?php echo $valid->getError('question2') ?></pre><br></p>
+                        <li><h3>Каковы основные направления экологии?</h3></li>
+                        <p>Ответ: <?php if (array_key_exists('question3', $values))
+                                        foreach($values['question3'] as $val){
+                                            echo $val."  ";
+                                        } ?></p>
+                            <pre><?php echo $valid->getError('question3') ?></pre><br></p>
+                    </ol>
+                    <input type="button" class="close" id="no" value="ok">
+                </div>
+            </div>
+        <?php
+        endif;
+
         // var_dump($errors);
-    }
+    endif;
     ?>
+
     <h1> Тест по дисциплине "Основы экологии"</h1>
     <form action="" method=POST id="contact">
         <p><input id="FIO" type="text" name="name" placeholder="ФИО" data-toggle="popover" 

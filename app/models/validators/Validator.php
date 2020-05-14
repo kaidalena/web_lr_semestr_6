@@ -69,7 +69,6 @@ class Validator {
     }
 
     public function getError($key){
-
         if (array_key_exists($key, $this->findErrors)) return $this->findErrors[$key];
         else return false;
     }
@@ -77,7 +76,7 @@ class Validator {
     public function check_name($p1) {
         $res = $this->isNotEmpty($p1);
         if (!$res) return $this->errors['empty'];
-        if (preg_match('/^[А-я]{1,10}[\s]{1,3}[А-я]{1,15}[\s]{1,3}[А-я]{1,15}+$/u', $p1)) return null;
+        if (preg_match('/^[А-я]{1,20}[\s]{1,3}[А-я]{1,20}[\s]{1,3}[А-я]{1,20}+$/u', $p1)) return null;
         return $this->errors['name'];
     }
 

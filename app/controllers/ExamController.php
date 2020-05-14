@@ -7,20 +7,21 @@ use app\models\ExamRecord;
 
 class ExamController extends Controller{
 
-    public $examBD;
+    public $examDB;
 
     public function  testAction(){
+        $examDB = new ExamRecord();
         $this->data['controller'] = $this;
         $this->view->render('Тест', $this->data);
     }
 
     public function sendResults($post_array){
+        $this->data['valid']->Validate($post_array);
+
         $errors = $this->model->validator->getErrors();
         // echo "<p> ошибки = ".var_dump($errors)."</p>";
 
         if($errors['name'] != null) return;
-
-        $examBD = new ExamRecord();
 
         function getAnswer3($post_array){
             if (array_key_exists('question3', $post_array)){
@@ -36,7 +37,7 @@ class ExamController extends Controller{
 
         $ansswers = [
             'id' => null,
-            'fio' => (array_key_exists('name', $post_array) ? $post_array['name'] : null),
+            'fio' => (array_key_exists('name', $post_array) ? trim($post_array['name']) : null),
             'date' => date('Y-m-d H:i:s'),
             'course' => (array_key_exists('course', $post_array) ? $post_array['course'] : null),
             'answer1' => (array_key_exists('question1', $post_array) ? $post_array['question1'] : null),
@@ -48,7 +49,7 @@ class ExamController extends Controller{
             'flag3' => (($errors['question3'] === null) ? 1 : 0),
         ];
 
-        // echo "<p>".var_dump($ansswers)."</p>";
+        // echo "<p> answers = ".var_dump($ansswers)."</p>";
         ExamRecord::insert($ansswers);
     }
 }

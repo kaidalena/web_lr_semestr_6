@@ -9,15 +9,12 @@ use PDO;
 class ExamRecord extends BaseActiveRecord{
 
     protected static  $tablename = "test";
-    protected static $dbfields = [
-        "id", "fio", "date", "course", 
-        "answer1", "flag1",
-        "answer2", "flag2",
-        "answer3", "flag3"];
+    protected static $dbfields = [];
     public static  $pdo;
 
     public function __construct(){
         parent::__construct();
+
     }
 
     public function insert($val_arr){
@@ -41,17 +38,6 @@ class ExamRecord extends BaseActiveRecord{
     }
 
     public function edit(){
-        $query = "UPDATE ".static::$tablename." SET 
-            `fio` = :fio,
-            `date` = :date,
-            `course` = :course,
-            `answer1` = :answer1,
-            `flag1` = :flag1,
-            `answer2` = :answer2,
-            `flag2` = :flag2,
-            `answer3` = :answer3, 
-            `flag3` = :flag3  
-            WHERE `id` = :id";
 
         $values = [
             ':id' => 3,
@@ -66,6 +52,6 @@ class ExamRecord extends BaseActiveRecord{
             ':flag3' => "1"
         ];
 
-        parent::update($query, $values);
+        parent::update( $values);
     }
 }

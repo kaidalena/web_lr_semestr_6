@@ -320,6 +320,8 @@ ul[id="submenu"] li a {
 
 [id="modalWindow"] {
   display: none;
+  height: 100%;
+  position: absolute;
 }
 [id="modalWindow"]:before {
   content: '';
@@ -335,23 +337,25 @@ ul[id="submenu"] li a {
 }
 
 [id="modalDiv"] {
-  position: fixed;
+  /* position: fixed; */
   filter: blur(0px);
-  top: 40%;
-  left: 40%;
-  height: 100px;
-  width: 200px;
+  /* top: 40%;
+  left: 40%; */
+  margin: auto;
+  height: fit-content;
+  width: max-content;
+  padding: 20px;
   background: #fff;
   border: 1px solid orange;
-  border-radius: 4px;
+  border-radius: 5%;
   z-index: 1000;
   opacity: 1;
 }
 
-.close {
+/* .close {
   position: absolute;
   top: 60px;
-}
+} */
 
 [id="yes"] {
   left: 35%;

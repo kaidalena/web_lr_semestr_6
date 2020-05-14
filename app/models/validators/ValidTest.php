@@ -7,7 +7,7 @@ use app\models\validators\Validator;
 class ValidTest extends Validator {
 
     public function check_question1($value){
-        if (preg_match('/^[1-6]{1,30}+$/', $value)){
+        if ($value != null){
             if ( strcasecmp($value, "Абиотическими") === 0) return null;
             else return $this->errors['incorrectly'];
         } else return $this->errors['emptyAnswer']; 

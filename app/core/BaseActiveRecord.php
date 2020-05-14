@@ -18,13 +18,15 @@ abstract class BaseActiveRecord{
         }
 
         static::setupConnection();
-        // static::getFields();
+        static::getFields();
     }
 
     public static function getFields() {
         $stmt = static::$pdo->query("SHOW FIELDS FROM ".static::$tablename);
-        while ($row = $stmt->fetch()) {
-        static::$dbfields[$row['Field']] = $row['Type'];
+        // while ($row = $stmt->fetch()) {
+        for ($i=0;$row = $stmt->fetch(); $i++ ){
+            // echo "<p>".var_dump($row)."</p>";
+            static::$dbfields[$i] = $row['Field'];
         }
     }
 
@@ -40,6 +42,7 @@ abstract class BaseActiveRecord{
             static::$pdo = new PDO('mysql:host='.$config['host'].';dbname='.$config['name'].'', $config['user'], $config['password']);
         } catch (PDOException $ex) {
             die("Ошибка подключения к БД: $ex");
+            echo "Ошибка подключения к БД: $ex";
         }
         }
     }
@@ -66,27 +69,22 @@ abstract class BaseActiveRecord{
     }
 
     public function save( $values) {
-
         //Запрос должен выглядить так:
         //INSERT INTO nameTable (field1, field2, field3) VALUES (?,?,?);
 
         $fields = "";
         $val = "";
 
-        $i=0;
-
         foreach(static::$dbfields as $temp){
-            $fields = $fields.$temp;
-            $val = $val.'?';
-            if ($i != (count(static::$dbfields) - 1) ){
-                $fields = $fields.",";
-                $val = $val.',';
-            }
-            $i++;
+            $fields = $fields.$temp.",";
+            $val = $val.'?,';
         }
 
+        $fields = rtrim($fields, ",");
+        $val = rtrim($val, ",");
+
         $query = "INSERT INTO ".static::$tablename."($fields) VALUES ($val)";
-        
+
         $stmt = static::$pdo->prepare($query);
         try {
             static::$pdo->beginTransaction();
@@ -101,7 +99,18 @@ abstract class BaseActiveRecord{
     }
 
 
-    public function update($query, $params){
+    public function update( $params){
+        //"UPDATE users SET name=:name, surname=:surname, sex=:sex WHERE id=:id";
+        //"UPDATE users SET name='lena', surname='kaida', sex='w' WHERE id=:id";
+        $strVars = '';
+
+        foreach(static::$dbfields as $field){
+            $strVars .= $field."=:".$field.",";
+        }
+
+        $strVars = rtrim($strVars, ",");
+
+        $query = "UPDATE ".static::$tablename." SET ".$strVars." WHERE `id` = :id";
         $stmt = static::$pdo->prepare($query);
         $stmt->execute($params);
     }
