@@ -26,29 +26,29 @@
         <p>Выбери свой курс</p> 
         <p><SELECT id="gr" name="course" >  
             <OPTGROUP label="1 курс"> 
-                <OPTION value="1">ИС-11 
-                <OPTION value="2">ИС-12 
-                <OPTION value="3">ИС-13 
+                <OPTION value="ИС-11">ИС-11 
+                <OPTION value="ИС-12">ИС-12 
+                <OPTION value="ИС-13">ИС-13 
             </OPTGROUP>
             <OPTGROUP label="2 курс"> 
-                <OPTION value="4">ИС-21 
-                <OPTION value="5">ИС-22 
-                <OPTION value="6">ИС-23 
+                <OPTION value="ИС-21">ИС-21 
+                <OPTION value="ИС-22">ИС-22 
+                <OPTION value="ИС-23">ИС-23 
             </OPTGROUP>
             <OPTGROUP label="3 курс"> 
-                <OPTION value="7">ИС-31 
-                <OPTION value="8">ИС-32 
+                <OPTION value="ИС-31">ИС-31 
+                <OPTION value="ИС-32">ИС-32 
             </OPTGROUP>
             <OPTGROUP label="4 курс"> 
-                <OPTION value="9">ИС-41 
-                <OPTION value="10">ИС-42 
+                <OPTION value="ИС-41">ИС-41 
+                <OPTION value="ИС-42">ИС-42 
             </OPTGROUP> 
             <OPTGROUP LABEL="5 курс"> 
-                <OPTION value="11">ИС-51 
-                <OPTION value="12">ИС-52 
+                <OPTION value="ИС-51">ИС-51 
+                <OPTION value="ИС-52">ИС-52 
             </OPTGROUP> 
             <OPTGROUP LABEL="Магистры"> 
-                <OPTION  value="13">Maг-51 
+                <OPTION  value="Maг-51">Maг-51 
             </OPTGROUP> 
         </SELECT>
         <pre><?php echo $valid->getError('course') ?></pre><br></p>
@@ -57,12 +57,12 @@
             <li><h3>Как называют факторы неорганической среды, которые влияют на жизнь и распространение живых организмов?</h3></li>
             <p>
                 <select id="test1" name="question1">
-                    <option value="1">Живыми</option>
-                    <option value="2">Абиотическими</option>
-                    <option value="3">Антропогенными</option>
-                    <option value="4">Биотическими</option>
-                    <option value="5">Лимитирующие</option>
-                    <option value="6">Неживые</option>
+                    <option value="Живыми">Живыми</option>
+                    <option value="Абиотическими">Абиотическими</option>
+                    <option value="Антропогенными">Антропогенными</option>
+                    <option value="Биотическими">Биотическими</option>
+                    <option value="Лимитирующие">Лимитирующие</option>
+                    <option value="Неживые">Неживые</option>
                     <!-- 2 -->
                 </select>
                 <pre><?php echo $valid->getError('question1') ?></pre><br>
@@ -74,9 +74,9 @@
 
             <li><h3>Каковы основные направления экологии?</h3></li>
             <p>
-                <p><input id="c1" type="checkbox" name="question3[]" value="1">Физическое</p>
-                <p> <input id="c2" type="checkbox" name="question3[]" value="2">Xимическое</p>
-                <p> <input id="c3" type="checkbox" name="question3[]" value="3">Kосмическое</p>
+                <p><input id="c1" type="checkbox" name="question3[]" value="Физическое">Физическое</p>
+                <p> <input id="c2" type="checkbox" name="question3[]" value="Xимическое">Xимическое</p>
+                <p> <input id="c3" type="checkbox" name="question3[]" value="Kосмическое">Kосмическое</p>
                 <pre><?php echo $valid->getError('question3') ?></pre><br>
             </p>
             <!-- 1 2 -->

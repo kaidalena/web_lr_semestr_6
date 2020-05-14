@@ -25,30 +25,30 @@
         Пол женский <input name="pol" id="pol2" type="radio" value="w" checked></p>
         <p><strong>Выбери свой курс</strong></p> 
         <SELECT id="gr" name="course"> 
-            <OPTGROUP label="1 курс"> 
-                <OPTION value="1">ИС-11 
-                <OPTION value="2">ИС-12 
-                <OPTION value="3">ИС-13 
+        <OPTGROUP label="1 курс"> 
+                <OPTION value="ИС-11">ИС-11 
+                <OPTION value="ИС-12">ИС-12 
+                <OPTION value="ИС-13">ИС-13 
             </OPTGROUP>
             <OPTGROUP label="2 курс"> 
-                <OPTION value="4">ИС-21 
-                <OPTION value="5">ИС-22 
-                <OPTION value="6">ИС-23 
+                <OPTION value="ИС-21">ИС-21 
+                <OPTION value="ИС-22">ИС-22 
+                <OPTION value="ИС-23">ИС-23 
             </OPTGROUP>
             <OPTGROUP label="3 курс"> 
-                <OPTION value="7">ИС-31 
-                <OPTION value="8">ИС-32 
+                <OPTION value="ИС-31">ИС-31 
+                <OPTION value="ИС-32">ИС-32 
             </OPTGROUP>
             <OPTGROUP label="4 курс"> 
-                <OPTION value="9">ИС-41 
-                <OPTION value="10">ИС-42 
+                <OPTION value="ИС-41">ИС-41 
+                <OPTION value="ИС-42">ИС-42 
             </OPTGROUP> 
             <OPTGROUP LABEL="5 курс"> 
-                <OPTION value="11">ИС-51 
-                <OPTION value="12">ИС-52 
+                <OPTION value="ИС-51">ИС-51 
+                <OPTION value="ИС-52">ИС-52 
             </OPTGROUP> 
             <OPTGROUP LABEL="Магистры"> 
-                <OPTION  value="13">Maг-51 
+                <OPTION  value="Maг-51">Maг-51 
             </OPTGROUP> 
         </SELECT> 
         <p><pre><?php echo $valid->getError('course') ?><br/></pre></p>

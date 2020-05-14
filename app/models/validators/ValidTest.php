@@ -7,8 +7,8 @@ use app\models\validators\Validator;
 class ValidTest extends Validator {
 
     public function check_question1($value){
-        if (preg_match('/^[1-6]{1,1}+$/', $value)){
-            if ($value == 2) return null;
+        if (preg_match('/^[1-6]{1,30}+$/', $value)){
+            if ( strcasecmp($value, "Абиотическими") === 0) return null;
             else return $this->errors['incorrectly'];
         } else return $this->errors['emptyAnswer']; 
     }
@@ -23,7 +23,8 @@ class ValidTest extends Validator {
     public function check_question3($value){
         if (!empty($value)){
             if (count($value)==2){
-                if ($value[0]==1 && $value[1]==2) return null;
+                if (strcasecmp($value[0], "Физическое")===0 && 
+                    strcasecmp($value[1], "Xимическое")===0) return null;
                 else return $this->errors['incorrectly'];
             }else return $this->errors['incorrectly'];
         }else return $this->errors['emptyAnswer']; 

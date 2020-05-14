@@ -16,7 +16,7 @@ class ExamController extends Controller{
 
     public function sendResults($post_array){
         $errors = $this->model->validator->getErrors();
-        // echo "<p>".var_dump($errors)."</p>";
+        // echo "<p> ошибки = ".var_dump($errors)."</p>";
 
         if($errors['name'] != null) return;
 
@@ -26,7 +26,7 @@ class ExamController extends Controller{
             if (array_key_exists('question3', $post_array)){
                 $answer3 = "";
                 foreach($post_array['question3'] as $val){
-                    $answer3 = $answer3." ".$val;
+                    $answer3 = $answer3."  ".$val;
                 }
                 return $answer3;
             }

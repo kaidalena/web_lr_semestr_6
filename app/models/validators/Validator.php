@@ -83,7 +83,8 @@ class Validator {
 
 
     public function check_course($p1) {
-        if (preg_match('/^[0-9]{1,2}+$/', $p1)) return null;
+        // if (preg_match('/^[0-9]{1,2}+$/', $p1)) return null;
+        if (preg_match('/^[А-я0-9-]{1,8}+$/', $p1)) return null;
         return $this->errors['empty'];
     }
 
