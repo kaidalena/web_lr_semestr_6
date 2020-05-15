@@ -18,15 +18,27 @@ class Router{
     }
 
     public function add($route, $param){
-        $route = '#^'.$route.'$#';
+        // echo "<p> add() </p>";
+        $route = '#^'.$route.'\?.*$|^'.$route.'$#';
         $this -> routes[$route] = $param;
     }
 
     public function match(){
+        // echo "<p> match() </p>";
         $url = trim($_SERVER['REQUEST_URI'],'/');       //trim — Удаляет пробелы (или другие символы) из начала и конца строки
-        // echo $_SERVER['REQUEST_URI'];
+        // echo "<p style='margin: 50px;'> url: $url </p>";
+        // echo "<p>this routs: ".var_dump($this->routes)."</p>";
         foreach( $this->routes as $route => $params){
+            
+                // echo "<br/>routs: ";
+                // var_dump($route);
+                // echo "<br/>params: ";
+                // var_dump($params);
+
             if (preg_match($route, $url, $matches)){
+                // echo "<p>_______________________________________</p>";
+                // echo "<br/> matches: ";
+                // echo var_dump($matches);
                 $this->params = $params;
                 return true;
             }

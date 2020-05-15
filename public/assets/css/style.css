@@ -381,7 +381,7 @@ table.comments td{
      margin: 2em;
      background-color: rgba(100, 200, 150, 0.4);
      border-radius: 2em;
-     padding: 2%
+     padding: 2em;
 }
 
 table .info{
@@ -402,4 +402,9 @@ table.comments p{
   font-size: 15px;
   color: #333;
   margin: 0;
+}
+
+table.comments img{
+  width: 18em;
+  height: auto;
 }

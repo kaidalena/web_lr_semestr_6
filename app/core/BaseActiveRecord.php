@@ -91,7 +91,7 @@ abstract class BaseActiveRecord{
         $val = "";
 
         foreach(static::$dbfields as $temp){
-            $fields = $fields.$temp.",";
+            $fields .= "`".$temp."`,";
             $val = $val.'?,';
         }
 

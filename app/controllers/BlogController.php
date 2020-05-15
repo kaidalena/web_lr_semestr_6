@@ -23,13 +23,22 @@ class BlogController extends Controller{
         // echo "<p> ошибки = ".var_dump($errors)."</p>";
 
         if(!$this->data['valid']->checkErrors()) return;
+
+        if($files_array['userFile']['error'] == UPLOAD_ERR_OK){
+            $upload_image = $files_array["userFile"]["name"];
+            $folder="D:/web/websitePHP/public/assets/img/";
+            move_uploaded_file($files_array["userFile"]["tmp_name"], $folder.$upload_image);
+        }
         
+        // echo "<p> save record blog </p>";
         $data = [
             'id' => null,
             'topic' => (array_key_exists('topic', $post_array) ? trim($post_array['topic']) : null),
             'message' => (array_key_exists('message', $post_array) ? trim($post_array['message']) : null),
-            'image' => ($_FILES['userFile']['tmp_name'] != null) ?
-                        addslashes(file_get_contents($_FILES['userFile']['tmp_name'])) : null,
+            'img name' => ($files_array['userFile']['error'] == UPLOAD_ERR_OK) ?
+                            $files_array['userFile']['name'] : null,
+            'img src' => ($files_array['userFile']['error'] == UPLOAD_ERR_OK) ?
+                            '/public/assets/img/': null,
             'date' => date('Y-m-d H:i:s')
         ];
 

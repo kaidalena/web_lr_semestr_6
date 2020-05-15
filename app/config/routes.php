@@ -55,6 +55,10 @@ return [
 	'blog'=> [//+
 		'controller' => 'diary',
 		'action' => 'blog',
-	]
+	],
 
+	'blog/upload' => [//+
+		'controller' => 'records',
+		'action' => 'upload',
+	]
 ];

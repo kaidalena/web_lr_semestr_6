@@ -37,6 +37,9 @@
             <li><a href="/contacts">Контакты</a>
             <li><a href="/guestBook">Гостевая книга</a>
             <li><a href="/comments/upload">Загрузка отзывов</a>
+            <li><a href="/blog">Мой Блог</a>
+            <li><a href="/blogEditor">Редактор Блога</a>
+            <li><a href="/blog/upload">Загрузка сообщений блога</a>
         </ul>
     </nav>
     <?php require $view; ?> 

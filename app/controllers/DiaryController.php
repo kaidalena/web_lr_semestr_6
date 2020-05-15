@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\models\DiaryRecord;
+
 
 class DiaryController extends Controller{
 
     public function  blogAction(){
-        $diaryDB = new DiaryRecord();
-        $this->data = [
-            'data' => $diaryDB->findAll(),
-            'controller' => $this
-        ];
+        
+        $this->data['controller'] = $this;
+
+        // echo "<p style='margin: 50px;'> data: </p>";
+        // echo "<p>".var_dump($this->data)."</p>";
         
         $this->view->render('Мой Блог', $this->data);
     }
