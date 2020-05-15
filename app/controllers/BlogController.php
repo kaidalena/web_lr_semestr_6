@@ -8,7 +8,7 @@ use app\models\BlogRecord;
 
 class BlogController extends Controller{
 
-    public function  uploadAction(){
+    public function  sendAction(){
         $this->data['controller'] = $this;
         $this->view->render('Редактор Блога', $this->data);
     }

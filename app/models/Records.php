@@ -63,9 +63,10 @@ class Records extends Model{
             }
             fclose($file);
 
-            $recordsBD->save($result);
+            if (empty($result)) return "Данные не были сохранены";
 
-            return "good";
+            $recordsBD->save($result);
+            return "Данные сохранены";
     }
 
 }

@@ -2,62 +2,62 @@
 
 return [
 
-	'' => [
+	'' => [//							Главная
 		'controller' => 'main',
 		'action' => 'index',
 	],
 
-	'aboutMe' => [
+	'aboutMe' => [//					Обо мне
         'controller' => 'me',
 		'action' => 'about',
 	],
 
-	'interests' => [ //+
+	'interests' => [ //+				Мои интересы
         'controller' => 'myInterests',
 		'action' => 'interests',
 	],
 
-	'schedule' => [
+	'schedule' => [//					Учеба
         'controller' => 'study',
 		'action' => 'schedule',
 	],
 
-	'fotos' => [
+	'fotos' => [//						Фотоальбом
         'controller' => 'gallery',
 		'action' => 'fotos',
 	],
 
-	'test' => [//+
+	'test' => [//+						Тест
         'controller' => 'exam',
 		'action' => 'test',
 	],
 
-	'contacts' => [//+
+	'contacts' => [//+					Контакты
         'controller' => 'communication',
 		'action' => 'contacts',
 	],
 
-	'guestBook' => [//+
+	'guestBook' => [//+					Гостевая книга
         	'controller' => 'guest',
 		'action' => 'book',
 	],
 
-	'comments/upload' => [//+
+	'comments/upload' => [//+			Загрузка отзывов
         	'controller' => 'comments',
 		'action' => 'upload',
 	],
 
-	'blogEditor'=> [//+
-		'controller' => 'blog',
-		'action' => 'upload',
-	],
-
-	'blog'=> [//+
+	'blog'=> [//+						Мой Блог
 		'controller' => 'diary',
 		'action' => 'blog',
 	],
 
-	'blog/upload' => [//+
+	'blogEditor'=> [//+					Редактор Блога
+		'controller' => 'blog',
+		'action' => 'send',
+	],
+
+	'blog/upload' => [//+				Загрузка сообщений блога
 		'controller' => 'records',
 		'action' => 'upload',
 	]

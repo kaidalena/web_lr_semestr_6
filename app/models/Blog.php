@@ -12,7 +12,7 @@ class Blog extends Model{
         parent::__construct($action);
     }
 
-    public function upload(){
+    public function send(){
 
         $rules = [
             'topic' => "Максимальная длина 50 символов",
@@ -35,7 +35,6 @@ class Blog extends Model{
            'errors' => $this->validator->getErrors(),
            'values'=> $this->validator->getErrors()
        ];
-        // echo "this is comments model";
         
     }
 
