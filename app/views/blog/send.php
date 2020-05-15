@@ -11,10 +11,10 @@
             // $valid->Validate($array_from_valid);
             $controller->save($_POST, $_FILES);
             if (!$valid->checkErrors($errors)) $values = $_POST;
-            // else{
+            else{
             //     $controller->save($_POST);
-            //     echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\">Форма успешно отправлена</div>";
-            // }
+                echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\">Форма успешно отправлена</div>";
+            }
         }
 
         // if ($_SERVER["REQUEST_METHOD"] == "POST"){

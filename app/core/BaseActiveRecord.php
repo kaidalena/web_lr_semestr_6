@@ -54,17 +54,13 @@ abstract class BaseActiveRecord{
         $sql = "SELECT * FROM ".static::$tablename." WHERE id=$id";
         $stmt = static::$pdo->query($sql);
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (!$row) {
             return null;
         }
 
-        $ar_obj = new static();
-        foreach ($row as $key => $value) {
-        $ar_obj ->$key = $value;
-        }
-        return $ar_obj;
+        return $row ;
     }
 
     public static function findAll($fields = null) {

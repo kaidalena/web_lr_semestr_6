@@ -16,14 +16,4 @@ class DiaryController extends Controller{
         
         $this->view->render('Мой Блог', $this->data);
     }
-
-    public function save($post_array){
-        // $respons = [
-        //     $post_array['name'],
-        //     $post_array['email'],
-        //     date('d.m.Y H:i:s'),
-        //     $post_array['message']
-        // ];
-        // $this->model->sendRespons("messages.inc", $respons);
-    }
 }

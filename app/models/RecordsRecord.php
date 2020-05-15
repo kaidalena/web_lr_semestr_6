@@ -13,6 +13,5 @@ class RecordsRecord extends BaseActiveRecord{
 
     public function __construct(){
         parent::__construct();
-
     }
 }

@@ -14,13 +14,22 @@ class Validator {
 
     //preg_match — Выполняет проверку на соответствие регулярному выражению
 
-    function __construct($rules, $errors){
+    // function __construct($rules, $errors){
+    //     foreach($rules as $key=>$val){
+    //         $this->setRule($key, $val);
+    //     }
 
-        foreach($rules as $key=>$val){
+    //     foreach($errors as $key=>$val){
+    //         $this->setError($key, $val);
+    //     }
+    // }
+
+    function __construct(){
+        foreach($this->rules as $key=>$val){
             $this->setRule($key, $val);
         }
 
-        foreach($errors as $key=>$val){
+        foreach($this->errors as $key=>$val){
             $this->setError($key, $val);
         }
     }

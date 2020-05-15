@@ -6,6 +6,22 @@ use app\models\validators\Validator;
 
 class ValidTest extends Validator {
 
+    public $rules = [
+        'name' => "Пример: Иванов Иван Иванович",
+        'course' => "Выберите вариант",
+        'question1' => "Выберите правильный ответ",
+        'question2' => "Введите ответ",
+        'question3' => "Выберите правильные ответы",
+    ];
+
+    public $errors = [
+        'name' => "Имя должно состоять из трех слов и может содержать только русские буквы длиной до 30 символов",
+        'course' => "Выберите курс",
+        'empty' => "Поле не должно быть пустым",
+        'emptyAnswer' => "Введите ответ",
+        'incorrectly' => "Не верно",
+    ];
+
     public function check_question1($value){
         if ($value != null){
             if ( strcasecmp($value, "Абиотическими") === 0) return null;

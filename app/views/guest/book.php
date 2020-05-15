@@ -1,14 +1,14 @@
 
 
 <?php
-     $values;
+     $values = [];
      if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
          $valid->Validate($_POST);
          if (!$valid->checkErrors($errors)) $values = $_POST;
          else{
               $controller->save($_POST);
-             echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\">Форма успешно отправлена</div>";
+              if($valid->checkErrors($errors))
+               echo "<div id='resultWindiw' style=\"color: green; font-size: 30px;\">Форма успешно отправлена</div>";
          }
      }
 ?>

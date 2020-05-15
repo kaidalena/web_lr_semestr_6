@@ -15,19 +15,8 @@ class Guest extends Model{
 
     public function book(){
          // echo "<p>guestBookModel</p>";
-         $rules = [
-            'name' => "Пример: Иванов Иван Иванович",
-            'email' => "Пример: example33@ety.ru",
-            'message' => "Текст вашего сообщения",
-        ];
 
-        $errors = [
-            'name' => "Имя должно состоять из трех слов и может содержать только русские буквы длиной до 30 символов",
-            'email' => "E-mail указан не верно",
-            'empty' => "Поле не должно быть пустым",
-        ];
-
-        $this->validator = new ValidGuestBook($rules, $errors);
+        $this->validator = new ValidGuestBook();
 
         return [
            'valid' => $this->validator,
@@ -35,7 +24,6 @@ class Guest extends Model{
            'errors' => $this->validator->getErrors(),
            'values'=> $this->validator->getErrors(),
            'comments' => $this->readComments("messages.inc"),
-          // 'comments' => null,
        ];
     }
 

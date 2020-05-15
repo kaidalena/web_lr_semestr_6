@@ -16,20 +16,7 @@ class Records extends Model{
     }
 
     public function upload(){
-        $rules = [
-            'topic' => "Максимальная длина 50 символов",
-            'userFile' => "Выберите изображение",
-            'message' => "Текст вашего сообщения",
-        ];
-
-        $errors = [
-            'topic' => "Только символы кирилицы и латиницы длиной до 50 символов",
-            'userFile' => "Неверный формат файла",
-            'message' => "Введите свое сообщение",
-            'empty' => "Поле не должно быть пустым",
-        ];
-
-        $this->validator = new ValidBlog($rules, $errors);
+        $this->validator = new ValidBlog();
     }
 
     public function save($pathFile){
