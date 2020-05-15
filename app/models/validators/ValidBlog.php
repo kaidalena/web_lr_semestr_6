@@ -8,7 +8,7 @@ class ValidBlog extends Validator {
 
     public function check_topic($p1) {
         if (empty($p1)) return $this->errors['empty'];
-        if(preg_match('/[A-zА-я0-9]{1,50}+$/', $p1)) return null;
+        if(preg_match('/^[A-яA-z\s]{1,50}$/', $p1)) return null;
         return $this->errors['topic'];
     }
 
@@ -18,4 +18,5 @@ class ValidBlog extends Validator {
         
         return $this->errors['userFile']; 
     }
+
 }

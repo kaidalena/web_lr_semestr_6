@@ -23,7 +23,7 @@
                               echo "<td class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";
                               
                               echo ($temp['img src'] == null) ? "</td>" : "<img src='" .$temp['img src'].$temp['img name']."'></td>";
-                              echo "<script> console.log(\"<img src='" .$temp['img src'].$temp['img name']."'></td>\") </script>";
+                              // echo "<script> console.log(\"<img src='" .$temp['img src'].$temp['img name']."'></td>\") </script>";
 
                               echo "<td class=\"text\"><h3>".$temp['topic']."</h3>";
                               echo "<p>".$temp['message']."</p></td>";
@@ -45,4 +45,5 @@
      }
 
      ?>
+     <br/>
 </section>

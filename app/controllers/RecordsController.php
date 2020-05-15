@@ -14,7 +14,23 @@ class RecordsController extends Controller{
         // echo "<p style='margin: 50px;'> data: </p>";
         // echo "<p>".var_dump($this->data)."</p>";
         
-        $this->view->render('Мой Блог', $this->data);
+        $this->view->render('Загрузка Блога', $this->data);
+    }
+
+    public function saveRecords($nameField){
+
+        // echo "<p style=\"margin: 50px;\">\$_FILES: "; var_dump($FILES); echo "</p>";
+
+        if (!empty($_FILES)){
+            $file = "D:/web/websitePHP/public/files".$_FILES[$nameField]['name'];
+        //     // echo "<br/>file = $file <br/>";
+            if($_FILES[$nameField]['error'] == UPLOAD_ERR_OK){
+                move_uploaded_file($_FILES[$nameField]['tmp_name'], $file);
+                return $this->model->save($file);
+            }
+        }
+
+        return "Ошибка загрузки";
     }
 
 }

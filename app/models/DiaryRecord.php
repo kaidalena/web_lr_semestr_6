@@ -22,10 +22,6 @@ class DiaryRecord extends BaseActiveRecord{
         // var_dump($_GET);
         // echo "<br/>";
 
-        // SELECT * FROM `blog` ORDER BY `blog`.`date` DESC
-        $sql = "SELECT * FROM ".static::$tablename." ORDER BY `".static::$tablename."`.`date` DESC";
-        static::$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
-
         // количество записей, выводимых на странице
         $per_page=5;
 
@@ -35,7 +31,7 @@ class DiaryRecord extends BaseActiveRecord{
         // вычисляем первый операнд для LIMIT
         $start=abs($page*$per_page);
         // выполняем запрос и выводим записи
-        $query = "SELECT * FROM ".static::$tablename." LIMIT $start, $per_page";
+        $query = "SELECT * FROM ".static::$tablename." ORDER BY `".static::$tablename."`.`date` DESC LIMIT $start, $per_page";
 
         $rows = static::$pdo->query($query);
 
