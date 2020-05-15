@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\core\Model;
 use app\models\validators\ValidGuestBook;
+use DateTime;
 
 class Guest extends Model{
 
@@ -41,7 +42,7 @@ class Guest extends Model{
     public function readComments($nameFile){
          echo "<script> console.log('one');</script>";
 
-         $file = fopen("public/$nameFile", "r");
+         $file = fopen("public/files/$nameFile", "r");
          $comments = [];
 
          echo "<script> console.log('two'); </script>";
@@ -59,21 +60,19 @@ class Guest extends Model{
                    'date' =>  trim($spitedStr[2]),
                    'msg' => trim($spitedStr[3])
               ];
-              // $comments[trim($spitedStr[2])] = [
-              //    'fio' => trim($spitedStr[0]),
-              //    'email' => trim($spitedStr[1]),
-              //    'date' => trim($spitedStr[2]),
-              //    'msg' => trim($spitedStr[3])
-            // ];
               $comments[$i] = $temp;
          }
 
          fclose($file);
-          // echo "<script> console.log('one'); </script>";
-          // echo "<script> console.log('file: ". json_encode( $comments)."'); </script>";
+          
+         usort($comments, function($first, $second){
+               $first = DateTime::createFromFormat('d.m.Y H:i:s', $first['date']);
+               $second = DateTime::createFromFormat('d.m.Y H:i:s', $second['date']);
+
+               return $first < $second;
+         });
 
          return $comments;
-         // return null;
     }
 
     public function sendRespons($nameFile, $respons){
