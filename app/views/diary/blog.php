@@ -12,16 +12,17 @@
           <tbody>
 
                <?php
-               // echo "<p> data: ".var_dump($data)."</p>";
-                    if(empty($rows)): ?>
+               // echo "<p> data: ".var_dump($rows)."</p>";
+                    if(empty($rows) ): ?>
                          <h2>Нет записей</h2>
                <?php else:
                          foreach ($rows as $temp) {
+                              // echo "<p> data: ".var_dump($temp)."</p>";
                               // echo "<script> console.log('file: ".$value['fio']."'); </script>";
                               echo "<tr>";
                               $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['date']);
                               echo "<td class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";
-                              
+
                               echo ($temp['img src'] == null) ? "</td>" : "<img src='" .$temp['img src'].$temp['img name']."'></td>";
                               // echo "<script> console.log(\"<img src='" .$temp['img src'].$temp['img name']."'></td>\") </script>";
 
@@ -36,7 +37,7 @@
      </table>
 
      <!-- <div class="pages">
-          Страницы 
+          Страницы
           <a href="#"
      </div> -->
      <?php

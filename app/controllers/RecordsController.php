@@ -8,12 +8,12 @@ use app\core\Controller;
 class RecordsController extends Controller{
 
     public function  uploadAction(){
-        
+
         $this->data['controller'] = $this;
 
         // echo "<p style='margin: 50px;'> data: </p>";
         // echo "<p>".var_dump($this->data)."</p>";
-        
+
         $this->view->render('Загрузка Блога', $this->data);
     }
 
@@ -22,7 +22,7 @@ class RecordsController extends Controller{
         // echo "<p style=\"margin: 50px;\">\$_FILES: "; var_dump($FILES); echo "</p>";
 
         if (!empty($_FILES)){
-            $file = "D:/web/websitePHP/public/files".$_FILES[$nameField]['name'];
+            $file = "D:/web/websitePHP/public/files/".$_FILES[$nameField]['name'];
         //     // echo "<br/>file = $file <br/>";
             if($_FILES[$nameField]['error'] == UPLOAD_ERR_OK){
                 move_uploaded_file($_FILES[$nameField]['tmp_name'], $file);

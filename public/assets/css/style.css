@@ -150,6 +150,11 @@ input, select {
   border-radius: 4px;
 }
 
+input[type="submit"]{
+     margin-top: 20px;
+     background-color: #16a085;
+}
+
 textarea {
   border-color: #16a085;
   padding: 1%;
