@@ -4,30 +4,31 @@ namespace app\models;
 
 use app\core\Model;
 use app\models\validators\ValidBlog;
+use app\models\BaseActiveRecordModel;
 
-class Blog extends Model{
+class Blog extends BaseActiveRecordModel{
 
     public function __construct($action){
-        //  echo "<p>Comments Model __construct(action)</p>";
+         echo "<p>Blog Model __construct(action)</p>";
         parent::__construct($action);
     }
 
     public function send(){
 
-        $rules = [
-            'topic' => "Максимальная длина 50 символов",
-            'userFile' => "Выберите изображение",
-            'message' => "Текст вашего сообщения",
-        ];
+        // $rules = [
+        //     'topic' => "Максимальная длина 50 символов",
+        //     'userFile' => "Выберите изображение",
+        //     'message' => "Текст вашего сообщения",
+        // ];
+        //
+        // $errors = [
+        //     'topic' => "Только символы кирилицы и латиницы длиной до 50 символов",
+        //     'userFile' => "Неверный формат файла",
+        //     'message' => "Введите свое сообщение",
+        //     'empty' => "Поле не должно быть пустым",
+        // ];
 
-        $errors = [
-            'topic' => "Только символы кирилицы и латиницы длиной до 50 символов",
-            'userFile' => "Неверный формат файла",
-            'message' => "Введите свое сообщение",
-            'empty' => "Поле не должно быть пустым",
-        ];
-
-        $this->validator = new ValidBlog($rules, $errors);
+        $this->validator = new ValidBlog();
 
         return [
            'valid' => $this->validator,
@@ -35,8 +36,8 @@ class Blog extends Model{
            'errors' => $this->validator->getErrors(),
            'values'=> $this->validator->getErrors()
        ];
-        
+
     }
 
-    
+
 }

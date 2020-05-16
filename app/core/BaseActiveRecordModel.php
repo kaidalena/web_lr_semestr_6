@@ -5,13 +5,16 @@ namespace app\core;
 use PDO;
 use PDOException;
 
-abstract class BaseActiveRecord{
+// abstract class BaseActiveRecord extends Model{
+abstract class BaseActiveRecord extends Model {
 
     public static $pdo;
     protected static $tablename;
     protected static $dbfields = array();
 
-    public function __construct() {
+    public function __construct($action) {
+         echo "<p>BaseActiveRecord __construct(action)</p>";
+        parent::__construct($action);
         if (!static::$tablename){
             echo " if (!static::\$tablename)";
             return ;
