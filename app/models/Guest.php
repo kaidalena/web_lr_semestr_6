@@ -27,49 +27,7 @@ class Guest extends BaseActiveFileModel{
        ];
     }
 
-//     public function readComments($nameFile){
-//          echo "<script> console.log('one');</script>";
-
-//          $file = fopen("public/files/$nameFile", "r");
-//          $comments = [];
-
-//          echo "<script> console.log('two'); </script>";
-
-//          for( $i=0; !feof($file) ; $i++){
-//               $str = fgets($file);
-              
-//               if(empty($str)) continue;
-
-//               echo "<script> console.log('". json_encode( $str)."'); </script>";
-//               $spitedStr = explode(';', $str);
-//               $temp = [
-//                    'fio' => trim($spitedStr[0]),
-//                    'email' => trim($spitedStr[1]),
-//                    'date' =>  trim($spitedStr[2]),
-//                    'msg' => trim($spitedStr[3])
-//               ];
-//               $comments[$i] = $temp;
-//          }
-
-//          fclose($file);
-          
-//          usort($comments, function($first, $second){
-//                $first = DateTime::createFromFormat('d.m.Y H:i:s', $first['date']);
-//                $second = DateTime::createFromFormat('d.m.Y H:i:s', $second['date']);
-
-//                return $first < $second;
-//          });
-
-//          return $comments;
-//     }
-
-//     public function sendRespons($nameFile, $respons){
-//           $file = fopen("public/$nameFile", "a");
-//           foreach( $respons as $temp){
-//                fwrite($file, $temp."; ");
-//           }
-//           fwrite($file, "\n");
-//           fclose($file);
-//     }
-
+    public function upload(){
+        // echo "this is Guest model";
+    }
 }

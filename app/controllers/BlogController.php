@@ -1,12 +1,15 @@
 <?php
 
+
 namespace app\controllers;
 
 use app\core\Controller;
 use app\models\Blog;
 use app\models\BlogRecord;
 
+
 class BlogController extends Controller{
+
 
     public function  sendAction(){
         $this->data['controller'] = $this;
@@ -14,8 +17,38 @@ class BlogController extends Controller{
     }
 
 
+    public function  uploadAction(){
+        $this->data['controller'] = $this;
+        // echo "<p style='margin: 50px;'> data: </p>";
+        // echo "<p>".var_dump($this->data)."</p>";
+        $this->view->render('Загрузка Блога', $this->data);
+    }
+
+
+    public function  blogAction(){
+        $this->data['controller'] = $this;
+        // echo "<p style='margin: 50px;'> data: </p>";
+        // echo "<p>".var_dump($this->data)."</p>";
+        $this->view->render('Мой Блог', $this->data);
+    }
+
+
+    public function saveRecords($nameField){
+        // echo "<p style=\"margin: 50px;\">\$_FILES: "; var_dump($FILES); echo "</p>";
+        if (!empty($_FILES)){
+           $file = "D:/web/websitePHP/public/files/".$_FILES[$nameField]['name'];
+        //     // echo "<br/>file = $file <br/>";
+           if($_FILES[$nameField]['error'] == UPLOAD_ERR_OK){
+                move_uploaded_file($_FILES[$nameField]['tmp_name'], $file);
+                return $this->model->importFromFile($file);
+           }
+        }
+
+        return "Ошибка загрузки";
+    }
+
     public function save($post_array, $files_array){
-        
+
         $post_array['userFile'] = $files_array;
         $this->data['valid']->Validate($post_array);
 
@@ -29,7 +62,7 @@ class BlogController extends Controller{
             $folder="D:/web/websitePHP/public/assets/img/";
             move_uploaded_file($files_array["userFile"]["tmp_name"], $folder.$upload_image);
         }
-        
+
         // echo "<p> save record blog </p>";
         $data = [
             'id' => null,

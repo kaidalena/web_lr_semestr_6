@@ -43,12 +43,12 @@ return [
 	],
 
 	'comments/upload' => [//+			Загрузка отзывов
-        	'controller' => 'comments',
+        	'controller' => 'guest',
 		'action' => 'upload',
 	],
 
 	'blog'=> [//+						Мой Блог
-		'controller' => 'diary',
+		'controller' => 'blog',
 		'action' => 'blog',
 	],
 
@@ -58,7 +58,7 @@ return [
 	],
 
 	'blog/upload' => [//+				Загрузка сообщений блога
-		'controller' => 'records',
+		'controller' => 'blog',
 		'action' => 'upload',
 	]
 ];

@@ -6,6 +6,13 @@ use app\core\Controller;
 
 class GuestController extends Controller{
 
+     public function  uploadAction(){
+         $vars=[
+            'model' => $this->model
+         ];
+         $this->view->render('Загрузка отзывов', $vars);
+     }
+
     public function  bookAction(){
         // echo "<p>guestBookAction</p>";
         $this->data['controller'] = $this;
