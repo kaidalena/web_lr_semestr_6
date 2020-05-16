@@ -11,7 +11,7 @@ public $method;
 public $validator;
 
      function __construct($action){
-          echo "<p>Model __construct()</p>";
+        //   echo "<p>Model __construct()</p>";
           $this->method = $action;
     }
 

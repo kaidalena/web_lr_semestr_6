@@ -403,6 +403,12 @@ table.comments h4{
   margin: 7px 0;
 }
 
+table.comments h5{
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
+}
+
 table.comments p{
   font-size: 15px;
   color: #333;
@@ -412,4 +418,8 @@ table.comments p{
 table.comments img{
   width: 18em;
   height: auto;
+}
+
+table.comments div{
+  font-size: 18px;
 }

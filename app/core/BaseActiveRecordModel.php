@@ -6,14 +6,14 @@ use PDO;
 use PDOException;
 
 // abstract class BaseActiveRecord extends Model{
-abstract class BaseActiveRecord extends Model {
+abstract class BaseActiveRecordModel extends Model {
 
     public static $pdo;
     protected static $tablename;
     protected static $dbfields = array();
 
     public function __construct($action) {
-         echo "<p>BaseActiveRecord __construct(action)</p>";
+        //  echo "<p>BaseActiveRecord __construct(action)</p>";
         parent::__construct($action);
         if (!static::$tablename){
             echo " if (!static::\$tablename)";

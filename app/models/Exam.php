@@ -2,13 +2,16 @@
 
 namespace app\models;
 
-use app\core\Model;
+use app\core\BaseActiveRecordModel;
 use app\models\validators\ValidTest;
 
 
-class Exam extends Model{
+class Exam extends BaseActiveRecordModel{
 
     public $method;
+    protected static  $tablename = "test";
+    protected static $dbfields = [];
+    public static  $pdo;
 
     function __construct($action){
         parent::__construct($action);
@@ -22,7 +25,16 @@ class Exam extends Model{
             'valid' => $this->validator,
             'rules' => $this->validator->getRules(),
             'errors' => $this->validator->getErrors(),
+            'results' => parent::findAll()
         ];
     }
 
+    public function insert($val_arr){
+        $val = [
+            array_values($val_arr)
+        ];
+        // echo "<p>".var_dump($val)."</p>";
+
+        parent::save( $val);
+    }
 }

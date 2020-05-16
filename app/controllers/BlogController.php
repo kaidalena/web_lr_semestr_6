@@ -15,7 +15,7 @@ class BlogController extends Controller{
 
 
     public function save($post_array, $files_array){
-        $blogDB = new BlogRecord();
+        
         $post_array['userFile'] = $files_array;
         $this->data['valid']->Validate($post_array);
 
@@ -43,6 +43,6 @@ class BlogController extends Controller{
         ];
 
         // echo "<p> answers = ".var_dump($ansswers)."</p>";
-        $blogDB->insert($data);
+        $this->model->insert($data);
     }
 }

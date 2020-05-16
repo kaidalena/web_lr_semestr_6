@@ -10,7 +10,6 @@ class ExamController extends Controller{
     public $examDB;
 
     public function  testAction(){
-        $examDB = new ExamRecord();
         $this->data['controller'] = $this;
         $this->view->render('Тест', $this->data);
     }
@@ -50,6 +49,6 @@ class ExamController extends Controller{
         ];
 
         // echo "<p> answers = ".var_dump($ansswers)."</p>";
-        ExamRecord::insert($ansswers);
+        $this->model->insert($ansswers);
     }
 }

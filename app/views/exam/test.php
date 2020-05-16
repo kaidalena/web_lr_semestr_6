@@ -111,4 +111,29 @@
             <input  type="reset" value="Очистить"> 
         </ol>
     </form>
+
+    <h1> Результаты тестов </h1>
+    <table class="comments">
+        <tbody>
+            <?php
+                foreach($results as $temp){
+                    echo "<tr>";
+                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['date']);
+                    echo "<td class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";
+                    echo "<h4>" .$temp['fio']."</h4>";
+                    echo "<p>Группа: " .$temp['course']."</p></td>";
+                    echo "<td class=\"text\"><h5>Результаты:</h5>";
+                    for ($i=1; $i<=3; $i++){
+                        $index  = "answer".$i;
+                        echo "<div>$i. ".$temp[$index];
+                        $index  = "flag".$i;
+                        if (!$temp[$index]) echo "<pre style='font-size: 20 px;'> Не верно </pre>";
+                        echo"</div>";
+                    }
+                    echo "</td></tr>";
+                    // echo "<br/>".var_dump($temp);
+                }
+            ?>
+        </tbody>
+    </table>
 </section>

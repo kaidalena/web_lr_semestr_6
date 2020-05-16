@@ -2,13 +2,16 @@
 
 namespace app\models;
 
-use app\core\Model;
+use app\core\BaseActiveRecordModel;
 use app\models\RecordsRecord;
 use app\models\validators\ValidBlog;
 
-class Records extends Model{
+class Records extends BaseActiveRecordModel{
 
     public $validator;
+    protected static  $tablename = "blog";
+    protected static $dbfields = [];
+    public static  $pdo;
 
     public function __construct($action){
         //  echo "<p>Comments Model __construct(action)</p>";
@@ -20,7 +23,6 @@ class Records extends Model{
     }
 
     public function save($pathFile){
-        $recordsBD = new RecordsRecord();
         $result = []; 
 
         $file = fopen($pathFile, "r");
@@ -52,7 +54,9 @@ class Records extends Model{
 
             if (empty($result)) return "Данные не были сохранены";
 
-            $recordsBD->save($result);
+            // echo "<br/>   ";
+            // var_dump($result);
+            parent::save($result);
             return "Данные сохранены";
     }
 
