@@ -6,10 +6,10 @@ use app\core\BaseActiveRecordModel;
 use PDO;
 use PDOException;
 
-class StatisticModel extends BaseActiveRecordModel{
-    protected static $tablename = 'statistics';
-    protected static $fields = array();
-    protected static $pdo;
+class Statistic extends BaseActiveRecordModel{
+    public static $tablename = 'statistics';
+    public static $fields = [];
+    public static $pdo;
 
     public $date;
     public $web_page;
@@ -18,12 +18,13 @@ class StatisticModel extends BaseActiveRecordModel{
     public $browser_name;
 
     public function save_statistic($page){
+        echo "<p style='margin-left: 50px;'> save_statistic </p>";
         $this->date = date('Y-m-d h:m:s');
         $this->web_page = $page;
         $this->ip_address = $_SERVER['REMOTE_ADDR'];
         $this->host_name = gethostbyaddr($_SERVER['REMOTE_ADDR']);
         $this->browser_name = $_SERVER['HTTP_USER_AGENT'];
-        $this->save([[$this->date, $this->web_page, $this->ip_address,
+        $this->save([[null, $this->date, $this->web_page, $this->ip_address,
                         $this->host_name, $this->browser_name]]);
     }
 
