@@ -39,6 +39,7 @@
             <!-- <li><a href="/guest/upload">Загрузка отзывов</a> -->
             <li><a href="/blog">Мой Блог</a>
             <li><a href="/blogEditor">Редактор Блога</a>
+            <li><a href="/registration">Регистрация</a>
             <!-- <li><a href="/blog/upload">Загрузка сообщений блога</a> -->
         </ul>
     </nav>

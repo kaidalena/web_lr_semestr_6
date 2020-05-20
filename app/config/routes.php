@@ -67,8 +67,13 @@ return [
 		'action' => 'index',
 	],
 
-	'admin/statistics/visitings' => [
-		'controller' => 'statistics',
+	'admin/statistic/visitings' => [
+		'controller' => 'statistic',
 		'action' => 'visitings',
+	],
+
+	'registration' => [
+		'controller' => 'authentication',
+		'action' => 'registration',
 	]
 ];

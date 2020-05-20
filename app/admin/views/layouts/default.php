@@ -31,6 +31,7 @@
         <li><a href="/admin">Главная</a>
             <li><a href="/admin/guest/upload">Загрузка отзывов</a>
             <li><a href="/admin/blog/upload">Загрузка сообщений блога</a>
+            <li><a href="admin/statistic/visitings">Статистика посещаемости</a>
         </ul>
     </nav>
     <?php require $view; ?> 
