@@ -65,5 +65,10 @@ return [
 	'admin' => [
 		'controller' => 'main',
 		'action' => 'index',
+	],
+
+	'admin/statistics/visitings' => [
+		'controller' => 'statistics',
+		'action' => 'visitings',
 	]
 ];
