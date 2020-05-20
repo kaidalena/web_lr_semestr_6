@@ -17,14 +17,6 @@ class BlogController extends Controller{
     }
 
 
-    public function  uploadAction(){
-        $this->data['controller'] = $this;
-        // echo "<p style='margin: 50px;'> data: </p>";
-        // echo "<p>".var_dump($this->data)."</p>";
-        $this->view->render('Загрузка Блога', $this->data);
-    }
-
-
     public function  blogAction(){
         $this->data['controller'] = $this;
         // echo "<p style='margin: 50px;'> data: </p>";

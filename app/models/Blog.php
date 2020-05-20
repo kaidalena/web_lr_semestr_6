@@ -39,7 +39,7 @@ class Blog extends BaseActiveRecordModel{
     }
 
 //сохранение в бд
-public static function importFromFile($pathFile){
+public function importFromFile($pathFile){
     $result = [];
 
     $file = fopen($pathFile, "r");
@@ -66,7 +66,7 @@ public static function importFromFile($pathFile){
 
        // echo "<br/>   ";
        // var_dump($result);
-       save($result);
+       static::save($result);
        return "Данные сохранены";
 }
 

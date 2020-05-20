@@ -28,18 +28,9 @@
             <a>Little_coon_</a>
         </h2>
         <ul>
-            <li><a href="/">Главная</a>
-            <li><a href="/aboutMe">Обо мне</a>
-            <li><a href="/interests">Мои интересы</a>
-            <li><a href="/schedule">Учеба</a>
-            <li><a href="/fotos">Фотоальбом</a>
-            <li><a href="/test">Тест</a>
-            <li><a href="/contacts">Контакты</a>
-            <li><a href="/guestBook">Гостевая книга</a>
-            <!-- <li><a href="/guest/upload">Загрузка отзывов</a> -->
-            <li><a href="/blog">Мой Блог</a>
-            <li><a href="/blogEditor">Редактор Блога</a>
-            <!-- <li><a href="/blog/upload">Загрузка сообщений блога</a> -->
+        <li><a href="/admin">Главная</a>
+            <li><a href="/admin/guest/upload">Загрузка отзывов</a>
+            <li><a href="/admin/blog/upload">Загрузка сообщений блога</a>
         </ul>
     </nav>
     <?php require $view; ?> 

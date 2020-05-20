@@ -39,6 +39,12 @@ class Router{
                 // echo "<p>_______________________________________</p>";
                 // echo "<br/> matches: ";
                 // echo var_dump($matches);
+
+                // if (array_key_exists('admin_area', $_REQUEST)){
+                //     echo "<p style='margin-left: 50px;'> this admin </p>";
+                //     echo "<p style='margin-left: 50px;'> params:".print_r($params)." </p>";
+                // }
+
                 $this->params = $params;
                 return true;
             }
@@ -47,13 +53,19 @@ class Router{
     }
 
     public function run(){
+        $admin_path ="";
+        if (array_key_exists('admin_area', $_REQUEST)){
+            $admin_path = "admin\\";
+            echo "<p style='margin-left: 50px;'> this admin </p>";
+        }
+
         if ($this->match()){
-            $path = 'app\controllers\\'.ucfirst($this->params['controller']).'Controller';      //ucfirst — Преобразует первый символ строки в верхний регистр
+            $path = "app\\${admin_path}controllers\\".ucfirst($this->params['controller']).'Controller';      //ucfirst — Преобразует первый символ строки в верхний регистр
             // $path = 'app\controllers\MainController';
-            // echo '<p>Вызов контроллера (Router run) = '.$path.'</p>';
+            echo "<p style='margin-left: 50px;'> Вызов контроллера (Router run) = $path</p>";
             if (class_exists($path)) {
                 $action = $this->params['action'].'Action';
-                // echo '<p>Вызов action (Router run)  = '.$action.'</p>';
+                echo '<p>Вызов action (Router run)  = '.$action.'</p>';
 
                 if (method_exists($path, $action)){
                     $controller = new $path($this->params);

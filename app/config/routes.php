@@ -42,11 +42,6 @@ return [
 		'action' => 'book',
 	],
 
-	'comments/upload' => [//+			Загрузка отзывов
-        	'controller' => 'guest',
-		'action' => 'upload',
-	],
-
 	'blog'=> [//+						Мой Блог
 		'controller' => 'blog',
 		'action' => 'blog',
@@ -57,8 +52,18 @@ return [
 		'action' => 'send',
 	],
 
-	'blog/upload' => [//+				Загрузка сообщений блога
+	'admin/guest/upload' => [//+			Загрузка отзывов
+		'controller' => 'guest',
+		'action' => 'upload',
+	],
+
+	'admin/blog/upload' => [//+				Загрузка сообщений блога
 		'controller' => 'blog',
 		'action' => 'upload',
+	],
+
+	'admin' => [
+		'controller' => 'main',
+		'action' => 'index',
 	]
 ];
