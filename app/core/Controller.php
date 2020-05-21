@@ -17,14 +17,14 @@ public $stat;
         //   echo "<p>Controller __construct(route)</p>";
         $this->route = $route;
         session_destroy();
-        // $_SESSION['isAdmin']= 1;
+        $_SESSION['isAdmin']= 1;
         if(!isset($_SESSION['isAdmin'])){
-            echo "<p style='margin-left: 50px;'> !isAdmin </p>";
+            // echo "<p style='margin-left: 50px;'> !isAdmin </p>";
             $this->stat = new Statistic($this->route['action']);
             $this->stat->save_statistic($this->route['controller'].'/'.$this->route['action']);
         }
         $this->model = $this->autoloadModel($route['controller']);   //загрузка определенной модкли
-         echo "<p>".var_dump($this->model)."</p> <p>before loadModel()</p>";
+        //  echo "<p>".var_dump($this->model)."</p> <p>before loadModel()</p>";
          $this->data = $this->model->loadModel();      //загрузка данных для определенного action
          $this->view = new View($this->route);
      }
@@ -39,7 +39,7 @@ public $stat;
              //создание определенной (дочерней) модели. Параметром передается action
              return new $path($this->route['action']);
         }else{
-             echo "<p>model $fn not found</p>";
+            //  echo "<p>model $fn not found</p>";
         }
 
     }

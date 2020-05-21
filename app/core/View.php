@@ -26,7 +26,7 @@ class View{
             $admin_path = "admin/";
         }
         $view = "app/${admin_path}views/".$this->path.'.php';
-        echo "<p style='margin-left: 50px;'> view: $view </p>";
+        // echo "<p style='margin-left: 50px;'> view: $view </p>";
         // echo "view::render():  path = ".$view;
         if (file_exists($view)){
             // ob_start();     //включение буффера
