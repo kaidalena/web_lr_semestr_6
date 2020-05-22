@@ -1,5 +1,7 @@
 <?php
-session_start();
+// echo "<br/> request:";
+// print_r($_REQUEST);
+// session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,9 +45,9 @@ session_start();
                 else:
                     if(isset($_SESSION['isAdmin']) && !$_SESSION['isAdmin']):
                         echo "<h2>".$_SESSION['fio']."</h2>";
-                        echo "<a href='#'>Выход</a>";
+                        echo "<a href='/exit'>Выход</a>";
                     else:
-                        echo "<a href='#'>Вход</a>";
+                        echo "<a href='/login'>Вход</a>";
                     endif;
             ?>
             

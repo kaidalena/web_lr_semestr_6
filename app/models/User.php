@@ -24,4 +24,8 @@ class User extends BaseActiveRecordModel{
         $this->validator = new ValidUser();
     }
 
+    public function exit(){
+        
+    }
+
 }

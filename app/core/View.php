@@ -22,12 +22,12 @@ class View{
         // Эта функция рассматривает ключи массива в качестве имен переменных, а их значения - в качестве значений этих переменных.
         // Для каждой пары ключ/значение будет создана переменная в текущей таблице символов
         $admin_path ="";
-        // if (array_key_exists('admin_area', $_REQUEST)){
-        //     $admin_path = "admin/";
-        // }
+        if (array_key_exists('admin_area', $_REQUEST)){
+            $admin_path = "admin/";
+        }
         $view = "app/${admin_path}views/".$this->path.'.php';
         // echo "<p style='margin-left: 50px;'> view: $view </p>";
-        echo "view::render():  path = ".$view;
+        // echo "<p>view::render():  path = ".$view</p>;
         if (file_exists($view)){
             // ob_start();     //включение буффера
             //require аналогично include, за исключением того, что при ошибке он также выдаст фатальную ошибку уровня E_COMPILE_ERROR.

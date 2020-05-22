@@ -80,5 +80,10 @@ return [
 	'login' => [
 		'controller' => 'user',
 		'action' => 'login',
+	],
+
+	'exit' => [
+		'controller' => 'user',
+		'action' => 'exit',
 	]
 ];
