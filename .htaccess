@@ -3,9 +3,5 @@ AddDefaultCharset utf-8
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^admin(.*)$ index.php?admin_area=1 [L]
 
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php
+RewriteRule ^(.*)$ index.php?admin_area=1 
