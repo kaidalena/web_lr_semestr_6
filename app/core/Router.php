@@ -56,10 +56,10 @@ class Router{
 
         // echo "<p style='margin-left: 50px;'>".$_SERVER['REQUEST_URI']."</p>";
         $admin_path ="";
-        // if (array_key_exists('admin_area', $_REQUEST)){
-        //     $admin_path = "admin\\";
-        //     echo "<p style='margin-left: 50px;'> this admin </p>";
-        // }
+        if (array_key_exists('admin_area', $_REQUEST)){
+            $admin_path = "admin\\";
+            echo "<p style='margin-left: 50px;'> this admin </p>";
+        }
 
         if ($this->match()){
             $path = "app\\${admin_path}controllers\\".ucfirst($this->params['controller']).'Controller';      //ucfirst — Преобразует первый символ строки в верхний регистр

@@ -21,9 +21,9 @@ public $stat;
             $this->stat = new Statistic($this->route['action']);
             $this->stat->save_statistic($this->route['controller'].'/'.$this->route['action']);
         }
-        echo "<p style='margin-left: 50px;'>session: ";
-        print_r($_SESSION);
-        echo "<p>";
+        // echo "<p style='margin-left: 50px;'>session: ";
+        // print_r($_SESSION);
+        // echo "<p>";
         $this->model = $this->autoloadModel($route['controller']);   //загрузка определенной модкли
         //  echo "<p>".var_dump($this->model)."</p> <p>before loadModel()</p>";
          $this->data = $this->model->loadModel();      //загрузка данных для определенного action
