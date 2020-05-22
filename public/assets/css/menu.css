@@ -55,7 +55,7 @@
 */
 .nav-toggle:after {         /*:hover, :after - псевдоклассы*/
     content: '\2630';
-    
+    left: 280;
 }
 
 
@@ -85,6 +85,7 @@
 
 [id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
     content: '\2715';
+    left: 280;
 }
 
 

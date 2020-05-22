@@ -73,7 +73,12 @@ return [
 	],
 
 	'registration' => [
-		'controller' => 'authentication',
+		'controller' => 'user',
 		'action' => 'registration',
+	],
+
+	'login' => [
+		'controller' => 'user',
+		'action' => 'login',
 	]
 ];

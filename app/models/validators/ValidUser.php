@@ -4,6 +4,6 @@ namespace app\models\validators;
 
 use app\models\validators\Validator;
 
-class ValidRegistr extends Validator {
+class ValidUser extends Validator {
 
 }

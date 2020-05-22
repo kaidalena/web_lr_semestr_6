@@ -3,9 +3,9 @@
 namespace app\models;
 
 use app\core\BaseActiveRecordModel;
-use app\models\validators\ValidRegistr;
+use app\models\validators\ValidUser;
 
-class Authentication extends BaseActiveRecordModel{
+class User extends BaseActiveRecordModel{
 
     protected static  $tablename = "users";
     protected static $dbfields = [];
@@ -17,8 +17,11 @@ class Authentication extends BaseActiveRecordModel{
     }
 
     public function registration(){
-        $this->validator = new ValidRegistr();
-        
+        $this->validator = new ValidUser();
+    }
+
+    public function login(){
+        $this->validator = new ValidUser();
     }
 
 }

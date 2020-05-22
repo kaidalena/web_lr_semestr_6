@@ -1,10 +1,3 @@
-<!-- <p>Главная страница</p>
-
-<?php foreach ($args as $val): ?>
-	<h3><?php echo $val['text']; ?></h3>
-	<p><?php echo $val['description']; ?></p>
-	<hr>
-<?php endforeach; ?> -->
 
 <section>
         <h1>Кайда Елена Николаевна</h1> 
