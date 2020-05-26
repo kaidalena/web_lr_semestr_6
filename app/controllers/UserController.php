@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\admin\controllers\MainController;
 
 
 class UserController extends Controller{
@@ -17,15 +18,15 @@ class UserController extends Controller{
         $this->view->render('Вход', [ 'controller' => $this]);
     }
 
-    public function exitAction(){
-        session_destroy();
-        $this->redir();
-    }
-
     public function login(){
+        if (MainController::login()) {
+            header('Location: /admin');    
+            return true;
+        } 
         $_SESSION['isAdmin'] = 0;
         $_SESSION['fio'] = "Kaida Lena";
         $this->redir();
+        return false;
     }
 
     public function getFIO(){

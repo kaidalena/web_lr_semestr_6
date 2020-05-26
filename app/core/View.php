@@ -13,7 +13,7 @@ class View{
         // echo '<p>View -> construct</p>';
         $this->route = $route;
         $this->path = $route['controller'].'/'.$route['action'];
-
+        // echo "path: ".$this->path;
     }
 
     public function render($title, $vars=[]){
@@ -26,6 +26,7 @@ class View{
             $admin_path = "admin/";
         }
         $view = "app/${admin_path}views/".$this->path.'.php';
+        // echo "view: ".$view;
         // echo "<p style='margin-left: 50px;'> view: $view </p>";
         // echo "<p>view::render():  path = ".$view</p>;
         if (file_exists($view)){
@@ -33,7 +34,7 @@ class View{
             //require аналогично include, за исключением того, что при ошибке он также выдаст фатальную ошибку уровня E_COMPILE_ERROR.
             // require $view;      //считывание основного кода страницы(body) в буффер
             // $content = ob_get_clean();      //заносим все из буффера в переменную content
-            require "app/${admin_path}views/layouts/".$this->layout.'.php';      //подключение шаблона default
+            require "app/views/layouts/".$this->layout.'.php';      //подключение шаблона default
         }else{
             echo 'View not found: '.$this->path;
         }

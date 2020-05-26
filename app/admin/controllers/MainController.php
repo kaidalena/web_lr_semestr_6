@@ -6,6 +6,12 @@ use app\core\Controller;
 
 class MainController extends Controller{
 
+    public function __construct($route)
+    {
+        parent::__construct($route);
+        // echo "<br/> MainController constract <br/>";
+    }
+
      public function  indexAction(){
          $var = [
              'controller' => $this,
@@ -13,12 +19,12 @@ class MainController extends Controller{
          $this->view->render('Admin', $var);
      }
 
-     public function login(){
-        if (($_POST['login']=='adminadmin@gmail.com') && (md5($_POST['password'])=='d8578edf8458ce06fbc5bb76a58c5ca4')) {
+     public static function login(){
+        if (($_POST['login']=='adminadmin@gmail.com') && (md5($_POST['password'])=='21232f297a57a5a743894a0e4a801fc3')) { //admin
             $_SESSION['isAdmin']=1;
-                return true;
-            }
-            $_SESSION['isAdmin']=0;
-            return false;
+            return true;
+        }
+        $_SESSION['isAdmin']=0;
+        return false;
      }
 }

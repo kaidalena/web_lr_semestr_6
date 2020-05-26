@@ -52,6 +52,7 @@ a {
 
 input{
   outline: none;
+  cursor: pointer;
 }
 
 input[type="button"]{
@@ -111,6 +112,12 @@ input[type="button"] {
   padding: 1%;
   color: white;
   border-radius: 4px;
+}
+
+#registration{
+  background-color: #16a085;
+  border-color: #16a085;
+  color: #000;
 }
 
 .no {

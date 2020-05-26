@@ -4,7 +4,7 @@ namespace app\admin\controllers;
 
 use app\core\Controller;
 
-class GuestController extends Controller{
+class GuestController extends AdminController{
 
      public function  uploadAction(){
          $vars=[
