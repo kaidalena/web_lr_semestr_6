@@ -24,7 +24,6 @@ class MainController extends Controller{
             $_SESSION['isAdmin']=1;
             return true;
         }
-        $_SESSION['isAdmin']=0;
         return false;
      }
 }

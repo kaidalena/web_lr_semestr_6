@@ -10,32 +10,42 @@ use app\admin\controllers\MainController;
 class UserController extends Controller{
 
     public function registrationAction(){
-
-        $this->view->render('Регистрация', [ 'controller' => $this]);
+        $this->data['controller'] = $this;
+        $this->view->render('Регистрация', $this->data);
     }
 
     public function loginAction(){
-        $this->view->render('Вход', [ 'controller' => $this]);
+        $this->data['controller'] = $this;
+        $this->view->render('Вход', $this->data);
     }
 
     public function login(){
+        
         if (MainController::login()) {
             header('Location: /admin');    
             return true;
         } 
-        $_SESSION['isAdmin'] = 0;
-        $_SESSION['fio'] = "Kaida Lena";
+        $this->model->validator->Validate($_POST);
+        if (!$this->model->validator->checkErrors()) return false;
+        $this->setUserSession();
         $this->redir();
-        return false;
+    }
+
+    public function registration(){
+        $this->model->validator->Validate($_POST);
+        $this->data['errors'] = $this->model->validator->getErrors();
+        if (!$this->model->validator->checkErrors()) return false;
+        $this->model->saveUser();
+        return true;
     }
 
     public function getFIO(){
         return $this->model->getFIO();
     }
 
-    public function saveUser(){
+    public function setUserSession(){
         $_SESSION['isAdmin'] = 0;
-        $_SESSION['fio'] = "Kaida Lena";
+        $_SESSION['fio'] = $this->model->fio;
         $this->redir();
     }
 

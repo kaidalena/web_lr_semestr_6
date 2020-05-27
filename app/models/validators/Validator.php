@@ -96,6 +96,19 @@ class Validator {
         return $this->errors['empty'];
     }
 
+    public function check_email($p1) {
+        $res = $this->isNotEmpty($p1);
+        if (!$res) return $this->errors['empty'];
+        if (preg_match('/^([A-z0-9_\.-]+)@([A-z0-9_\.-]+)\.([A-z\.]{2,6})$/', $p1)) return null;
+        return $this->errors['email'];
+    }
+
+    public function check_message($p1) {
+        $res = $this->isNotEmpty($p1);
+        if (!$res) return $this->errors['empty'];
+        return null;
+    }
+
     public function isNotEmpty($data){
         if ($data != "" && $data != null) return true;
         return false;
@@ -116,19 +129,6 @@ class Validator {
         if (preg_match('/^[0-9]{3,30}+$/', $data))
             if ($data <= $value) return null;
         return $this->errors['notValidData'];
-    }
-
-    public function check_email($p1) {
-        $res = $this->isNotEmpty($p1);
-        if (!$res) return $this->errors['empty'];
-        if (preg_match('/^([A-z0-9_\.-]+)@([A-z0-9_\.-]+)\.([A-z\.]{2,6})$/', $p1)) return null;
-        return $this->errors['email'];
-    }
-
-    public function check_message($p1) {
-        $res = $this->isNotEmpty($p1);
-        if (!$res) return $this->errors['empty'];
-        return null;
     }
 
 }

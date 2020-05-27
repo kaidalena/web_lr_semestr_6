@@ -5,13 +5,24 @@ namespace app\models\validators;
 use app\models\validators\Validator;
 
 class ValidContacts extends Validator { 
-                
-    public function check_email($p1) {
-        $res = $this->isNotEmpty($p1);
-        if (!$res) return $this->errors['empty'];
-        if (preg_match('/^([A-z0-9_\.-]+)@([A-z0-9_\.-]+)\.([A-z\.]{2,6})$/', $p1)) return null;
-        return $this->errors['email'];
-    }
+
+    public $rules = [
+        'name' => "Пример: Иванов Иван Иванович",
+        'email' => "Пример: example33@ety.ru",
+        'data' => "Нажмитe на поле ввода для выбора даты",
+        'phone' => "Пример: +71234567890 / +31234567890",
+        'message' => "Текст вашего сообщения",
+    ];
+
+    public $errors = [
+        'name' => "Имя должно состоять из трех слов и может содержать только русские буквы длиной до 30 символов",
+        'email' => "E-mail указан не верно",
+        'age' => "Выберите свой возраст",
+        'emptyData' => "Введите дату рождения",
+        'empty' => "Поле не должно быть пустым",
+        'notValidData' => "Неверная дата",
+        'phone' => "Неверный номер телефона",
+    ];
 
     public function check_data($p1) {
         $res = $this->isNotEmpty($p1);
@@ -25,12 +36,6 @@ class ValidContacts extends Validator {
         if (!$res) return $this->errors['empty'];
         if (preg_match('/^[+]{1}[37]{1}[0-9]{10}+$/', $p1)) return null;
         else return $this->errors['phone'];
-    }
-
-    public function check_message($p1) {
-        $res = $this->isNotEmpty($p1);
-        if (!$res) return $this->errors['empty'];
-        return null;
     }
 
     public function check_age($p1) {
