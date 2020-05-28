@@ -5,7 +5,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\admin\controllers\MainController;
-
+use SimpleXMLElement;
 
 class UserController extends Controller{
 
@@ -37,6 +37,14 @@ class UserController extends Controller{
         if (!$this->model->validator->checkErrors()) return false;
         $this->model->saveUser();
         return true;
+    }
+
+    public function check_loginAction(){
+        $post = file_get_contents('php://input');
+        $login = new SimpleXMLElement($post);
+        // echo "parse: ".$login->login[0];
+        $result = $this->model->check_exisists_login($login->login[0]);
+        if (!$result) echo "Такой логин уже существует";
     }
 
     public function getFIO(){

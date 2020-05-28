@@ -85,5 +85,20 @@ return [
 	'exit' => [
 		'controller' => 'user',
 		'action' => 'exit',
+	],
+
+	'lab4' => [
+		'controller' => 'lab4test',
+		'action' => 'test',
+	],
+
+	'send' => [
+		'controller' => 'lab4test',
+		'action' => 'send',
+	],
+
+	'check_login' => [
+		'controller' => 'user',
+		'action' => 'check_login',
 	]
 ];

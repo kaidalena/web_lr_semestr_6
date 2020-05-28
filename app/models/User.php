@@ -37,6 +37,9 @@ class User extends BaseActiveRecordModel{
 
     public function exit(){}
 
+    public function check_login(){}
+
+
     public function check_exisists_login($login){
         $search = $this->find("`login`", "'".$login."'");
         return empty($search);      //true если пусто

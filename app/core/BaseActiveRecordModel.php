@@ -23,8 +23,8 @@ abstract class BaseActiveRecordModel extends Model {
         static::setupConnection();
         static::getFields();
 
-        echo "<script> console.log('BaseActiveRecord constructor');
-                        console.log('table name: ".static::$tablename."'); </script>";
+        // echo "<script> console.log('BaseActiveRecord constructor');
+        //                 console.log('table name: ".static::$tablename."'); </script>";
     }
 
     public static function getFields() {
@@ -99,7 +99,7 @@ abstract class BaseActiveRecordModel extends Model {
 
         $query = "INSERT INTO ".static::$tablename."($fields) VALUES ($val)";
 
-        echo "<script> console.log('query:' + '$query'); </script>";
+        // echo "<script> console.log('query:' + '$query'); </script>";
 
         $stmt = static::$pdo->prepare($query);
         try {
