@@ -19,7 +19,8 @@ public $validator;
     public function loadModel(){
      //     echo "<p>loadModel</p>";
         $method = $this->method;
-        return $this->$method();
+        if (method_exists($this,$method))
+          return $this->$method();
     }
 
 }

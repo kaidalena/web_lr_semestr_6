@@ -26,7 +26,7 @@ public $stat;
         // echo "<p>";
         $this->model = $this->autoloadModel($route['controller']);   //загрузка определенной модкли
         //  echo "<p>before loadModel()</p>";
-        //  $this->data = $this->model->loadModel();      //загрузка данных для определенного action
+         $this->data = $this->model->loadModel();      //загрузка данных для определенного action
          $this->view = new View($this->route);
         //  echo "<p>after new View()</p>";
      }

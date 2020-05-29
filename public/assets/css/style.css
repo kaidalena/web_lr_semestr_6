@@ -385,48 +385,95 @@ ul[id="submenu"] li a {
   left: 55%;
 }
 
-table.comments{
+table.blog .green{
+  background-color: rgba(100, 200, 150, 0.4);
+}
+
+table.blog{
      margin: 5% auto;
 }
 
-table.comments td{
+table.blog td{
      margin: 2em;
-     background-color: rgba(100, 200, 150, 0.4);
      border-radius: 2em;
-     padding: 2em;
+     padding: 0;
 }
 
 table .info{
-     width: 20em;
+     width: 350px;
+     /* min-height: 180px; */
+     padding: 20px;
+}
+
+table .msg{
+  padding: 0;
 }
 
 table .text{
-     width: 40em;
+     width: 34em;
+     padding: 2em 2em 1em 2em;
 }
 
-table.comments h4{
+.icon-comment{
+  position: relative;
+  margin: auto 1em 1em auto;
+  height: auto;
+  width: min-content;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.icon-comment::before{
+  color: black;
+  content: '\2709';
+}
+
+table.blog h4{
   font-size: 30px;
   color: #000;
   margin: 7px 0;
 }
 
-table.comments h5{
+table.blog h5{
   font-size: 20px;
   text-align: center;
   font-style: italic;
 }
 
-table.comments p{
+table.blog p{
   font-size: 15px;
   color: #333;
   margin: 0;
 }
 
-table.comments img{
-  width: 18em;
+table.blog img{
+  width: 310px;
   height: auto;
+  border-radius: 10px;
 }
 
-table.comments div{
+table.blog div{
   font-size: 18px;
+}
+
+table .comment{
+  padding: 0 20px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+table .comment h4{
+  display: inline;
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+table .comment h5{
+  display: inline;
+  font-size: 14px;
+  color: #565d66;
+}
+
+table .comment p{
+  margin-bottom: 30px;
 }

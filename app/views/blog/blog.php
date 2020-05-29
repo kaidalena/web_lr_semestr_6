@@ -8,7 +8,7 @@
 
      <h1>Мой Блог</h1>
 
-     <table class="comments">
+     <table class="blog">
           <tbody>
 
                <?php
@@ -21,14 +21,30 @@
                               // echo "<script> console.log('file: ".$value['fio']."'); </script>";
                               echo "<tr>";
                               $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['date']);
-                              echo "<td class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";
+                              echo "<td class='green'><div class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";
 
-                              echo ($temp['img src'] == null) ? "</td>" : "<img src='" .$temp['img src'].$temp['img name']."'></td>";
-                              // echo "<script> console.log(\"<img src='" .$temp['img src'].$temp['img name']."'></td>\") </script>";
+                              echo ($temp['img src'] == null) ? "</div>" : "<img src='" .$temp['img src'].$temp['img name']."'></div>";
 
-                              echo "<td class=\"text\"><h3>".$temp['topic']."</h3>";
-                              echo "<p>".$temp['message']."</p></td>";
+                              echo "</td><td class='msg green'><div class=\"text\"><h3>".$temp['topic']."</h3>";
+                              echo "<p>".$temp['message']."</p></div>
+                                   <div id='comment' class='icon-comment' data-toggle='popover' data-content='Оставить комментарий' ></div>
+                                   </td>";
                               echo "</tr>";
+
+                              echo "<tr> <td></td> <td> Коментарии
+                              <div class='comment'>
+                                   <h4>Кайда Елена</h4> <h5>22:00:03</h5> 
+                                   <p>Это мой комментарий</p>
+                              </div>
+                              <div class='comment'>
+                                   <h4>Кайда Елена</h4> <h5>22:00:03</h5> 
+                                   <p>Это мой комментарийЭто мой комментарийЭто мой комментарий</p>
+                              </div>
+                              <div class='comment'>
+                                   <h4>Кайда Елена</h4> <h5>22:00:03</h5> 
+                                   <p>Это мой комментарий новый комментарий</p>
+                              </div>
+                              </td></tr>";
                          }
                     endif;
                ?>
