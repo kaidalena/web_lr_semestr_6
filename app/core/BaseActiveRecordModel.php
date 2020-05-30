@@ -56,6 +56,7 @@ abstract class BaseActiveRecordModel extends Model {
     public static function find($field, $value){
         $sql = "SELECT * FROM ".static::$tablename." WHERE $field=$value";
         $stmt = static::$pdo->query($sql);
+
         if ($stmt == false) return null;
 
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);

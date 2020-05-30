@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\core\Model;
 use app\models\validators\ValidBlog;
+use app\models\Comments;
 use app\core\BaseActiveRecordModel;
 
 class Blog extends BaseActiveRecordModel{
@@ -33,9 +34,16 @@ class Blog extends BaseActiveRecordModel{
     }
 
     public function blog(){
+        $data = $this->linksPages();
+        // var_dump($data);
+        $this->getAllComments($data['rows']);
+        // return 
+    }
 
-        // $diaryDB->linksPages();
-        return $this->linksPages();
+    public function getAllComments($rows){
+        $commentModel = new Comments(null);
+        foreach($rows as $temp)
+            $commentModel->getComments($temp['id']);
     }
 
 //сохранение в бд
