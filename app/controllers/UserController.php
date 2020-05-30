@@ -39,10 +39,6 @@ class UserController extends Controller{
         return true;
     }
 
-    public function getFIO(){
-        return $this->model->getFIO();
-    }
-
     public function setUserSession(){
         $_SESSION['isAdmin'] = 0;
         $_SESSION['fio'] = $this->model->fio;

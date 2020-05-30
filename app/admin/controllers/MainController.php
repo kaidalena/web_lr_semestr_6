@@ -6,10 +6,8 @@ use app\core\Controller;
 
 class MainController extends Controller{
 
-    public function __construct($route)
-    {
+    public function __construct($route){
         parent::__construct($route);
-        // echo "<br/> MainController constract <br/>";
     }
 
      public function  indexAction(){
