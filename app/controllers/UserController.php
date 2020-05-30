@@ -4,7 +4,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\admin\controllers\MainController;
+use app\admin\controllers\MainAdminController;
 
 
 class UserController extends Controller{
@@ -20,15 +20,15 @@ class UserController extends Controller{
     }
 
     public function login(){
-        
-        if (MainController::login()) {
+        if (MainAdminController::authAdmin()) {    //Main Admin Controller   action=auth
             header('Location: /admin');    
             return true;
         } 
-        $this->model->validator->Validate($_POST);
-        if (!$this->model->validator->checkErrors()) return false;
-        $this->setUserSession();
-        $this->redir();
+        if ($this->model->authUser($_POST)){
+            $this->setUserSession();
+            $this->redir();
+        }
+        return false;
     }
 
     public function registration(){
@@ -42,7 +42,6 @@ class UserController extends Controller{
     public function setUserSession(){
         $_SESSION['isAdmin'] = 0;
         $_SESSION['fio'] = $this->model->fio;
-        $this->redir();
     }
 
     public function redir(){

@@ -1,6 +1,6 @@
 <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-                $controller->login();
+                $controller->authAdmin();
                 header('Location: /admin');
         }
 

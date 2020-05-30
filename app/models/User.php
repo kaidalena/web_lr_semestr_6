@@ -59,4 +59,10 @@ class User extends BaseActiveRecordModel{
         ];
         $this->save($val);
     }
+
+    public function authUser($post){
+        $this->validator->Validate($post);
+        if (!$this->validator->checkErrors()) return false;
+        return true;
+    }
 }
