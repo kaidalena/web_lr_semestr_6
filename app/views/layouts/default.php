@@ -20,6 +20,7 @@
     <script src="/public/scripts/calendar.js"></script>
     <script src="/public/scripts/fotos.js"></script>
     <script src="/public/scripts/interests.js"></script>
+    <script src="/public/scripts/blog.js"></script>
 
     <!-- <script src="public/scripts/clock.js"></script> -->
 </head>
@@ -63,7 +64,6 @@
             <li><a href="/guestBook">Гостевая книга</a>
             <li><a href="/blog">Мой Блог</a>
             <li><a href="/blogEditor">Редактор Блога</a>
-            <li><a href="/registration">Регистрация</a>
 
         </ul>
     </nav>

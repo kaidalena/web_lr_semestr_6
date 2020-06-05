@@ -52,12 +52,11 @@ a {
 
 input{
   outline: none;
-  cursor: pointer;
 }
 
-input[type="button"]{
+input[type="submit"], input[type="button"], select{
   cursor: pointer;
-} 
+}
 
 .leftImg {
   width: 200px;
@@ -342,7 +341,11 @@ ul[id="submenu"] li a {
   display: none;
   height: 100%;
   position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
 }
+
 [id="modalWindow"]:before {
   content: '';
   background: #000;
@@ -352,37 +355,53 @@ ul[id="submenu"] li a {
   top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.7;
+  opacity: 0.6;
   z-index: 100;
 }
 
 [id="modalDiv"] {
-  /* position: fixed; */
+  position: relative;
   filter: blur(0px);
-  /* top: 40%;
-  left: 40%; */
   margin: auto;
   height: fit-content;
   width: max-content;
-  padding: 20px;
+  padding: 2em;
   background: #fff;
   border: 1px solid orange;
-  border-radius: 5%;
+  border-radius: 2em;
   z-index: 1000;
   opacity: 1;
 }
 
-/* .close {
-  position: absolute;
-  top: 60px;
-} */
-
-[id="yes"] {
-  left: 35%;
+#modalDiv .exit{
+    position: relative;
+    margin: -1em -1em auto auto;
+    height: auto;
+    width: min-content;
+    font-style: normal;
+    cursor: pointer;
 }
 
-[id="no"] {
-  left: 55%;
+#modalDiv .exit::before {
+    color: black;
+    content: '\2715';
+} 
+
+#modalDiv #text, #modalDiv #saveComment{
+  display: block;
+  margin: auto;
+}
+
+#modalDiv #saveComment{
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+}
+
+#modalDiv #text{
+  margin: 30px auto;
+  width: 400px;
+  height: 100px;
 }
 
 table.blog .green{
@@ -407,10 +426,11 @@ table .info{
 
 table .msg{
   padding: 0;
+  width: 700px;
 }
 
 table .text{
-     width: 34em;
+     width: auto;
      padding: 2em 2em 1em 2em;
 }
 
@@ -460,11 +480,13 @@ table .comment{
   padding: 0 20px;
   text-align: left;
   margin-bottom: 30px;
+  word-wrap: break-word;
+  width: 670px;
 }
 
 table .comment h4{
   display: inline;
-  font-size: 18px;
+  font-size: 19px;
   margin-right: 5px;
 }
 
@@ -476,4 +498,26 @@ table .comment h5{
 
 table .comment p{
   margin-bottom: 30px;
+}
+
+.saveOK, .saveNO{
+  margin: auto;
+  display: block;
+  width: max-content;
+  height: auto;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.saveNO{
+  color: rgb(192, 3, 3);
+  border-color: rgb(192, 3, 3);
+  background-color: rgba(255, 86, 86, 0.2);
+}
+
+.saveOK{
+  color: green;
+  border-color: green;
+  background-color: rgba(114, 253, 114, 0.3);
 }

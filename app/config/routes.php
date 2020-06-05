@@ -100,5 +100,10 @@ return [
 	'check_login' => [
 		'controller' => 'user',
 		'action' => 'check_login',
+	],
+
+	'addComment' => [
+		'controller' => 'comments',
+		'action' => 'addComment',
 	]
 ];

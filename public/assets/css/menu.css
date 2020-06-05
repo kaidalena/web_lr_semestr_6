@@ -79,7 +79,7 @@
 */
 
 [id='nav-toggle']:checked ~ .nav>.nav-toggle {
-    left: 260;
+    left: 270px;
 }
 
 [id='nav-toggle']:checked ~ .nav > .nav-toggle:after {

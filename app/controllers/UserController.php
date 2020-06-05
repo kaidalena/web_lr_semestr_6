@@ -54,6 +54,7 @@ class UserController extends Controller{
     public function setUserSession(){
         $_SESSION['isAdmin'] = 0;
         $_SESSION['fio'] = $this->model->fio;
+        $_SESSION['id_user'] = $this->model->id_user;
         $this->redir();
     }
 

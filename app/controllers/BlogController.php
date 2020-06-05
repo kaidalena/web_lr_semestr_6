@@ -6,6 +6,8 @@ namespace app\controllers;
 use app\core\Controller;
 use app\models\Blog;
 use app\models\BlogRecord;
+use app\models\Comments;
+use app\models\User;
 
 
 class BlogController extends Controller{
@@ -19,11 +21,34 @@ class BlogController extends Controller{
 
     public function  blogAction(){
         $this->data['controller'] = $this;
+        $commentModel = new Comments(null);
+        $userModel = new User(null);
+        $this->connectDataWithComments($commentModel->selectAll(), $userModel->findAll());
+        // var_dump($this->data);
         // echo "<p style='margin: 50px;'> data: </p>";
         // echo "<p>".var_dump($this->data)."</p>";
         $this->view->render('Мой Блог', $this->data);
     }
 
+    public function connectDataWithComments($comments, $users){
+        $j=0;
+        foreach ($comments as $record){
+            foreach($users as $one){
+                if ($record['id_user'] === $one['id'])
+                    $comments[$j]['user'] = $one['name'];
+            }
+            $j++;
+        }
+
+        foreach ($comments as $record){
+            for($i=0; $i<count($this->data['rows']); $i++){
+                if ($this->data['rows'][$i]['id'] == $record['id_blog']){
+                    $j = (empty($this->data['rows'][$i]['comments'])) ? 0 : count($this->data['rows'][$i]['comments']);
+                    $this->data['rows'][$i]['comments'][$j] = $record;
+                }
+            }
+        }
+    }
 
     public function saveRecords($nameField){
         // echo "<p style=\"margin: 50px;\">\$_FILES: "; var_dump($FILES); echo "</p>";

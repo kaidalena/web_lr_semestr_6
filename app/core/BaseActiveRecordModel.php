@@ -73,10 +73,10 @@ abstract class BaseActiveRecordModel extends Model {
             $sql = "SELECT * FROM ".static::$tablename;
             $stmt = static::$pdo->query($sql);
 
-            $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
             // echo "<p>".var_dump($stmt)." </p>";
 
-            return $stmt;
+            return $res;
         }
     }
 
@@ -106,13 +106,16 @@ abstract class BaseActiveRecordModel extends Model {
         try {
             static::$pdo->beginTransaction();
             foreach ($values as $row){
-                $stmt->execute($row);
+                $res = $stmt->execute($row);
+                if (!$res) return false;
             }
             static::$pdo->commit();
         }catch (PDOException $e){
             static::$pdo->rollback();
             throw $e;
         }
+
+        return true;
     }
 
 

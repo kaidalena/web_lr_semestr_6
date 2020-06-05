@@ -4,7 +4,6 @@ namespace app\models;
 
 use app\core\Model;
 use app\models\validators\ValidBlog;
-use app\models\Comments;
 use app\core\BaseActiveRecordModel;
 
 class Blog extends BaseActiveRecordModel{
@@ -34,17 +33,13 @@ class Blog extends BaseActiveRecordModel{
     }
 
     public function blog(){
-        $data = $this->linksPages();
+        return $this->linksPages();
         // var_dump($data);
-        $this->getAllComments($data['rows']);
+        // $this->getAllComments($data['rows']);
         // return 
     }
 
-    public function getAllComments($rows){
-        $commentModel = new Comments(null);
-        foreach($rows as $temp)
-            $commentModel->getComments($temp['id']);
-    }
+    
 
 //сохранение в бд
 public function importFromFile($pathFile){
@@ -104,6 +99,7 @@ public function importFromFile($pathFile){
         $query = "SELECT * FROM ".static::$tablename." ORDER BY `".static::$tablename."`.`date` DESC LIMIT $start, $per_page";
 
         $rows = static::$pdo->query($query);
+        $rows = $rows->fetchAll(static::$pdo::FETCH_ASSOC);
 
         // foreach (static::$pdo->query($query) as $i => $str) {
         //     echo ($i+$start).". ".var_dump($str)."<br>\n";

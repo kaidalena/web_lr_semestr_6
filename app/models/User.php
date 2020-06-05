@@ -13,6 +13,7 @@ class User extends BaseActiveRecordModel{
     protected static $dbfields = [];
     public static  $pdo;
     public $fio;
+    public $id_user;
 
     public function __construct($action){
         //  echo "<p>Blog Model __construct(action)</p>";
@@ -53,6 +54,7 @@ class User extends BaseActiveRecordModel{
         
         if ($stmt == false) return false;
         $this->fio = $stmt['name'];
+        $this->id_user = $stmt['id'];
         return true;
     }
      
