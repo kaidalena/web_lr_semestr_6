@@ -7,6 +7,7 @@ use app\core\Controller;
 class MainController extends Controller{
 
      public function  indexAction(){
+          echo "admin main controller";
          $var = [
              'controller' => $this,
          ];

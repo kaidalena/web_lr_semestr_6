@@ -29,7 +29,7 @@ class Router{
         // echo "<p style='margin: 50px;'> url: $url </p>";
         // echo "<p>this routs: ".var_dump($this->routes)."</p>";
         foreach( $this->routes as $route => $params){
-            
+
                 // echo "<br/>routs: ";
                 // var_dump($route);
                 // echo "<br/>params: ";
@@ -64,7 +64,7 @@ class Router{
         if ($this->match()){
             $path = "app\\${admin_path}controllers\\".ucfirst($this->params['controller']).'Controller';      //ucfirst — Преобразует первый символ строки в верхний регистр
             // $path = 'app\controllers\MainController';
-            // echo "<p style='margin-left: 50px;'> Вызов контроллера (Router run) = $path</p>";
+            echo "<p style='margin-left: 50px;'> Вызов контроллера (Router run) = $path</p>";
             if (class_exists($path)) {
                 $action = $this->params['action'].'Action';
                 // echo '<p>Вызов action (Router run)  = '.$action.'</p>';
