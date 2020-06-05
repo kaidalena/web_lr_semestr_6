@@ -112,7 +112,15 @@
         </ol>
     </form>
 
+    <br/>
     <h1> Результаты тестов </h1>
+    <?php if(!$user):
+            echo "<h2>Авторизируйтесь для просмотра результатов тестирования</h2>";
+        else:
+            if(empty($results)):
+                echo "<h2>Нет результатов</h2>";
+            else:
+    ?>
     <table class="comments">
         <tbody>
             <?php
@@ -127,7 +135,9 @@
                         $index  = "answer".$i;
                         echo "<div>$i. ".$temp[$index];
                         $index  = "flag".$i;
-                        if (!$temp[$index]) echo "<pre style='font-size: 20 px;'> Не верно </pre>";
+                        if (!$temp[$index]):
+                            echo "<pre style='font-size: 20 px;'> Не верно </pre>";
+                        endif;
                         echo"</div>";
                     }
                     echo "</td></tr>";
@@ -136,4 +146,8 @@
             ?>
         </tbody>
     </table>
+    <?php 
+            endif; 
+        endif;
+    ?>
 </section>

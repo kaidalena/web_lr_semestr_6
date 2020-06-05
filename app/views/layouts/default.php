@@ -30,25 +30,27 @@
         <h2 class="logo">
             <a>Little_coon_</a>
         </h2>
+        
+        <?php
+            if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']):
+                echo "<h2>Admin</h2>";
+                echo "<h3><a href='/exit'>Выход</a></h3>";
+        ?>
         <ul>
-            <?php
-                if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']):
-            ?>
-            <h2>Admin</h2>
-
-            <li><a href="/admin">Вход</a>
             <li><a href="/admin/guest/upload">Загрузка отзывов</a>
             <li><a href="/admin/blog/upload">Загрузка сообщений блога</a>
             <li><a href="/admin/statistic/visitings">Статистика посещаемости</a>
 
             <?php
                 else:
-                    if(isset($_SESSION['isAdmin']) && !$_SESSION['isAdmin']):
+                    echo "<ul>";
+                    if(isset($_SESSION['isAdmin']) && !$_SESSION['isAdmin']){
                         echo "<h2>".$_SESSION['fio']."</h2>";
-                        echo "<a href='/exit'>Выход</a>";
-                    else:
-                        echo "<a href='/login'>Вход</a>";
-                    endif;
+                        echo "<h3><a href='/exit'>Выход</a></h3>";
+                    }else{
+                        echo "<h3><a href='/login'>Вход</a></h3>";
+                    }
+                endif;
             ?>
             
             <li><a href="/">Главная</a>
@@ -63,9 +65,6 @@
             <li><a href="/blogEditor">Редактор Блога</a>
             <li><a href="/registration">Регистрация</a>
 
-            <?php
-                endif;
-            ?>
         </ul>
     </nav>
     <?php require $view; ?> 

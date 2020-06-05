@@ -18,7 +18,7 @@ class Statistic extends BaseActiveRecordModel{
     public $browser_name;
 
     public function save_statistic($page){
-        echo "<p style='margin-left: 50px;'> save_statistic </p>";
+        // echo "<p style='margin-left: 50px;'> save_statistic </p>";
         $this->date = date('Y-m-d h:m:s');
         $this->web_page = $page;
         $this->ip_address = $_SERVER['REMOTE_ADDR'];

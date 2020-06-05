@@ -63,7 +63,7 @@ return [
 	],
 
 	'admin' => [
-		'controller' => 'main',
+		'controller' => 'mainAdmin',
 		'action' => 'index',
 	],
 

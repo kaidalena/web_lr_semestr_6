@@ -53,9 +53,10 @@ abstract class BaseActiveRecordModel extends Model {
         }
     }
 
-    public static function find($id){
-        $sql = "SELECT * FROM ".static::$tablename." WHERE id=$id";
+    public static function find($field, $value){
+        $sql = "SELECT * FROM ".static::$tablename." WHERE $field=$value";
         $stmt = static::$pdo->query($sql);
+        if ($stmt == false) return null;
 
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -69,7 +70,6 @@ abstract class BaseActiveRecordModel extends Model {
     public static function findAll($fields = null) {
         if ($fields == null){
             $sql = "SELECT * FROM ".static::$tablename;
-            echo "<script> console.log('query:' + '$sql'); </script>";
             $stmt = static::$pdo->query($sql);
 
             $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);

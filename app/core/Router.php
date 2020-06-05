@@ -58,7 +58,7 @@ class Router{
         $admin_path ="";
         if (array_key_exists('admin_area', $_REQUEST)){
             $admin_path = "admin\\";
-            echo "<p style='margin-left: 50px;'> this admin </p>";
+            // echo "<p style='margin-left: 50px;'> this admin area </p>";
         }
 
         if ($this->match()){

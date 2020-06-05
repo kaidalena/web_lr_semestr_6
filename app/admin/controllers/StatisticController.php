@@ -6,7 +6,7 @@ namespace app\admin\controllers;
 use app\core\Controller;
 
 
-class StatisticController extends Controller{
+class StatisticController extends AdminController{
 
     public function  visitingsAction(){
         $this->data['controller'] = $this;

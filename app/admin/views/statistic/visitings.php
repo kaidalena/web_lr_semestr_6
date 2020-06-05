@@ -4,7 +4,7 @@
     <table class="comments">
         <tbody>
             <?php
-                foreach($data as $temp){
+                foreach($rows as $temp){
                     echo "<tr>";
                     $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['date']);
                     echo "<td class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";

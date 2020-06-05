@@ -25,7 +25,8 @@ class Exam extends BaseActiveRecordModel{
             'valid' => $this->validator,
             'rules' => $this->validator->getRules(),
             'errors' => $this->validator->getErrors(),
-            'results' => parent::findAll()
+            'results' => parent::findAll(),
+            'user' => (isset($_SESSION['fio']) || $_SESSION['isAdmin'])
         ];
     }
 

@@ -4,38 +4,44 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\admin\controllers\MainAdminController;
 
 
 class UserController extends Controller{
 
     public function registrationAction(){
-
-        $this->view->render('Регистрация', [ 'controller' => $this]);
+        $this->data['controller'] = $this;
+        $this->view->render('Регистрация', $this->data);
     }
 
     public function loginAction(){
-        $this->view->render('Вход', [ 'controller' => $this]);
-    }
-
-    public function exitAction(){
-        session_destroy();
-        $this->redir();
+        $this->data['controller'] = $this;
+        $this->view->render('Вход', $this->data);
     }
 
     public function login(){
-        $_SESSION['isAdmin'] = 0;
-        $_SESSION['fio'] = "Kaida Lena";
-        $this->redir();
+        if (MainAdminController::authAdmin()) {    //Main Admin Controller   action=auth
+            header('Location: /admin');    
+            return true;
+        } 
+        if ($this->model->authUser($_POST)){
+            $this->setUserSession();
+            $this->redir();
+        }
+        return false;
     }
 
-    public function getFIO(){
-        return $this->model->getFIO();
+    public function registration(){
+        $this->model->validator->Validate($_POST);
+        $this->data['errors'] = $this->model->validator->getErrors();
+        if (!$this->model->validator->checkErrors()) return false;
+        $this->model->saveUser();
+        return true;
     }
 
-    public function saveUser(){
+    public function setUserSession(){
         $_SESSION['isAdmin'] = 0;
-        $_SESSION['fio'] = "Kaida Lena";
-        $this->redir();
+        $_SESSION['fio'] = $this->model->fio;
     }
 
     public function redir(){
