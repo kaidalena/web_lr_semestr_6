@@ -105,5 +105,10 @@ return [
 	'addComment' => [
 		'controller' => 'comments',
 		'action' => 'addComment',
+	],
+
+	'blog/updateRecord' => [
+		'controller' => 'blog',
+		'action' => 'updateRecord',
 	]
 ];

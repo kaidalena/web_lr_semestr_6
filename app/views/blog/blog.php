@@ -9,14 +9,21 @@
      <div id="modalWindow">
         <div id="modalDiv">
           <div class="exit" onclick="commentExit()"></div>
+          <div id="respons"></div>
           <?php
                if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']===0 && !empty($_SESSION['fio'])):
           ?>
-            <div id="respons"></div>
             <h2>Добавление комментария</h2>
-            <input type="textarea" id="text" placeholder="Ваш комментарий...">
+            <textarea id="text" placeholder="Ваш комментарий..."></textarea>
             <input type="button" id="saveComment" value="Сохранить" onclick="create_script()">
 
+          <?php
+               elseif (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']===1):
+          ?>
+            <h2>Редактирование записи</h2>
+            <input type="text" id="topic" name="topic">
+            <textarea id="text" name="text"> </textarea>
+            <input type="button" id="saveRecord" value="Сохранить" onclick="saveFetch()">
           <?php
                else:
                     echo "<h3>Комментирование доступно только авторизированным пользователям</h3>";
@@ -37,33 +44,35 @@
                          <h2>Нет записей</h2>
                <?php else:
                          foreach ($rows as $temp) {
-                              // echo "<p> data: ".var_dump($temp)."</p>";
-                              // echo "<script> console.log('file: ".$value['fio']."'); </script>";
                               echo "<tr>";
                               $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['date']);
                               echo "<td class='green'><div class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";
 
                               echo ($temp['img src'] == null) ? "</div>" : "<img src='" .$temp['img src'].$temp['img name']."'></div>";
 
-                              echo "</td><td class='msg green'><div class=\"text\"><h3>".$temp['topic']."</h3>";
+                              echo "</td><td class='msg green'><div class=\"text\">
+                                   <input type='hidden' class='id_blog' value=".$temp['id'].">
+                                   <h3>".$temp['topic']."</h3>";
                               echo "<p>".$temp['message']."</p></div>
-                                   <div id='comment' class='icon-comment' data-toggle='popover' data-content='Оставить комментарий' onclick=\"newComment(this)\">
-                                   <input type='hidden' id='id_blog' value=".$temp['id'].">
+                                   <div id='comment' ".
+                                   ((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) 
+                                        ? "class='icon-comment admin' data-toggle='popover' data-content='Редактировать' onclick=\"editRecord(".$temp['id'].")\"" 
+                                        : "class='icon-comment user' data-toggle='popover' data-content='Оставить комментарий' onclick=\"newComment(".$temp['id'].")\"").">
                                    </div>
                                    </td>";
                               echo "</tr>";
 
-                              
+                              echo "<tr> <td></td> <td>";
                               if (!empty($temp['comments'])){
-                                   echo "<tr> <td></td> <td> <p style='color: #036f03; font-size: 25px; padding: 10px 0;'>Комментарии</p>";
+                                   echo "<p id='titleComment'>Комментарии</p>";
                                    foreach($temp['comments'] as $comment){
                                         echo "<div class='comment'>
                                              <h4>".$comment['user']."</h4> <h5>".$comment['date']."</h5> 
                                              <p>".$comment['message']."</p>
                                         </div>";
                                    }
-                                   echo "</td></tr>";
                               }
+                              echo "</td></tr>";
                          }
                     endif;
                ?>

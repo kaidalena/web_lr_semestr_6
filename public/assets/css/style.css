@@ -344,6 +344,7 @@ ul[id="submenu"] li a {
   text-align: center;
   vertical-align: middle;
   justify-content: center;
+  align-items: center;
 }
 
 [id="modalWindow"]:before {
@@ -360,7 +361,7 @@ ul[id="submenu"] li a {
 }
 
 [id="modalDiv"] {
-  position: relative;
+  position: fixed;
   filter: blur(0px);
   margin: auto;
   height: fit-content;
@@ -443,9 +444,14 @@ table .text{
   cursor: pointer;
 }
 
-.icon-comment::before{
+.icon-comment.user::before{
   color: black;
   content: '\2709';
+}
+
+.icon-comment.admin::before{
+  color: black;
+  content: '\270E';
 }
 
 table.blog h4{
@@ -520,4 +526,22 @@ table .comment p{
   color: green;
   border-color: green;
   background-color: rgba(114, 253, 114, 0.3);
+}
+
+#topic{
+  width: 250px;
+}
+
+#saveComment, #saveRecord, #topic, #text{
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: auto;
+  outline: none;
+}
+
+#titleComment{
+  color: #036f03; 
+  font-size: 25px; 
+  padding: 10px 0;
 }

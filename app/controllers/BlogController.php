@@ -64,6 +64,13 @@ class BlogController extends Controller{
         return "Ошибка загрузки";
     }
 
+    public function updateRecordAction(){
+        header('Content-Type: application/json');
+        $newData = (array) json_decode(file_get_contents('php://input'));
+        $result = $this->model->save($newData);
+        echo $result;
+    }
+
     public function save($post_array, $files_array){
 
         $post_array['userFile'] = $files_array;

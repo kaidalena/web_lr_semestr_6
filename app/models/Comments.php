@@ -15,7 +15,7 @@ class Comments extends BaseActiveRecordModel{
     }
 
     public function selectAll(){
-        $query = "SELECT * FROM ".static::$tablename." ORDER BY `".static::$tablename."`.`id_blog`, `".static::$tablename."`.`date` DESC LIMIT $start, $per_page";
+        $query = "SELECT * FROM ".static::$tablename." ORDER BY `".static::$tablename."`.`id_blog`, `".static::$tablename."`.`date` DESC";
         $rows = static::$pdo->query($query);
         $rows = $rows->fetchAll(static::$pdo::FETCH_ASSOC);
         return $rows;

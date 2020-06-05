@@ -80,40 +80,47 @@ abstract class BaseActiveRecordModel extends Model {
         }
     }
 
-
-
     public function save($values) {
-        // echo "<p>".var_dump($values)."</p>";
-        //Запрос должен выглядить так:
         //INSERT INTO nameTable (field1, field2, field3) VALUES (?,?,?);
 
-        $fields = "";
-        $val = "";
-
-        foreach(static::$dbfields as $temp){
-            $fields .= "`".$temp."`,";
-            $val = $val.'?,';
-        }
-
-        $fields = rtrim($fields, ",");
-        $val = rtrim($val, ",");
-
-        $query = "INSERT INTO ".static::$tablename."($fields) VALUES ($val)";
-
-        // echo "<script> console.log('query:' + '$query'); </script>";
-
-        $stmt = static::$pdo->prepare($query);
-        try {
-            static::$pdo->beginTransaction();
-            foreach ($values as $row){
-                $res = $stmt->execute($row);
-                if (!$res) return false;
+        if (isset($values['id'])){
+            $sql = "UPDATE ".static::$tablename." SET ".$this->pdoSet(array_keys($values), array_values($values))." WHERE id = :id";
+            $stm = static::$pdo->prepare($sql);
+            try{
+                if (!$stm->execute($values)) return 0;
+            }catch (PDOException $e){
+                static::$pdo->rollback();
+                throw $e;
             }
-            static::$pdo->commit();
-        }catch (PDOException $e){
-            static::$pdo->rollback();
-            throw $e;
         }
+        else{
+            $fields = "";
+            $val = "";
+            foreach(static::$dbfields as $temp){
+                $fields .= "`".$temp."`,";
+                $val = $val.'?,';
+            }
+    
+            $fields = rtrim($fields, ",");
+            $val = rtrim($val, ",");
+    
+            $query = "INSERT INTO ".static::$tablename."($fields) VALUES ($val)";
+            // echo "<script> console.log('query:' + '$query'); </script>";
+    
+            $stmt = static::$pdo->prepare($query);
+            try {
+                static::$pdo->beginTransaction();
+                foreach ($values as $row){
+                    $res = $stmt->execute($row);
+                    if (!$res) return false;
+                }
+                static::$pdo->commit();
+            }catch (PDOException $e){
+                static::$pdo->rollback();
+                throw $e;
+            }
+        }
+        
 
         return true;
     }
@@ -143,5 +150,16 @@ abstract class BaseActiveRecordModel extends Model {
         }else{
         print_r(static::$pdo->errorInfo());
         }
+    }
+
+    function pdoSet($allowed, $values) {
+        $set = '';
+        $values = array();
+        foreach ($allowed as $field) {
+            if ($field == "id") continue;
+            $set.=" `".str_replace("`","``",$field)."`". "=:$field,";
+        }
+        $res = substr($set, 0, -1);
+        return $res; 
     }
 }
