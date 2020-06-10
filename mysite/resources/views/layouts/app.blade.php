@@ -29,11 +29,11 @@
         <?php
             if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']):
                 echo "<h2>Admin</h2>";
-                echo "<h3><a href='/exit'>Выход</a></h3>";
+                echo "<h3><a href='{{ route('exit') }}'>Выход</a></h3>";
         ?>
         <ul>
             <!-- <li><a href="/admin/guest/upload">Загрузка отзывов</a> -->
-            <li><a href="/admin/blog/upload">Загрузка сообщений блога</a>
+            <li><a href="{{ route('blogUpload') }}">Загрузка сообщений блога</a>
             <!-- <li><a href="/admin/statistic/visitings">Статистика посещаемости</a> -->
 
             <?php
@@ -41,23 +41,23 @@
                     echo "<ul>";
                     if(isset($_SESSION['isAdmin']) && !$_SESSION['isAdmin']){
                         echo "<h2>".$_SESSION['fio']."</h2>";
-                        echo "<h3><a href='/exit'>Выход</a></h3>";
+                        echo "<h3><a href='{{ route('exit') }}'>Выход</a></h3>";
                     }else{
-                        echo "<h3><a href='/login'>Вход</a></h3>";
+                        echo "<h3><a href='{{ route('login') }}'>Вход</a></h3>";
                     }
                 endif;
             ?>
             
-            <!-- <li><a href="/">Главная</a>
-            <li><a href="/aboutMe">Обо мне</a>
+            <li><a href="{{ route('index') }}">Главная</a>
+            <!-- <li><a href="/aboutMe">Обо мне</a>
             <li><a href="/interests">Мои интересы</a>
             <li><a href="/schedule">Учеба</a>
             <li><a href="/fotos">Фотоальбом</a>
             <li><a href="/test">Тест</a>
             <li><a href="/contacts">Контакты</a>
             <li><a href="/guestBook">Гостевая книга</a> -->
-            <li><a href="/blog">Мой Блог</a>
-            <li><a href="/blogEditor">Редактор Блога</a>
+            <li><a href="{{ route('blog') }}">Мой Блог</a>
+            <li><a href="{{ route('blogEditor') }}">Редактор Блога</a>
 
         </ul>
     </nav>
