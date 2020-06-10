@@ -34,9 +34,6 @@ class Blog extends BaseActiveRecordModel{
 
     public function blog(){
         return $this->linksPages();
-        // var_dump($data);
-        // $this->getAllComments($data['rows']);
-        // return 
     }
 
     
