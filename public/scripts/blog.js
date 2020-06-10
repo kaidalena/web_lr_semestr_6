@@ -50,7 +50,6 @@ function editRecord(elem){
     
     $("#topic")[0].value = $("[value=" + elem + "]").parent().find("h3")[0].innerHTML;
     $("#text")[0].value = $("[value=" + elem + "]").parent().find("p")[0].innerHTML;
-    // console.log($("#topic"));
 }
 
 async function saveFetch(){
@@ -68,11 +67,16 @@ async function saveFetch(){
     }).then(response => response.text())
       .then(body => {
           var respons;
-          var status = body;
+          var status;
+          var data = JSON.parse(body),
+            status = data.status;
           var dv_Respons = document.getElementById('respons');
             if (status == 1){
                 dv_Respons.className = "saveOK";
                 respons = "Запись была сохранена";
+
+                $("[value=" + id_blog + "]").parent().find("h3")[0].innerHTML = $("#topic")[0].value;
+                $("[value=" + id_blog + "]").parent().find("p")[0].innerHTML = $("#text")[0].value;
             }else{
                 dv_Respons.className = "saveNO";
                 respons = "Ошибка сохранения записи";

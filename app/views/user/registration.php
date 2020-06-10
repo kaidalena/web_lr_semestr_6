@@ -22,8 +22,11 @@
             // Установим функцию уведомления пользователя о
             // завершении операции на сервере
             xmlHttp.onreadystatechange = function() {
-                $respons = xmlHttp.responseText;
-                document.getElementById('err_login').textContent = $respons;
+                // var xmlRespons = "" + xmlHttp.responseText;
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(xmlHttp.responseText, "text/xml");
+                var status = xmlDoc.getElementsByTagName("status")[0].childNodes[0].nodeValue;
+                if (status === "false") document.getElementById('err_login').textContent = "Такой логин уже существует";
             }
             // Отправим данные
             xmlHttp.send(xmlString);

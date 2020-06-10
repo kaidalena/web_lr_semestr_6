@@ -1,6 +1,5 @@
 <?php
 
-
 namespace app\controllers;
 
 use app\core\Controller;
@@ -42,9 +41,13 @@ class UserController extends Controller{
     public function check_loginAction(){
         $post = file_get_contents('php://input');
         $login = new SimpleXMLElement($post);
-        // echo "parse: ".$login->login[0];
         $result = $this->model->check_exisists_login($login->login[0]);
-        if (!$result) echo "Такой логин уже существует";
+        $xmlRespons = "<respons> <status>".((!$result) ? "false" : "true")."</status> </respons>";
+        // if (!$result) $xmlRespons .= "Такой логин уже существует";
+        // else $xmlRespons .= "true";
+        // $xmlRespons .= "";
+        echo $xmlRespons;
+
     }
 
     public function getFIO(){

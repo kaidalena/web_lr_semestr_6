@@ -68,7 +68,11 @@ class BlogController extends Controller{
         header('Content-Type: application/json');
         $newData = (array) json_decode(file_get_contents('php://input'));
         $result = $this->model->save($newData);
-        echo $result;
+        $jsonRespons = "{ \"status\": ";
+        if ($result) $jsonRespons .= "1 }";
+        else $jsonRespons .= "0 }"; 
+        echo $jsonRespons;
+        //ответить json
     }
 
     public function save($post_array, $files_array){
