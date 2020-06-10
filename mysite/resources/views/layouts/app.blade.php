@@ -15,7 +15,6 @@
     <script src="/scripts/calendar.js"></script>
     <script src="/scripts/fotos.js"></script>
     <script src="/scripts/interests.js"></script>
-    <script src="/scripts/blog.js"></script>
     @yield('scripts')
 </head>
 <body>

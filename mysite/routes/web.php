@@ -16,14 +16,18 @@ Route::get('/blogEditor', function () {
     return view('welcome');
 })->name('blogEditor');
 
+Route::get('/admin/blog/upload', function () {
+    return view('welcome');
+})->name('blogUpload');
+
 Route::get('/login', function () {
     return view('welcome');
 })->name('login');
 
+Route::get('/registration', function () {
+    return view('welcome');
+})->name('registr');
+
 Route::get('/exit', function () {
     return view('welcome');
 })->name('exit');
-
-Route::get('/admin/blog/upload', function () {
-    return view('welcome');
-})->name('blogUpload');
