@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<?php use DateTime; ?>
+<?php   ?>
 <section>
 
      <div id="modalWindow">
@@ -46,24 +46,25 @@
 
                <?php
                // echo "<p> data: ".var_dump($rows)."</p>";
-                    if(empty($rows) ): ?>
+                    if(empty($blogs) ): ?>
                          <h2>Нет записей</h2>
                <?php else:
-                         foreach ($rows as $temp) {
+                         foreach ($blogs as $temp) {
                               echo "<tr>";
-                              $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['date']);
+                              // dd($temp['blog']['created_at']);
+                              $date = DateTime::createFromFormat('Y-m-d H:i:s', $temp['blog']->created_at);
                               echo "<td class='green'><div class=\"info\"><p>". $date->format('d.m.Y  H:i:s')."</p>";
 
-                              echo ($temp['img src'] == null) ? "</div>" : "<img src='" .$temp['img src'].$temp['img name']."'></div>";
+                              echo ($temp['blog']->img_src == null) ? "</div>" : "<img src='" .$temp['blog']->img_src.$temp['blog']->img_name."'></div>";
 
                               echo "</td><td class='msg green'><div class=\"text\">
-                                   <input type='hidden' class='id_blog' value=".$temp['id'].">
-                                   <h3>".$temp['topic']."</h3>";
-                              echo "<p>".$temp['message']."</p></div>
+                                   <input type='hidden' class='id_blog' value=".$temp['blog']->id.">
+                                   <h3>".$temp['blog']->topic."</h3>";
+                              echo "<p>".$temp['blog']->message."</p></div>
                                    <div id='comment' ".
                                    ((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) 
-                                        ? "class='icon-comment admin' data-toggle='popover' data-content='Редактировать' onclick=\"editRecord(".$temp['id'].")\"" 
-                                        : "class='icon-comment user' data-toggle='popover' data-content='Оставить комментарий' onclick=\"newComment(".$temp['id'].")\"").">
+                                        ? "class='icon-comment admin' data-toggle='popover' data-content='Редактировать' onclick=\"editRecord(".$temp['blog']->id.")\"" 
+                                        : "class='icon-comment user' data-toggle='popover' data-content='Оставить комментарий' onclick=\"newComment(".$temp['blog']->id.")\"").">
                                    </div>
                                    </td>";
                               echo "</tr>";
@@ -71,10 +72,10 @@
                               echo "<tr> <td></td> <td>";
                               if (!empty($temp['comments'])){
                                    echo "<p id='titleComment'>Комментарии</p>";
-                                   foreach($temp['comments'] as $comment){
+                                   foreach($temp['comments'] as $record){
                                         echo "<div class='comment'>
-                                             <h4>".$comment['user']."</h4> <h5>".$comment['date']."</h5> 
-                                             <p>".$comment['message']."</p>
+                                             <h4>".$record['user']->name."</h4> <h5>".$record['comment']->created_at."</h5> 
+                                             <p>".$record['comment']->message."</p>
                                         </div>";
                                    }
                               }
@@ -87,10 +88,10 @@
      </table>
 
      <?php
-     foreach($pages as $i){
-          echo $i;
-     }
-     ?>
+     // foreach($pages as $i){
+          // echo $i;
+     // }
+     ?> 
 
 </section>
 @endsection

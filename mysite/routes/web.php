@@ -8,9 +8,7 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/blog', function () {
-    return view('welcome');
-})->name('blog');
+Route::get('/blog', 'BlogController@blog')->name('blog');
 
 Route::get('/blogEditor', function () {
     return view('welcome');
