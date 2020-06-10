@@ -1,0 +1,39 @@
+
+section.study {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+table.study  
+{ 
+width: 95%; 
+border: 1px solid #3bc1a0;; 
+margin: 15px 0px 0px 50px; 
+border-bottom-width: 0px; 
+} 
+
+table.study th:not(:last-child), table.study td:not(:last-child) 
+{ 
+border-right: 1px solid #3bc1a0;
+} 
+
+table.study th 
+{ 
+color: #6a6a6a; 
+font-size: 1.2em; 
+} 
+
+ table.study th, table.study td 
+{ 
+border-bottom: 1px solid #3bc1a0; 
+} 
+
+table.study td
+{ 
+text-align: center; 
+}
+
+a.study{
+    color: #437acc;
+    text-decoration: none;
+}

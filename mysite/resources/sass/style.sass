@@ -1,0 +1,382 @@
+* 
+	box-sizing: border-box 
+html, body 
+	margin: 0 
+	padding: 0 
+	width: 100% 
+	background-color: #fff4e9 
+html 
+	font-size: 100% 
+body 
+	color: #333 
+	font: 1em 'Open Sans', sans-serif 
+section 
+	margin: 0 
+	padding: 0 
+	text-align: center 
+	font-style: italic 
+	background-color: #fff4e9 
+h1, h2 
+	margin-bottom: 22px 
+	color: #191919 
+	font-weight: 400 
+	text-decoration: aqua 
+	text-align: center 
+h1 
+	font-size: 32px 
+	line-height: 32px 
+h2 
+	color: #565d66 
+	font-size: 26px 
+	line-height: 26px 
+a 
+	color: #006b05 
+	text-decoration: none 
+input 
+	outline: none 
+	border: solid 1px #C3C3C3 
+	margin: 0em 
+input[type="submit"], input[type="button"], select 
+	cursor: pointer 
+.leftImg 
+	width: 200px 
+	height: 300px 
+	margin: 0 20px 0 20px 
+table 
+	margin: 5% 10% 10% 10% 
+	&.blog 
+		margin: 5% auto 
+		.green 
+			background-color: rgba(100, 200, 150, 0.4) 
+		td 
+			margin: 2em 
+			border-radius: 2em 
+			padding: 0 
+		h4 
+			font-size: 30px 
+			color: #000 
+			margin: 7px 0 
+		h5 
+			font-size: 20px 
+			text-align: center 
+			font-style: italic 
+		p 
+			font-size: 15px 
+			color: #333 
+			margin: 0 
+		img 
+			width: 310px 
+			height: auto 
+			border-radius: 10px 
+		div 
+			font-size: 18px 
+	.info 
+		width: 350px 
+		padding: 20px 
+	.msg 
+		padding: 0 
+		width: 700px 
+	.text 
+		width: auto 
+		padding: 2em 2em 1em 2em 
+	.comment 
+		padding: 0 20px 
+		text-align: left 
+		margin-bottom: 30px 
+		word-wrap: break-word 
+		width: 670px 
+		h4 
+			display: inline 
+			font-size: 19px 
+			margin-right: 5px 
+		h5 
+			display: inline 
+			font-size: 14px 
+			color: #565d66 
+		p 
+			margin-bottom: 30px 
+.ol 
+	margin-left: 43% 
+	text-align: left 
+div 
+	width: 100% 
+	text-align: center 
+.about 
+	text-align: center 
+.data 
+	text-align: center 
+	table 
+		margin: 1% 1% 1% 43.6% 
+		border: 2px solid #9a89e9 
+		border-radius: 5% 
+		background: white 
+	td 
+		border-left: 1px solid #9a89e9 
+		border-bottom: 1px solid #9a89e9 
+		cursor: pointer 
+	select 
+		border-color: #9a89e9 
+[id='calendar'], .div 
+	text-align: center 
+input[type="button"] 
+	background-color: #9a89e9 
+	border-color: #9a89e9 
+	padding: 1% 
+	color: white 
+	border-radius: 4px 
+#registration 
+	background-color: #16a085 
+	border-color: #16a085 
+	color: #000 
+.no 
+	background-color: lightcoral 
+.yes 
+	background-color: lightgreen 
+pre 
+	color: lightcoral 
+	display: contents 
+input[type="reset"], [id="submit"] 
+	padding: 1% 
+	background-color: #16a085 
+	border-radius: 4px 
+input, select 
+	border-color: #16a085 
+	padding: 1% 
+	border-radius: 4px 
+input[type="submit"] 
+	margin-top: 20px 
+	background-color: #16a085 
+textarea 
+	border-color: #16a085 
+	padding: 1% 
+	border-radius: 10px 
+	width: 300px 
+	height: 200px 
+input[type="reset"] 
+	background-color: #16a085 
+.clock 
+	padding-top: 90% 
+	color: #dddeec 
+	font-size: 20px 
+	font-style: italic 
+	font-family: sans-serif 
+ul[id="submenu"] 
+	li 
+		a 
+			color: #dbd170 
+.notFocus 
+	border-color: #16a085 
+.inFocus 
+	border-color: #9a89e9 
+.fotoMax 
+	display: none 
+	position: absolute 
+	top: 0 
+	left: 0 
+	text-align: center 
+	width: 100% 
+	height: 100% 
+	img 
+		position: absolute 
+		margin: auto 
+		left: 0 
+		top: 0 
+		bottom: 0 
+		right: 0 
+		box-shadow: 0 0 90px 20px #191919 
+.closingDiv 
+	position: absolute 
+	margin: 2% 0 0 85% 
+	width: 30px 
+	height: 25px 
+	color: #16a085 
+	cursor: pointer 
+	&:after 
+		text-shadow: 0 0 10px 7px #e5fde6 
+		content: '\2715' 
+.selectDay 
+	background-color: #9a89e9 
+.nextDiv, .backDiv 
+	border-radius: 50% 
+	font-size: 42px 
+	background: rgba(57, 119, 72, 0.85) 
+	position: absolute 
+	color: white 
+	width: 50px 
+	height: 50px 
+	margin-top: 25% 
+	text-align: center 
+	cursor: pointer 
+	box-shadow: 0 0 20px 7px white 
+.popover 
+	position: absolute 
+	top: 0 
+	left: 0 
+	z-index: 1010 
+	display: none 
+	max-width: 276px 
+	padding: 1px 
+	text-align: left 
+	white-space: normal 
+	background-color: #ffffff 
+	border: 1px solid #ccc 
+	border: 1px solid rgba(0, 0, 0, 0.2) 
+	-webkit-border-radius: 6px 
+	-moz-border-radius: 6px 
+	border-radius: 6px 
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) 
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) 
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) 
+	-webkit-background-clip: padding-box 
+	-moz-background-clip: padding 
+	background-clip: padding-box 
+	.arrow 
+		&:after 
+			border-width: 10px 
+			content: "" 
+	&.right 
+		margin-left: 10px 
+		.arrow 
+			top: 50% 
+			left: -11px 
+			margin-top: -11px 
+			border-right-color: #999 
+			border-right-color: rgba(0, 0, 0, 0.25) 
+			border-left-width: 0 
+			&:after 
+				bottom: -10px 
+				left: 1px 
+				border-right-color: #ffffff 
+				border-left-width: 0 
+	&.left 
+		.arrow 
+			top: 50% 
+			right: -11px 
+			margin-top: -11px 
+			border-left-color: #999 
+			border-left-color: rgba(0, 0, 0, 0.25) 
+			border-right-width: 0 
+			&:after 
+				right: 1px 
+				bottom: -10px 
+				border-left-color: #ffffff 
+				border-right-width: 0 
+.popover .arrow, .popover .arrow:after 
+	position: absolute 
+	display: block 
+	width: 0 
+	height: 0 
+	border-color: transparent 
+	border-style: solid 
+	border-width: 11px 
+.popover-title 
+	padding: 8px 14px 
+	margin: 0 
+	font-size: 14px 
+	font-weight: normal 
+	line-height: 18px 
+	background-color: #f7f7f7 
+	border-bottom: 1px solid #ebebeb 
+	-webkit-border-radius: 5px 5px 0 0 
+	-moz-border-radius: 5px 5px 0 0 
+	border-radius: 5px 5px 0 0 
+	&:empty 
+		display: none 
+.popover-content 
+	padding: 9px 14px 
+[id="modalWindow"] 
+	display: none 
+	height: 100% 
+	position: absolute 
+	text-align: center 
+	vertical-align: middle 
+	justify-content: center 
+	align-items: center 
+[id="modalWindow"]:before 
+	content: '' 
+	background: #000 
+	filter: blur(0px) 
+	position: fixed 
+	left: 0 
+	top: 0 
+	width: 100% 
+	height: 100% 
+	opacity: 0.6 
+	z-index: 100 
+[id="modalDiv"] 
+	position: fixed 
+	filter: blur(0px) 
+	margin: auto 
+	height: fit-content 
+	width: max-content 
+	padding: 2em 
+	background: #fff 
+	border: 1px solid orange 
+	border-radius: 2em 
+	z-index: 1000 
+	opacity: 1 
+#modalDiv 
+	.exit 
+		position: relative 
+		margin: -1em -1em auto auto 
+		height: auto 
+		width: min-content 
+		font-style: normal 
+		cursor: pointer 
+		&::before 
+			color: black 
+			content: '\2715' 
+	#saveComment 
+		width: 100px 
+		height: 50px 
+		font-size: 15px 
+	#text 
+		margin: 30px auto 
+		width: 400px 
+		height: 100px 
+#modalDiv #text, #modalDiv #saveComment 
+	display: block 
+	margin: auto 
+.icon-comment 
+	position: relative 
+	margin: auto 1em 1em auto 
+	height: auto 
+	width: min-content 
+	font-style: normal 
+	cursor: pointer 
+	&.user 
+		&::before 
+			color: black 
+			content: '\2709' 
+	&.admin 
+		&::before 
+			color: black 
+			content: '\270E' 
+.saveOK, .saveNO 
+	margin: auto 
+	display: block 
+	width: max-content 
+	height: auto 
+	padding: 20px 
+	border-radius: 5px 
+	font-size: 20px 
+.saveNO 
+	color: rgb(192, 3, 3) 
+	border-color: rgb(192, 3, 3) 
+	background-color: rgba(255, 86, 86, 0.2) 
+.saveOK 
+	color: green 
+	border-color: green 
+	background-color: rgba(114, 253, 114, 0.3) 
+#topic 
+	width: 250px 
+#saveComment, #saveRecord, #topic, #text 
+	border-radius: 10px 
+	padding: 10px 
+	font-size: 18px 
+	font-family: auto 
+	outline: none 
+#titleComment 
+	color: #036f03 
+	font-size: 25px 
+	padding: 10px 0 

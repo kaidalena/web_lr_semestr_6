@@ -1,0 +1,43 @@
+/* section {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
+    background-color: rgb(255, 243, 220);
+} */
+.test {
+    color: darkslategrey;
+    font-style: italic;
+    text-align: center;
+}
+input{
+    border: solid 1px #C3C3C3; 
+}
+input[type="submit"]{
+    background-color: #16a085; 
+    padding: 1%; 
+    color: white; 
+    border-radius: 4px; 
+}
+/* input[type="text|nomber"], input[type="text"], select{
+    border-color: #16a085; 
+    padding: 1%; 
+    border-radius: 4px; 
+} */
+
+input [type="reset"]{
+    background-color: #16a085; 
+    padding: 1%; 
+    color: white; 
+    border-radius: 4px;
+}
+input, select{
+    border-color: #16a085; 
+    padding: 1%; 
+    border-radius: 4px; 
+}
+textarea   {
+        border-color: #22a58b; 
+        padding: 10%; 
+        border-radius: 10px; 
+    }
