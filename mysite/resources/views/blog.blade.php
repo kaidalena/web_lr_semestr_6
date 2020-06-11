@@ -9,7 +9,9 @@
 @endsection
 
 @section('content')
-<?php   ?>
+<?php  
+
+ ?>
 <section>
 
      <div id="modalWindow">
@@ -61,10 +63,13 @@
                                    <input type='hidden' class='id_blog' value=".$temp['blog']->id.">
                                    <h3>".$temp['blog']->topic."</h3>";
                               echo "<p>".$temp['blog']->message."</p></div>
-                                   <div id='comment' ".
+                                   <div id='comment'>".
+
                                    ((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) 
-                                        ? "class='icon-comment admin' data-toggle='popover' data-content='Редактировать' onclick=\"editRecord(".$temp['blog']->id.")\"" 
-                                        : "class='icon-comment user' data-toggle='popover' data-content='Оставить комментарий' onclick=\"newComment(".$temp['blog']->id.")\"").">
+                                        ? "<div class='icon-comment admin' data-toggle='popover' data-content='Редактировать' onclick=\"editRecord(".$temp['blog']->id.")\"></div>
+                                             <div class='icon-comment del' data-toggle='popover' data-content='Удалить' onclick=\"deleteRecord(".$temp['blog']->id.")\"> </div>" 
+                                        : "</div class='icon-comment user' data-toggle='popover' data-content='Оставить комментарий' onclick=\"newComment(".$temp['blog']->id.")\"> </div>")."
+
                                    </div>
                                    </td>";
                               echo "</tr>";
@@ -93,5 +98,10 @@
      // }
      ?> 
 
-</section>
+     <form id='form-delete' action="" method="POST" style="display: none;"> 
+          {{ csrf_field() }} 
+          {{ method_field('DELETE') }}
+          <button id="del-btn"></button>
+     </form>
+</section>\
 @endsection

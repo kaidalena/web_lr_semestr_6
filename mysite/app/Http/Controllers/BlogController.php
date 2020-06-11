@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class BlogController extends Controller{
     
     public function blog(){
-        $this->data['controller'] = $this;
         $blogModel = new Blog();
         $data = [
             'blogs' => $blogModel->selectAll(),
@@ -20,6 +19,16 @@ class BlogController extends Controller{
         return view('blog')->with($data);
     }
 
-
+    public function updateRecord(){
+        header('Content-Type: application/json');
+        $newData = (array) json_decode(file_get_contents('php://input'));
+        $result = Blog::where('id', $newData["id"])->update($newData);
+        // $result = $this->model->save($newData);
+        $jsonRespons = "{ \"status\": ";
+        if ($result) $jsonRespons .= "1 }";
+        else $jsonRespons .= "0 }"; 
+        echo $jsonRespons;
+        //ответить json
+    }
     
 }

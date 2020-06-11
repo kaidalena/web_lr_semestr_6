@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title-block')</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="/css/foto.css">
     <link rel="stylesheet" href="/css/menu.css">
     <link rel="stylesheet" href="/css/study.css">
+    <script src="/scripts/jquery-2.2.3.js"></script>
+    <script src="/scripts/bootstrap/js/bootstrap.js"></script>
     <script src="/scripts/submenu.js"></script>
     <script src="/scripts/check.js"></script>
-    <script src="/scripts/jquery-2.2.3.js"></script>
     <script src="/scripts/JQcontacts.js"></script>
     <script src="/scripts/JQModalWindow.js"></script>
-    <script src="/scripts/bootstrap/js/bootstrap.js"></script>
     <script src="/scripts/calendar.js"></script>
     <script src="/scripts/fotos.js"></script>
     <script src="/scripts/interests.js"></script>
@@ -40,9 +41,9 @@
                     echo "<ul>";
                     if(isset($_SESSION['isAdmin']) && !$_SESSION['isAdmin']){
                         echo "<h2>".$_SESSION['fio']."</h2>";
-                        echo "<h3><a href='{{ route('exit') }}'>Выход</a></h3>";
+                        echo "<h3><a href='/exit'>Выход</a></h3>";
                     }else{
-                        echo "<h3><a href='{{ route('login') }}'>Вход</a></h3>";
+                        echo "<h3><a href='/login'>Вход</a></h3>";
                     }
                 endif;
             ?>

@@ -10,6 +10,13 @@ function commentExit(){
     $('#modalWindow').fadeOut();
 }
 
+function create_script() {
+    var elScript = document.createElement( 'script' );
+    var text = document.getElementById('text');
+    elScript.src='/addComment?comment=' + text.value + "&blog=" + id_blog;
+    document.getElementsByTagName("body")[0].appendChild( elScript );
+}
+
 function responsAddComment(){
     data;
     var dv_Respons = document.getElementById('respons');
@@ -38,18 +45,16 @@ function responsAddComment(){
     dv_Respons.innerHTML = respons;
 }
 
-function create_script() {
-    var elScript = document.createElement( 'script' );
-    var text = document.getElementById('text');
-    elScript.src='/addComment?comment=' + text.value + "&blog=" + id_blog;
-    document.getElementsByTagName("body")[0].appendChild( elScript );
-}
-
 function editRecord(elem){
     newComment(elem);
     
     $("#topic")[0].value = $("[value=" + elem + "]").parent().find("h3")[0].innerHTML;
     $("#text")[0].value = $("[value=" + elem + "]").parent().find("p")[0].innerHTML;
+}
+
+function deleteRecord(id){
+    $("#form-delete").attr("action", "/blog/delete/"+id)
+    $("#del-btn").click();
 }
 
 async function saveFetch(){
@@ -62,7 +67,9 @@ async function saveFetch(){
 
     let res = await fetch("/blog/updateRecord", {
         method: 'post',
-        headers: {"Content-type": "text/json"},
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            "Content-type": "text/json"},
         body: jsonString
     }).then(response => response.text())
       .then(body => {

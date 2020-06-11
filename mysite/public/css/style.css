@@ -249,7 +249,7 @@ ul[id="submenu"] li a {
   left: 0;
   z-index: 1010;
   display: none;
-  max-width: 276px;
+  max-width: 240px;
   padding: 1px;
   text-align: left;
   white-space: normal;
@@ -338,6 +338,7 @@ ul[id="submenu"] li a {
 }
 
 [id="modalWindow"] {
+  top: 0;
   display: none;
   height: 100%;
   position: absolute;
@@ -435,6 +436,10 @@ table .text{
      padding: 2em 2em 1em 2em;
 }
 
+#comment{
+  text-align: right;
+}
+
 .icon-comment{
   position: relative;
   margin: auto 1em 1em auto;
@@ -442,6 +447,7 @@ table .text{
   width: min-content;
   font-style: normal;
   cursor: pointer;
+  display: inline-block;
 }
 
 .icon-comment.user::before{
@@ -452,6 +458,11 @@ table .text{
 .icon-comment.admin::before{
   color: black;
   content: '\270E';
+}
+
+.icon-comment.del::before{
+  color: black;
+  content: '\2718';
 }
 
 table.blog h4{
