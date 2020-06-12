@@ -13,14 +13,14 @@ Route::get('/blog', 'BlogController@blog')->name('blog');
 Route::post('/blog/updateRecord', 'BlogController@updateRecord');
 
 Route::get('/blogEditor', function () {
-    return view('welcome');
+    return view('blogEditor');
 })->name('blogEditor');
+Route::post('/blog/saveRecord', 'BlogController@saveRecord')->name('saveRecord');
 
 Route::get('/addComment', 'CommentController@addComment');
 
-Route::get('/admin/blog/upload', function () {
-    return view('welcome');
-})->name('blogUpload');
+Route::get('/admin/blog/upload', 'BlogController@upload')->name('blogUpload');
+Route::post('/admin/blog/upload', 'BlogController@loadBlogs')->name('loadBlogs');
 
 Route::get('/login', 'UserController@auth')->name('auth');
 Route::post('/login-login', 'UserController@login')->name('login');

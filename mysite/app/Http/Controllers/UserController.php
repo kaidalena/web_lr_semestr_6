@@ -33,7 +33,7 @@ class UserController extends Controller{
             $_SESSION['id_user'] = $user->id;
             return redirect()->route('index');
         }else{
-            echo "not found user";
+            return redirect()->back()->with('status', 'Неверный логин или пароль');
         }
     }
 

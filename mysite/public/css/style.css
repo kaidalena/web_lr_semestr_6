@@ -556,3 +556,26 @@ table .comment p{
   font-size: 25px; 
   padding: 10px 0;
 }
+
+.alert-danger, #sessioon-msg{
+  text-align: center;
+  width: max-content;
+  height: max-content;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(230, 86, 86, 0.42);
+  border-width: 3px;
+  border-color: darkred;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.alert-danger p, #sessioon-msg h3{
+  font-size: 15px;
+  margin: 5px;
+}
+
+#sessioon-msg{
+  background-color: rgba(98, 144, 245, 0.3);
+  border-color: rgb(2, 0, 139);
+}

@@ -29,7 +29,7 @@
         <?php
             if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']):
                 echo "<h2>Admin</h2>";
-                echo "<h3><a href='{{ route('exit') }}'>Выход</a></h3>";
+                echo "<h3><a href='/exit'>Выход</a></h3>";
         ?>
         <ul>
             <!-- <li><a href="/admin/guest/upload">Загрузка отзывов</a> -->

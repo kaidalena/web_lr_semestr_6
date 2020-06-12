@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model{
+
+    protected $fillable = ['topic','message', 'img_name', 'img_src', 'created_at'];
     
     public function selectAll(){
         $blog = $this->all();

@@ -11,6 +11,7 @@
         <br/>
         <h1>Авторизация</h1>
         <br/>
+        @include('common.msg')
         <form class="adminForm" action="{{ route('login') }}" method="POST">
                 @csrf
                 <p><input type="text" name="login" placeholder="Логин" data-toggle="popover">
