@@ -42,12 +42,9 @@ class UserController extends Controller{
         $post = file_get_contents('php://input');
         $login = new SimpleXMLElement($post);
         $result = $this->model->check_exisists_login($login->login[0]);
+        //возвращаем xml
         $xmlRespons = "<respons> <status>".((!$result) ? "false" : "true")."</status> </respons>";
-        // if (!$result) $xmlRespons .= "Такой логин уже существует";
-        // else $xmlRespons .= "true";
-        // $xmlRespons .= "";
         echo $xmlRespons;
-
     }
 
     public function getFIO(){

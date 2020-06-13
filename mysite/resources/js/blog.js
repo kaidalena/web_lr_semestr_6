@@ -41,7 +41,7 @@ function responsAddComment(){
 function create_script() {
     var elScript = document.createElement( 'script' );
     var text = document.getElementById('text');
-    elScript.src='/addComment?comment=' + text.value + "&blog=" + id_blog;
+    elScript.src='/comment/create?comment=' + text.value + "&blog=" + id_blog;
     document.getElementsByTagName("body")[0].appendChild( elScript );
 }
 
@@ -60,7 +60,7 @@ async function saveFetch(){
     };
     var jsonString = JSON.stringify(data);
 
-    let res = await fetch("/blog/updateRecord", {
+    let res = await fetch("blog/edit ", {
         method: 'post',
         headers: {"Content-type": "text/json"},
         body: jsonString

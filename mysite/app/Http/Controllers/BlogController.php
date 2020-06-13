@@ -10,11 +10,12 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 
 class BlogController extends Controller{
     
-    public function blog(){
+    public function index(){
         $blogModel = new Blog();
         $data = [
             'blogs' => $blogModel->selectAll(),
@@ -27,18 +28,17 @@ class BlogController extends Controller{
         return view('blogUpload');
     }
 
-    public function updateRecord(){
+    public function edit(){
         header('Content-Type: application/json');
         $newData = (array) json_decode(file_get_contents('php://input'));
-        $result = Blog::where('id', $newData["id"])->update($newData);
-        // $result = $this->model->save($newData);
-        $jsonRespons = "{ \"status\": ";
-        if ($result) $jsonRespons .= "1 }";
-        else $jsonRespons .= "0 }"; 
-        echo $jsonRespons;
+        dd($newData);
+        $result = $this->model->save($newData);
+        //возвращаем json
+        $status =  ($result) ? 1 : 0;
+        echo "{ \"status\": \"$status\"}";
     }
 
-    public function saveRecord(BlogRequest $req){
+    public function create(BlogRequest $req){
         $model = new Blog();
         $model->topic =  trim($_POST['topic']);
         $model->message = trim($_POST['message']);

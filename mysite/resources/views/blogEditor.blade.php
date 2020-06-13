@@ -14,7 +14,7 @@
     @include('common.msg')
     
     
-    <form enctype="multipart/form-data"  action="{{ route('saveRecord') }}" method=POST >
+    <form enctype="multipart/form-data"  action="{{ route('blog.create') }}" method=POST >
     @csrf
         <p><input type="text" id="topic" name="topic" placeholder="Тема сообщения" data-toggle="popover" 
             >

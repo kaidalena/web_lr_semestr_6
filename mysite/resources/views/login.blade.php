@@ -12,9 +12,10 @@
         <h1>Авторизация</h1>
         <br/>
         @include('common.msg')
+        @include('common.errors')
         <form class="adminForm" action="{{ route('login') }}" method="POST">
                 @csrf
-                <p><input type="text" name="login" placeholder="Логин" data-toggle="popover">
+                <p><input type="text" name="email" placeholder="Email" data-toggle="popover">
                 <p><input type="password" name="password" placeholder="Пароль" data-toggle="popover">
                 <p>
                         <input type="submit" value="Войти" style="width: 160px;">

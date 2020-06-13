@@ -24,9 +24,6 @@ class BlogController extends Controller{
         $commentModel = new Comments(null);
         $userModel = new User(null);
         $this->connectDataWithComments($commentModel->selectAll(), $userModel->findAll());
-        // var_dump($this->data);
-        // echo "<p style='margin: 50px;'> data: </p>";
-        // echo "<p>".var_dump($this->data)."</p>";
         $this->view->render('Мой Блог', $this->data);
     }
 
@@ -51,10 +48,8 @@ class BlogController extends Controller{
     }
 
     public function saveRecords($nameField){
-        // echo "<p style=\"margin: 50px;\">\$_FILES: "; var_dump($FILES); echo "</p>";
         if (!empty($_FILES)){
            $file = "D:/web/websitePHP/public/files/".$_FILES[$nameField]['name'];
-        //     // echo "<br/>file = $file <br/>";
            if($_FILES[$nameField]['error'] == UPLOAD_ERR_OK){
                 move_uploaded_file($_FILES[$nameField]['tmp_name'], $file);
                 return $this->model->importFromFile($file);
@@ -68,11 +63,9 @@ class BlogController extends Controller{
         header('Content-Type: application/json');
         $newData = (array) json_decode(file_get_contents('php://input'));
         $result = $this->model->save($newData);
-        $jsonRespons = "{ \"status\": ";
-        if ($result) $jsonRespons .= "1 }";
-        else $jsonRespons .= "0 }"; 
-        echo $jsonRespons;
-        //ответить json
+        //возвращаем json
+        $status =  ($result) ? 1 : 0;
+        echo "{ \"status\": \"$status\"}";
     }
 
     public function save($post_array, $files_array){

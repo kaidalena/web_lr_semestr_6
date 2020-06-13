@@ -52,11 +52,6 @@ function editRecord(elem){
     $("#text")[0].value = $("[value=" + elem + "]").parent().find("p")[0].innerHTML;
 }
 
-function deleteRecord(id){
-    $("#form-delete").attr("action", "/blog/delete/"+id)
-    $("#del-btn").click();
-}
-
 async function saveFetch(){
     var data = {
         id: id_blog,

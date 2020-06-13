@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Comment;
 use app\models\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller{
 
-    public function addComment(){
+    public function create(){
         header ('Content-Type: text/javascript');
         $status = false;
         $respons = "";
@@ -18,12 +19,12 @@ class CommentController extends Controller{
             $commentModel = new Comment();
 
             $commentModel->id_blog = $_REQUEST['blog'];
-            $commentModel->id_user = $_SESSION['id_user'];
+            $commentModel->id_user =  Auth::id();
             $commentModel->message = $_REQUEST['comment'];
 
             $status = $commentModel->save();
 
-            $row = [null, $_REQUEST['blog'], $_SESSION['id_user'], $_REQUEST['comment'], date('Y-m-d H:i:s')];
+            $row = [null, $_REQUEST['blog'], Auth::id(), $_REQUEST['comment'], date('Y-m-d H:i:s')];
             echo "var data = ".(json_encode($row)).";\n";
             $respons = ($status) ? "'Комментарий сохранен'" : "'Ошибка сохранения комментария'";
        }else{

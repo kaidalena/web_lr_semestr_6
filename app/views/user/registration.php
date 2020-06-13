@@ -27,6 +27,7 @@
                 var xmlDoc = parser.parseFromString(xmlHttp.responseText, "text/xml");
                 var status = xmlDoc.getElementsByTagName("status")[0].childNodes[0].nodeValue;
                 if (status === "false") document.getElementById('err_login').textContent = "Такой логин уже существует";
+                else document.getElementById('err_login').textContent = "";
             }
             // Отправим данные
             xmlHttp.send(xmlString);

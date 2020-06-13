@@ -1,3 +1,4 @@
+<?php use Illuminate\Support\Facades\Auth; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
         </h2>
         
         <?php
-            if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']):
+            if(Auth::check() && Auth::user()->isAdmin()):
                 echo "<h2>Admin</h2>";
                 echo "<h3><a href='/exit'>Выход</a></h3>";
         ?>
@@ -39,17 +40,17 @@
             <?php
                 else:
                     echo "<ul>";
-                    if(isset($_SESSION['isAdmin']) && !$_SESSION['isAdmin']){
-                        echo "<h2>".$_SESSION['fio']."</h2>";
+                    if(Auth::check() && !Auth::user()->isAdmin()){
+                        echo "<h2>".Auth::user()->name."</h2>";
                         echo "<h3><a href='/exit'>Выход</a></h3>";
                     }else{
-                        echo "<h3><a href='/login'>Вход</a></h3>";
+                        echo "<h3><a href='/user'>Вход</a></h3>";
                     }
                 endif;
             ?>
             
             <li><a href="{{ route('index') }}">Главная</a>
-            <li><a href="{{ route('blog') }}">Мой Блог</a>
+            <li><a href="{{ route('blog.index') }}">Мой Блог</a>
             <li><a href="{{ route('blogEditor') }}">Редактор Блога</a>
 
         </ul>
