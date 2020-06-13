@@ -49,13 +49,6 @@
             ?>
             
             <li><a href="{{ route('index') }}">Главная</a>
-            <!-- <li><a href="/aboutMe">Обо мне</a>
-            <li><a href="/interests">Мои интересы</a>
-            <li><a href="/schedule">Учеба</a>
-            <li><a href="/fotos">Фотоальбом</a>
-            <li><a href="/test">Тест</a>
-            <li><a href="/contacts">Контакты</a>
-            <li><a href="/guestBook">Гостевая книга</a> -->
             <li><a href="{{ route('blog') }}">Мой Блог</a>
             <li><a href="{{ route('blogEditor') }}">Редактор Блога</a>
 

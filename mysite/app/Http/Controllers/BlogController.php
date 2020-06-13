@@ -56,38 +56,39 @@ class BlogController extends Controller{
 
     public function loadBlogs(Request $request){
 
-        if ($request->hasFile('userFile')){
-            $file = $request->file('userFile')->openFile();
-            $counter = 0;
+    if ($request->hasFile('userFile')){
+        $file = $request->file('userFile');
 
-            while (!$file->eof()) {
-                $info = explode(';', $file->fgets());
-                // dd($info);
-                $blog = new Blog();
+        $blogs = [];
 
-                $i=0;
-                // $blog->topic = trim($info[0]);
-                // $blog->message = trim($info[1]); $i++;
-                // $blog->img_name = trim($info[$i++]);
-                // $blog->img_src = trim($info[$i++]);
-                // $blog->created_at = trim($info[$i++]);
+        $fileR = fopen($file, "r");
+        
+        for($i=0; !feof($fileR); $i++){
+            $str = fgets($fileR);
+            if (empty($str)) continue;
+            $blogs[$i] = explode(';', $str);
+        }
 
-                $blog->fill([
-                    'topic' => trim($info[$i++]),
-                    'message' => trim($info[$i++]),
-                    'img_name' => trim($info[$i++]),
-                    'img_src' => trim($info[$i++]),
-                    'created_at' => trim($info[$i++]),
-                ]);
-                
-                $blog->save();
+        fclose($fileR);
+        $counter = 0;
+        foreach($blogs as $blog){
+            // $temp = explode(',', $blog);
+            $temp = $blog;
+            $newBlog = new Blog();
+            if(strlen($temp[0])>0){
+                $newBlog->topic = $temp[0];
+                $newBlog->message = $temp[1];
+                $newBlog->img_name = trim($temp[2]);
+                $newBlog->img_src = trim($temp[3]);
+                $newBlog->created_at = trim($temp[4]);
+                $newBlog->save();
                 $counter++;
             }
-
-            return redirect()->back()->with('status', "Успешно добавлено $counter записей блога");
-        }else{
-            return redirect()->back()->with('status', "Ошибка считывания из файла");
         }
+        return redirect()->back()->with('status', "Успешно добавлено $counter записей блога");
     }
     
+    return redirect()->back()->with('status', "Ошибка считывания из файла");
+}
+
 }

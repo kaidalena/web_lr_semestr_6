@@ -23,11 +23,7 @@ class UserController extends Controller{
             ['login', '=', $_POST['login']],
             ['password', '=', $_POST['password']]
         ])->first();
-        // dd($user);
         if ($user !== null) {
-        // $this->model->validator->Validate($_POST);
-        // if (!$this->model->validator->checkErrors()) return false;
-            // $this->setUserSession();
             $_SESSION['isAdmin'] = 0;
             $_SESSION['fio'] = $user->name;
             $_SESSION['id_user'] = $user->id;
