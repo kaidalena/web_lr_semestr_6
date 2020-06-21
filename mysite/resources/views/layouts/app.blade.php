@@ -37,17 +37,17 @@
             <li><a href="{{ route('blogUpload') }}">Загрузка сообщений блога</a>
             <!-- <li><a href="/admin/statistic/visitings">Статистика посещаемости</a> -->
 
-            <?php
-                else:
-                    echo "<ul>";
-                    if(Auth::check() && !Auth::user()->isAdmin()){
+            
+                @else:
+                     <ul>
+                    @if(Auth::check() && !Auth::user()->isAdmin()){
                         echo "<h2>".Auth::user()->name."</h2>";
                         echo "<h3><a href='/exit'>Выход</a></h3>";
                     }else{
                         echo "<h3><a href='/user'>Вход</a></h3>";
                     }
                 endif;
-            ?>
+            
             
             <li><a href="{{ route('index') }}">Главная</a>
             <li><a href="{{ route('blog.index') }}">Мой Блог</a>

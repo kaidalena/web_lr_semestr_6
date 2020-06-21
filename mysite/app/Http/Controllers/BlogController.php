@@ -28,14 +28,15 @@ class BlogController extends Controller{
         return view('blogUpload');
     }
 
-    public function edit(){
+    public function update(){
         header('Content-Type: application/json');
         $newData = (array) json_decode(file_get_contents('php://input'));
-        dd($newData);
+        // dd($newData);
         $result = $this->model->save($newData);
         //возвращаем json
         $status =  ($result) ? 1 : 0;
         echo "{ \"status\": \"$status\"}";
+        return;
     }
 
     public function create(BlogRequest $req){

@@ -65,14 +65,15 @@ async function saveFetch(){
     };
     var jsonString = JSON.stringify(data);
 
-    let res = await fetch("/blog/edit", {
-        method: 'post',
+    let res = await fetch('/blog/edit', {
+        method: 'POST',
         headers: {"Content-type": "text/json"},
         body: jsonString
     }).then(response => response.text())
       .then(body => {
           var respons;
           var status;
+        //   console.log(body);
           var data = JSON.parse(body),
             status = data.status;
           var dv_Respons = document.getElementById('respons');

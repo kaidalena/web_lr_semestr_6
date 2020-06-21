@@ -21,11 +21,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('blog', 'BlogController');
-Route::resource('comment', 'CommentController');
-Route::resource('user', 'UserController');
+Route::resource('blog', 'BlogController')->only([
+    'index', 'create'
+]);
+Route::resource('comment', 'CommentController')->only([
+    'create'
+]);
+Route::resource('user', 'UserController')->only([
+    'index'
+]);
 
-Route::post('/blog/edit', 'BlogController@edit');
 Route::post('/blog/create', 'BlogController@create');
 
 Route::get('/', function () {
@@ -36,12 +41,14 @@ Route::get('/blogEditor', function () {
     return view('blogEditor');
 })->name('blogEditor');
 
-Route::get('/admin/blog/upload', 'BlogController@upload')->name('blogUpload');
-Route::post('/admin/blog/upload', 'BlogController@loadBlogs')->name('loadBlogs');
-
 Route::get('/exit', 'Controller@exit')->name('exit');
 
-Route::delete('/blog/delete/{id}', function ($id) {
-    Blog::findOrFail($id)->delete();
-    return redirect('/blog');
-})->name('deleteBlog');
+Route::middleware(['isAdmin'])->group(function () {
+    Route::post('/blog/edit', 'BlogController@update');
+    Route::get('/admin/blog/upload', 'BlogController@upload')->name('blogUpload');
+    Route::post('/admin/blog/upload', 'BlogController@loadBlogs')->name('loadBlogs');
+    Route::delete('/blog/delete/{id}', function ($id) {
+        Blog::findOrFail($id)->delete();
+        return redirect('/blog');
+    })->name('deleteBlog');
+});
